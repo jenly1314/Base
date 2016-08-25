@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="loading-more-view-1.0.1">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../app/build/intermediates/exploded-aar/cn.finalteam.loadingviewfinal/loading-more-view/1.0.1/res" />
+      <root url="jar://$PROJECT_DIR$/../app/build/intermediates/exploded-aar/cn.finalteam.loadingviewfinal/loading-more-view/1.0.1/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/cn.finalteam.loadingviewfinal/loading-more-view/1.0.1/dc1fa874e225ea5ef9a1da40a12116cd44bdcf3e/loading-more-view-1.0.1-sources.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/cn.finalteam.loadingviewfinal/loading-more-view/1.0.1/dc1fa874e225ea5ef9a1da40a12116cd44bdcf3e/loading-more-view-1.0.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
