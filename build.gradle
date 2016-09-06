@@ -1,4 +1,6 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
+
 
 android {
     compileSdkVersion 24
@@ -26,4 +28,22 @@ dependencies {
     compile 'com.android.support:support-v4:24.0.0'
     compile 'de.greenrobot:eventbus:3.0.0-beta1'
     compile 'com.android.support:recyclerview-v7:24.0.0'
+
 }
+
+//添加
+publish {
+    userOrg = 'jenly'//bintray.com用户名
+    groupId = 'com.king.base'//jcenter上的路径
+    artifactId = 'Base'//项目名称
+    publishVersion = '0.1'//版本号
+    desc = 'Base for Android'//描述
+    website = 'https://github.com/jenly1314/Base'//网站
+}
+
+
+
+
+
+
+

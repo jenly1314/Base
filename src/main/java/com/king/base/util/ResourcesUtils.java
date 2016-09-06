@@ -101,6 +101,8 @@ public class ResourcesUtils {
 	
 	/**
 	 * 获取资源文件menu的id
+	 * @param context
+	 * @param resName
 	 */
 	public static int getMenuId(Context context,String resName){
 		return getResId(context,resName,RES_MENU);
