@@ -25,7 +25,7 @@ import java.util.regex.Pattern;
  * 通用的ViewHolder
  *      继承 RecyeclerView.ViewHolder 主要是为了通用性更强
  *
- * @author Jenly <jenly1314@gmail.com>
+ * @author Jenly <a href="mailto:jenly1314@gmail.com">Jenly</a>
  *
  */
 public class ViewHolder extends RecyclerView.ViewHolder{

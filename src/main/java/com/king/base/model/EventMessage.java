@@ -18,7 +18,6 @@ import java.io.Serializable;
 
 /**
  * @author Jenly
- * @date 2016-4-28
  */
 public class EventMessage implements Serializable{
 

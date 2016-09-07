@@ -25,7 +25,6 @@ import android.widget.TextView;
 
 /**
  * @author Jenly
- * @date 2015-4-20
  */
 public class BaseProgressDialog extends Dialog{
 

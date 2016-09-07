@@ -3,7 +3,6 @@ package com.king.base.util;
 
 /**
  * @author Jenly
- * @date 2014-4-12
  */
 public class StringUtils {
 

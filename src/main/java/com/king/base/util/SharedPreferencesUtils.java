@@ -11,7 +11,6 @@ import android.text.TextUtils;
 
 /**
  * @author Jenly
- * @date 2014-8-8
  */
 public class SharedPreferencesUtils {
 	

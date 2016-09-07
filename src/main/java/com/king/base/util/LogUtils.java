@@ -6,7 +6,6 @@ import android.util.Log;
  * Log日志
  * 
  * @author Jenly
- * @date 2014-6-20
  */
 public class LogUtils {
 

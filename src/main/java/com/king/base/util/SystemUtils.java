@@ -1,6 +1,5 @@
 package com.king.base.util;
 
-import android.Manifest;
 import android.app.Activity;
 import android.app.Instrumentation;
 import android.content.Context;
@@ -23,8 +22,7 @@ import java.io.File;
 import java.util.List;
 
 /**
- * @author Jenly <jenly1314@gmail.com>
- * @date 2015-12-13
+ * @author Jenly <a href="mailto:jenly1314@gmail.com">Jenly</a>
  */
 public class SystemUtils {
 
@@ -34,12 +32,17 @@ public class SystemUtils {
         throw new AssertionError();
     }
 
+    /**
+     * 异步线程
+     * @param runnable
+     */
     public static void asyncThread(Runnable runnable){
         new Thread(runnable).start();
     }
 
+
     /**
-     * 发送按键按下事件 <uses-permission android:name="android.permission.INJECT_EVENTS"
+     * 发送按键按下事件
      * />
      */
     public static void sendKeyCode(final int keyCode) {
@@ -69,7 +72,7 @@ public class SystemUtils {
 
 
     /**
-     * 调用发短信界面 <uses-permission android:name="android.permission.CALL_PHONE"/>
+     * 调用打电话界面
      *
      * @param context
      * @param phoneNumber
@@ -278,7 +281,16 @@ public class SystemUtils {
      * @param requestCode
      */
     public static void requestPermission(Activity activity, @NonNull String permission, int requestCode){
-        ActivityCompat.requestPermissions(activity,new String[]{Manifest.permission.CALL_PHONE}, requestCode);
+        ActivityCompat.requestPermissions(activity,new String[]{permission}, requestCode);
+    }
+
+    /**
+     * 显示申请授权
+     * @param activity
+     * @param permission
+     */
+    public static void shouldShowRequestPermissionRationale(Activity activity, @NonNull String permission){
+        ActivityCompat.shouldShowRequestPermissionRationale(activity,permission);
     }
 
 
