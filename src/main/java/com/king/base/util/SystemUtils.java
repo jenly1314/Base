@@ -59,7 +59,7 @@ public class SystemUtils {
 
     /**
      * 发送按键按下事件
-     * />
+     * @param keyCode
      */
     public static void sendKeyCode(final int keyCode) {
         asyncThread(new Runnable() {
