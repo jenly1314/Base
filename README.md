@@ -4,7 +4,7 @@ Base是针对于Android开发封装好一些常用的基类，主要包括通用
 ##引入
 
 ###Maven：
-```
+```maven
 <dependency>
   <groupId>com.king.base</groupId>
   <artifactId>Base</artifactId>
@@ -13,16 +13,26 @@ Base是针对于Android开发封装好一些常用的基类，主要包括通用
 </dependency>
 ```
 ###Gradle:
-```
+```gradle
 compile 'com.king.base:Base:0.1'
 ```
 ###Lvy:
-```
+```lvy
 <dependency org='com.king.base' name='Base' rev='0.1'>
   <artifact name='$AID' ext='pom'></artifact>
 </dependency>
 ```
+##依赖：
+如果你项目中使用了RecyclerView控件请添加
+```gradle
+compile 'com.android.support:recyclerview-v7:24.0.0'//recyclerview随便哪个版本都可以，没有强制使用24.0.0
+```
 
+```gradle
+compile 'org.greenrobot:eventbus:3.0.0'
+```
+
+##简要说明：
 Base主要实用地方体现在：出统一的代码风格，实用的各种基类，BaseActivity和BaseFragment里面还有许多实用的代码封装，只要用了Base，使用Fragment就感觉跟使用Activtiy基本是一样的。
 
 ##代码示例：
@@ -57,9 +67,12 @@ public class TestAdapter extends ViewHolderAdapter<String> {
 ```Java
 public class TestActivity extends BaseActivity {
 
+    private TextView tv;
+
     @Override
     public void initUI() {
         setContentView(R.layout.activity_test);
+        tv = findView(R.id.tv);
     }
 
     @Override
@@ -136,6 +149,48 @@ public class TestDialogFragment extends BaseDialogFragment {
 
     }
 }
+```
+###其他小功能
+
+使用Log:
+统一控制管理Log
+```Java
+ LogUtils.v();
+ LogUtils.d();
+ LogUtils.i();
+ LogUtils.w();
+ LogUtils.e();
+ LogUtils.twf();
+ LogUtils.println();
+```
+
+直接使用EventBus：
+    不管是BaseActivity还是BaseFragment的基类中都可以直接使用EventBus的功能。
+    在BaseActivity有如下方法
+```Java
+    public static void sendEvent(Object obj){
+        EventBus.getDefault().post(obj);
+    }
+```
+发送事件用法
+```Java
+ sendEvent（new EventMessage（1））; //这个可以直接在onEventMessage方法中取接收发送的事件消息
+```
+```Java
+ sendEvent(obj);//或者直接这个需要自己取接收，使用的方法[EventBus](https://github.com/greenrobot/EventBus)
+```
+
+使用Toast
+```Java
+ showToast(text);
+```
+
+使用Dialog
+```Java
+ showDialog(view);
+```
+```Java
+ showProgressDialog(text);
 ```
 
 更多实用黑科技，请速速使用Base体会吧。
