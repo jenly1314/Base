@@ -22,8 +22,123 @@ compile 'com.king.base:Base:0.1'
   <artifact name='$AID' ext='pom'></artifact>
 </dependency>
 ```
+
+Base主要实用地方体现在：出统一的代码风格，实用的各种基类，BaseActivity和BaseFragment里面还有许多实用的代码封装，只要用了Base，使用Fragment就感觉跟使用Activtiy基本是一样的。
+
 ##代码示例：
 
+###通用的Adapter
+```Java
+/**
+  * 
+  * 只需继承通用的适配器（ViewHolderAdapter或ViewHolderRecyclerAdapter），简单的几句代码，妈妈再也不同担心我写自定义适配器了。
+  */
+public class TestAdapter extends ViewHolderAdapter<String> {
+
+
+    public TestAdapter(Context context, List<String> listData) {
+        super(context, listData);
+    }
+
+    @Override
+    public View buildConvertView(LayoutInflater layoutInflater, String s, int position) {
+        return inflate(R.layout.list_item);
+    }
+
+    @Override
+    public void bindViewDatas(ViewHolder holder, String s, int position) {
+        holder.setText(R.id.tv,s);
+    }
+}
+
+```
+
+###基类BaseActivity
+```Java
+public class TestActivity extends BaseActivity {
+
+    @Override
+    public void initUI() {
+        setContentView(R.layout.activity_test);
+    }
+
+    @Override
+    public void addListeners() {
+
+    }
+
+    @Override
+    public void initData() {
+
+    }
+
+    @Override
+    public void onEventMessage(EventMessage em) {
+
+    }
+}
+```
+
+###BaseFragment
+```Java
+public class TestFragment extends BaseFragment {
+    @Override
+    public int inflaterRootView() {
+        return inflate(R.layout.fragment_test);
+    }
+
+    @Override
+    public void initUI() {
+
+    }
+
+    @Override
+    public void addListeners() {
+
+    }
+
+    @Override
+    public void initData() {
+
+    }
+
+    @Override
+    public void onEventMessage(EventMessage em) {
+
+    }
+}
+```
+###BaseDialogFragment
+```Java
+public class TestDialogFragment extends BaseDialogFragment {
+    @Override
+    public int inflaterRootView() {
+        return inflate(R.layout.fragment_test_dialog);
+    }
+
+    @Override
+    public void initUI() {
+
+    }
+
+    @Override
+    public void addListeners() {
+
+    }
+
+    @Override
+    public void initData() {
+
+    }
+
+    @Override
+    public void onEventMessage(EventMessage em) {
+
+    }
+}
+```
+
+更多实用黑科技，请速速使用Base体会吧。
 
 ## License
 
