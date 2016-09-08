@@ -25,7 +25,7 @@ compile 'com.king.base:Base:0.1'
 ##依赖：
 如果你项目中使用了RecyclerView控件请添加
 ```gradle
-compile 'com.android.support:recyclerview-v7:24.0.0'//recyclerview随便哪个版本都可以，没有强制使用24.0.0
+compile 'com.android.support:recyclerview-v7:24.0.0'//recyclerview随便哪个版本都可以，没有强制说使用24.0.0
 ```
 
 ```gradle
@@ -68,26 +68,30 @@ public class TestAdapter extends ViewHolderAdapter<String> {
 public class TestActivity extends BaseActivity {
 
     private TextView tv;
+    private Button btn;
 
     @Override
     public void initUI() {
+        //TODO:初始化UI
         setContentView(R.layout.activity_test);
         tv = findView(R.id.tv);
+        btn = findView(R.id.btn);
     }
 
     @Override
     public void addListeners() {
-
+        //TODO:添加监听事件
     }
 
     @Override
     public void initData() {
-
+        //TODO:初始化数据（绑定数据）
+        tv.setText("text");
     }
 
     @Override
     public void onEventMessage(EventMessage em) {
-
+        //TODO:接收EventBus发送的事件（EventMessage）
     }
 }
 ```
@@ -102,22 +106,22 @@ public class TestFragment extends BaseFragment {
 
     @Override
     public void initUI() {
-
+        //TODO:初始化UI
     }
 
     @Override
     public void addListeners() {
-
+        //TODO:添加监听事件
     }
 
     @Override
     public void initData() {
-
+         //TODO:初始化数据（绑定数据）
     }
 
     @Override
     public void onEventMessage(EventMessage em) {
-
+        //TODO:接收EventBus发送的事件（EventMessage）
     }
 }
 ```
@@ -131,22 +135,22 @@ public class TestDialogFragment extends BaseDialogFragment {
 
     @Override
     public void initUI() {
-
+        //TODO:初始化UI
     }
 
     @Override
     public void addListeners() {
-
+        //TODO:添加监听事件
     }
 
     @Override
     public void initData() {
-
+        //TODO:初始化数据（绑定数据）
     }
 
     @Override
     public void onEventMessage(EventMessage em) {
-
+         //TODO:接收EventBus发送的事件（EventMessage）
     }
 }
 ```
@@ -155,16 +159,22 @@ public class TestDialogFragment extends BaseDialogFragment {
 使用Log:
 统一控制管理Log
 ```Java
- LogUtils.v();
+ LogUtils.v(); 
+ 
  LogUtils.d();
+ 
  LogUtils.i();
+ 
  LogUtils.w();
+ 
  LogUtils.e();
+ 
  LogUtils.twf();
+ 
  LogUtils.println();
 ```
 
-直接使用EventBus：
+直接使用[EventBus](https://github.com/greenrobot/EventBus)：
     不管是BaseActivity还是BaseFragment的基类中都可以直接使用EventBus的功能。
     在BaseActivity有如下方法
 ```Java
@@ -177,7 +187,7 @@ public class TestDialogFragment extends BaseDialogFragment {
  sendEvent（new EventMessage（1））; //这个可以直接在onEventMessage方法中取接收发送的事件消息
 ```
 ```Java
- sendEvent(obj);//或者直接这个需要自己取接收，使用的方法[EventBus](https://github.com/greenrobot/EventBus)
+ sendEvent(obj);//或者直接这个需要自己取接收，使用的方法请参照EventBus
 ```
 
 使用Toast
@@ -194,6 +204,7 @@ public class TestDialogFragment extends BaseDialogFragment {
 ```
 
 更多实用黑科技，请速速使用Base体会吧。
+
 
 ## License
 
