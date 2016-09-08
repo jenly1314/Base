@@ -16,6 +16,7 @@
  */
 package com.king.base.util;
 
+import android.annotation.TargetApi;
 import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
@@ -65,7 +66,7 @@ public class ViewHolder extends RecyclerView.ViewHolder{
         return (T)convertView.findViewById(id);
     }
 
-    public    <T extends  View> T getView(@IdRes int id){
+    public <T extends  View> T getView(@IdRes int id){
 
         View v = views.get(id);
         if(v == null){
@@ -84,6 +85,7 @@ public class ViewHolder extends RecyclerView.ViewHolder{
         return v;
     }
 
+    @TargetApi(16)
     public View setBackground(@IdRes int id,Drawable drawable){
         View v = getView(id);
         v.setBackground(drawable);
