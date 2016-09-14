@@ -101,7 +101,7 @@ public class TestActivity extends BaseActivity {
 public class TestFragment extends BaseFragment {
     @Override
     public int inflaterRootView() {
-        return inflate(R.layout.fragment_test);
+        return R.layout.fragment_test;
     }
 
     @Override
@@ -130,7 +130,7 @@ public class TestFragment extends BaseFragment {
 public class TestDialogFragment extends BaseDialogFragment {
     @Override
     public int inflaterRootView() {
-        return inflate(R.layout.fragment_test_dialog);
+        return R.layout.fragment_test_dialog;
     }
 
     @Override
