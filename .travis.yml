@@ -12,5 +12,4 @@ android:
     - '.+'
 notifications:
   email: false
-script: ./gradlew clean build --info
 
