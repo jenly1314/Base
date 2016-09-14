@@ -192,15 +192,21 @@ public class TestDialogFragment extends BaseDialogFragment {
 
 使用Toast
 ```Java
- showToast(text);
+ showToast(CharSequence text);
+ 
+ showToast(@StringRes  int resId);
 ```
 
 使用Dialog
 ```Java
- showDialog(view);
+ showDialog(View v);
 ```
 ```Java
- showProgressDialog(text);
+ showProgressDialog();
+ 
+ showProgressDialog(@LayoutRes int resId);
+ 
+ showProgressDialog(View v);
 ```
 
 更多实用黑科技，请速速使用Base体会吧。
