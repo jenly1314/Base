@@ -1,15 +1,2 @@
 language: android
-jdk: openjdk7
-android:
-  components:
-    - build-tools-24.0.0
-    - extra-android-support
-    - extra-android-m2repository
-    - android-24
-    - sys-img-armeabi-v7a-android-24
-
-  licenses:
-    - '.+'
-notifications:
-  email: false
-script: ./gradlew build
+script: ./gradlew clean build --info
