@@ -22,6 +22,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.provider.Settings;
@@ -56,6 +58,12 @@ public class SystemUtils {
         new Thread(runnable).start();
     }
 
+
+    public static boolean isNetWorkActive(Context context){
+        ConnectivityManager connectivityManager = (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetInfo != null && activeNetInfo.isConnected();
+    }
 
     /**
      * 发送按键按下事件

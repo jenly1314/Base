@@ -1,5 +1,5 @@
 /*
- Copyright © 2015, 2016 Jenly Yu <a href="mailto:jenly1314@gmail.com">Jenly</a>
+     Copyright © 2015, 2016 Jenly Yu <a href="mailto:jenly1314@gmail.com">Jenly</a>
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -94,6 +94,7 @@ public abstract class BaseActivity extends AppCompatActivity implements  BaseInt
     protected void onStop() {
         super.onStop();
         isStop = true;
+        dismissProgressDialog();
     }
 
 
@@ -266,7 +267,7 @@ public abstract class BaseActivity extends AppCompatActivity implements  BaseInt
 
     protected void showProgressDialog(View v){
         dismissProgressDialog();
-        progressDialog = new BaseProgressDialog(context);
+        progressDialog = BaseProgressDialog.newInstance(context);
         progressDialog.setContentView(v);
         progressDialog.show();
     }
@@ -317,6 +318,8 @@ public abstract class BaseActivity extends AppCompatActivity implements  BaseInt
     public static void sendEvent(Object obj){
         EventBus.getDefault().post(obj);
     }
+
+
 
     //-----------------------------------
 

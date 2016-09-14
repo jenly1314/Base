@@ -117,6 +117,7 @@ public abstract class BaseFragment extends Fragment implements BaseInterface {
 	public void onStop() {
 		super.onStop();
 		isStop = true;
+		dismissProgressDialog();
 	}
 
 	@Override
@@ -312,7 +313,7 @@ public abstract class BaseFragment extends Fragment implements BaseInterface {
 
 	protected void showProgressDialog(View v){
 		dismissProgressDialog();
-		progressDialog = new BaseProgressDialog(context);
+		progressDialog =  BaseProgressDialog.newInstance(context);
 		progressDialog.setContentView(v);
 		progressDialog.show();
 	}

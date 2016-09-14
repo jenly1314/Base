@@ -31,6 +31,14 @@ public class BaseProgressDialog extends Dialog{
 
 //    private TextView tv;
 
+
+
+    public static BaseProgressDialog newInstance(Context context){
+
+        return new BaseProgressDialog(context);
+    }
+
+
     public BaseProgressDialog(Context context) {
         this(context,R.style.progress_dialog);
         initUI();
