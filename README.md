@@ -28,10 +28,10 @@ compile 'com.king.base:Base:0.1'
   <artifact name='$AID' ext='pom'></artifact>
 </dependency>
 ```
-##依赖：
-如果你项目中使用了RecyclerView控件请添加
+
+###引入的库：
 ```gradle
-compile 'com.android.support:recyclerview-v7:24.0.0'//recyclerview随便哪个版本都可以，没有强制说使用24.0.0
+compile 'com.android.support:recyclerview-v7:24.0.0'
 ```
 
 ```gradle
