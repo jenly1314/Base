@@ -21,8 +21,10 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.text.TextUtils;
 
 /**
@@ -30,7 +32,7 @@ import android.text.TextUtils;
  */
 public class SharedPreferencesUtils {
 	
-	public static final String PREF_NAME = "org.king.pref_name_jenly";
+	public static final String PREF_NAME = "com.king.pref_name_jenly";
 	
 	public static SharedPreferences getSharedPreferences(Context context){
 		return getSharedPreferences(context, PREF_NAME);
@@ -103,11 +105,13 @@ public class SharedPreferencesUtils {
 	}
 	
 	//--------------------------Set<String>
-	public static void put(Context context,String key,Set<String> value){
+	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
+	public static void put(Context context, String key, Set<String> value){
 		getSharedPreferences(context).edit().putStringSet(key, value).commit();
 	}
 	
-	public static Set<String> getStringSet(Context context,String key,Set<String> defValue){
+	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
+	public static Set<String> getStringSet(Context context, String key, Set<String> defValue){
 		return getSharedPreferences(context).getStringSet(key, defValue);
 	}
 	

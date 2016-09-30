@@ -40,6 +40,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.king.base.model.EventMessage;
 import com.king.base.util.StringUtils;
@@ -182,13 +183,23 @@ public abstract class BaseDialogFragment extends DialogFragment implements BaseI
 
 	//-----------------------------------
 
+
 	protected void showToast(@StringRes  int resId){
 		if(resId != NONE)
 			ToastUtils.showToast(context,resId);
 	}
 
+	protected void showLongToast(@StringRes  int resId){
+		if(resId != NONE)
+			ToastUtils.showToast(context,resId, Toast.LENGTH_LONG);
+	}
+
 	protected void showToast(CharSequence text){
 		ToastUtils.showToast(context,text);
+	}
+
+	protected void showLongToast(CharSequence text){
+		ToastUtils.showToast(context,text, Toast.LENGTH_LONG);
 	}
 
 	//-----------------------------------
