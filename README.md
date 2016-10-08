@@ -24,7 +24,7 @@ compile 'com.king.base:base:1.0'
 ```
 ###Lvy:
 ```lvy
-<dependency org='com.king.base' name='base' rev='0.1'>
+<dependency org='com.king.base' name='base' rev='1.0'>
   <artifact name='$AID' ext='pom'></artifact>
 </dependency>
 ```
