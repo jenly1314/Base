@@ -168,8 +168,8 @@ public abstract class BaseActivity extends AppCompatActivity implements  BaseInt
     }
 
     protected void showLongToast(@StringRes  int resId){
-        if(resId != NONE)
-            ToastUtils.showToast(context,resId, Toast.LENGTH_LONG);
+
+        ToastUtils.showToast(context,resId, Toast.LENGTH_LONG);
     }
 
     protected void showToast(CharSequence text){

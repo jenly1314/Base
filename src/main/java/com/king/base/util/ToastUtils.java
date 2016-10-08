@@ -34,13 +34,8 @@ public class ToastUtils {
         showToast(context,context.getResources().getString(resId));
     }
 
-    public static void showToast(Context context,int resId,Object...args){
-        showToast(context,String.format(context.getResources().getString(resId),args));
-    }
-
-
-    public static void showToast(Context context,int resId,int duration,Object...args){
-        showToast(context,String.format(context.getResources().getString(resId),args),duration);
+    public static void showToast(Context context,int resId,int duration){
+        showToast(context,context.getResources().getString(resId),duration);
     }
 
     public static void showToast(Context context,CharSequence text){
