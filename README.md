@@ -14,17 +14,17 @@ Base是针对于Android开发封装好一些常用的基类，主要包括通用
 <dependency>
   <groupId>com.king.base</groupId>
   <artifactId>base</artifactId>
-  <version>1.0</version>
+  <version>1.1</version>
   <type>pom</type>
 </dependency>
 ```
 ###Gradle:
 ```gradle
-compile 'com.king.base:base:1.0'
+compile 'com.king.base:base:1.1'
 ```
 ###Lvy:
 ```lvy
-<dependency org='com.king.base' name='base' rev='1.0'>
+<dependency org='com.king.base' name='base' rev='1.1'>
   <artifact name='$AID' ext='pom'></artifact>
 </dependency>
 ```
@@ -98,6 +98,49 @@ public class TestActivity extends BaseActivity {
     @Override
     public void onEventMessage(EventMessage em) {
         //TODO:接收EventBus发送的事件（EventMessage）
+    }
+}
+```
+###GestureActivity
+```Java
+public class TestActivity extends GestureActivity {
+
+    private TextView tv;
+    private Button btn;
+
+    @Override
+    public void initUI() {
+        //TODO:初始化UI
+        setContentView(R.layout.activity_test);
+        tv = findView(R.id.tv);
+        btn = findView(R.id.btn);
+    }
+
+    @Override
+    public void addListeners() {
+        //TODO:添加监听事件
+    }
+
+    @Override
+    public void initData() {
+        //TODO:初始化数据（绑定数据）
+        tv.setText("text");
+    }
+
+    @Override
+    public void onEventMessage(EventMessage em) {
+        //TODO:接收EventBus发送的事件（EventMessage）
+    }
+
+    @Override
+    public void onLeftFling() {
+        //TODO:向左滑动
+    }
+
+    @Override
+    public boolean onRightFling() {
+        //TODO:向右滑动，默认执行finish，返回为true表示拦截事件。
+        return false;
     }
 }
 ```
