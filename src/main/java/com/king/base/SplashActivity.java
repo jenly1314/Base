@@ -33,6 +33,10 @@ public abstract class SplashActivity extends BaseActivity {
 
     public abstract Animation.AnimationListener getAnimationListener();
 
+    public View getRootView(){
+        return getContentView(this);
+    }
+
     protected Animation getAnimation(){
         return AnimationUtils.loadAnimation(context, R.anim.splash_alpha);
     }
@@ -48,9 +52,10 @@ public abstract class SplashActivity extends BaseActivity {
         setContentView(getContentViewId());
     }
 
+
     @Override
     public void initData() {
-        startAnimation(getWindow().getDecorView().getRootView());
+        startAnimation(getRootView());
     }
 
     @Override

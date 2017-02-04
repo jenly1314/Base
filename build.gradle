@@ -28,9 +28,9 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:24.0.0'
-    compile 'de.greenrobot:eventbus:3.0.0-beta1'
-    compile 'com.android.support:recyclerview-v7:24.0.0'
+    provided 'com.android.support:appcompat-v7:24.0.+'
+    provided 'com.android.support:recyclerview-v7:24.0.+'
+    provided 'de.greenrobot:eventbus:3.0.0'
 
 }
 
@@ -39,7 +39,7 @@ publish {
     userOrg = 'jenly'//bintray.com用户名
     groupId = 'com.king.base'//jcenter上的路径
     artifactId = 'base'//项目名称
-    publishVersion = '1.2'//版本号
+    publishVersion = '1.3'//版本号
     desc = 'Base for Android'//描述
     website = 'https://github.com/jenly1314/Base'//网站
 }

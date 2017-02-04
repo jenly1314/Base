@@ -16,6 +16,7 @@
  */
 package com.king.base;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
@@ -38,6 +39,7 @@ import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -97,6 +99,12 @@ public abstract class BaseActivity extends AppCompatActivity implements  BaseInt
         super.onStop();
         isStop = true;
         dismissProgressDialog();
+    }
+
+    public static View getContentView(Activity activity){
+        ViewGroup view = (ViewGroup)activity.getWindow().getDecorView();
+        FrameLayout content = (FrameLayout)view.findViewById(android.R.id.content);
+        return content.getChildAt(0);
     }
 
 

@@ -14,28 +14,32 @@ Base是针对于Android开发封装好一些常用的基类，主要包括通用
 <dependency>
   <groupId>com.king.base</groupId>
   <artifactId>base</artifactId>
-  <version>1.2</version>
+  <version>1.3</version>
   <type>pom</type>
 </dependency>
 ```
 ###Gradle:
 ```gradle
-compile 'com.king.base:base:1.2'
+compile 'com.king.base:base:1.3'
 ```
 ###Lvy:
 ```lvy
-<dependency org='com.king.base' name='base' rev='1.2'>
+<dependency org='com.king.base' name='base' rev='1.3'>
   <artifact name='$AID' ext='pom'></artifact>
 </dependency>
 ```
 
 ###引入的库：
 ```gradle
-compile 'com.android.support:recyclerview-v7:24.0.0'
+compile 'com.android.support:recyclerview-v7:24.0.+'
 ```
 
 ```gradle
 compile 'org.greenrobot:eventbus:3.0.0'
+```
+
+```gradle
+compile 'com.android.support:appcompat-v7:24.0.+'
 ```
 
 ##简要说明：
@@ -231,6 +235,11 @@ public class TestDialogFragment extends BaseDialogFragment {
          //TODO:接收EventBus发送的事件（EventMessage）
     }
 }
+```
+
+###WebFragment
+```Java
+    WebFragment实现基本webView功能
 ```
 ###其他小功能
 
