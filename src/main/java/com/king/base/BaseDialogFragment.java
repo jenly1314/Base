@@ -83,8 +83,8 @@ public abstract class BaseDialogFragment extends DialogFragment implements BaseI
 
 		curPage = 1;
 		initUI();
-		addListeners();
 		initData();
+		addListeners();
 		if(rootView!=null)
 			return rootView;
 

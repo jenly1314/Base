@@ -48,8 +48,8 @@ public interface BaseInterface {
 
 
     public abstract void initUI();
-    public abstract void addListeners();
     public abstract void initData();
+    public abstract void addListeners();
 
     public abstract void onEventMessage(EventMessage em);
 

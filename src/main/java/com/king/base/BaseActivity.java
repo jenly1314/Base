@@ -72,8 +72,9 @@ public abstract class BaseActivity extends AppCompatActivity implements  BaseInt
         curPage = 1;
         registerEvent(this);
         initUI();
-        addListeners();
         initData();
+        addListeners();
+
 
     }
 

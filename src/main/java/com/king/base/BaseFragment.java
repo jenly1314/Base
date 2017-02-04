@@ -91,8 +91,8 @@ public abstract class BaseFragment extends Fragment implements BaseInterface {
 		rootView = inflater.inflate(inflaterRootView(), container, false);
 		curPage = 1;
 		initUI();
-		addListeners();
 		initData();
+		addListeners();
 
 		if(rootView!=null)
 			return rootView;
