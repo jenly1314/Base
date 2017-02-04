@@ -85,14 +85,14 @@ public class TestActivity extends BaseActivity {
     }
 
     @Override
-    public void addListeners() {
-        //TODO:添加监听事件
-    }
-
-    @Override
     public void initData() {
         //TODO:初始化数据（绑定数据）
         tv.setText("text");
+    }
+
+    @Override
+    public void addListeners() {
+        //TODO:添加监听事件
     }
 
     @Override
@@ -103,7 +103,7 @@ public class TestActivity extends BaseActivity {
 ```
 ###GestureActivity
 ```Java
-public class TestActivity extends GestureActivity {
+public class TestGestureActivity extends GestureActivity {
 
     private TextView tv;
     private Button btn;
@@ -117,14 +117,14 @@ public class TestActivity extends GestureActivity {
     }
 
     @Override
-    public void addListeners() {
-        //TODO:添加监听事件
-    }
-
-    @Override
     public void initData() {
         //TODO:初始化数据（绑定数据）
         tv.setText("text");
+    }
+
+    @Override
+    public void addListeners() {
+        //TODO:添加监听事件
     }
 
     @Override
@@ -144,6 +144,35 @@ public class TestActivity extends GestureActivity {
     }
 }
 ```
+###SplashActivity
+```Java
+public class TestSplashActivity extends SplashActivity {
+    @Override
+    public int getContentViewId() {
+        return R.layout.activity_splash;
+    }
+
+    @Override
+    public Animation.AnimationListener getAnimationListener() {
+        return new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                //TODO: 启动动画结束，可执行跳转逻辑
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        };
+    }
+}
+```
 
 ###BaseFragment
 ```Java
@@ -159,13 +188,13 @@ public class TestFragment extends BaseFragment {
     }
 
     @Override
-    public void addListeners() {
-        //TODO:添加监听事件
+    public void initData() {
+         //TODO:初始化数据（绑定数据）
     }
 
     @Override
-    public void initData() {
-         //TODO:初始化数据（绑定数据）
+    public void addListeners() {
+        //TODO:添加监听事件
     }
 
     @Override
@@ -188,13 +217,13 @@ public class TestDialogFragment extends BaseDialogFragment {
     }
 
     @Override
-    public void addListeners() {
-        //TODO:添加监听事件
+    public void initData() {
+        //TODO:初始化数据（绑定数据）
     }
 
     @Override
-    public void initData() {
-        //TODO:初始化数据（绑定数据）
+    public void addListeners() {
+        //TODO:添加监听事件
     }
 
     @Override

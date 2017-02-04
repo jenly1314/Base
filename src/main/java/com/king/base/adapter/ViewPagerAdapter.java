@@ -18,6 +18,7 @@ package com.king.base.adapter;
 
 import java.util.List;
 
+import android.content.Context;
 import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,42 +26,49 @@ import android.view.ViewGroup;
 /**
  * 通用ViewPagerAdapter
  * @author Jenly <a href="mailto:jenly1314@gmail.com">Jenly</a>
- *
+ * @param <T>
+ *           实体对象
  */
-public class ViewPagerAdapter extends PagerAdapter {
+public abstract class ViewPagerAdapter<T> extends PagerAdapter {
 
-	private List<View> listViews = null;
+	protected Context context;
+	private List<T> listData = null;
 	private List<CharSequence> listTitle = null;
 
-	public ViewPagerAdapter(List<View> listViews) {
-		this.listViews = listViews;
+	public ViewPagerAdapter(Context context, List<T> listData) {
+		this.context = context;
+		this.listData = listData;
 	}
-	public ViewPagerAdapter(List<View> listViews,List<CharSequence> listTitle) {
-		this.listViews = listViews;
+	public ViewPagerAdapter(Context context,List<T> listData,List<CharSequence> listTitle) {
+		this.context = context;
+		this.listData = listData;
 		this.listTitle = listTitle;
 	}
-	
+
 	@Override
 	public void destroyItem(ViewGroup container, int position, Object object) {
-		container.removeView(listViews.get(position));
+		container.removeView((View)object);
 	}
-	
+
 	@Override
 	public int getCount() {
-		return listViews==null ? 0:listViews.size();
+		return listData==null ? 0:listData.size();
 	}
-	
+
 	@Override
 	public Object instantiateItem(ViewGroup container, int position) {
-		container.addView(listViews.get(position),0);
-		return listViews.get(position);
+		View view = getView(container,listData.get(position),position);
+		container.addView(view);
+		return view;
 	}
+
+	public abstract View getView(ViewGroup container,T t,int position);
 
 	@Override
 	public boolean isViewFromObject(View paramView, Object paramObject) {
 		return paramView == paramObject;
 	}
-	
+
 	@Override
 	public CharSequence getPageTitle(int position) {
 		if(listTitle!=null && listTitle.size()!=0){
@@ -69,13 +77,5 @@ public class ViewPagerAdapter extends PagerAdapter {
 		return super.getPageTitle(position);
 	}
 
-	public List<View> getListViews() {
-		return listViews;
-	}
 
-	public void setListViews(List<View> listViews) {
-		this.listViews = listViews;
-	}
-	
-	
 }

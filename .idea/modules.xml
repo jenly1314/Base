@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Base.iml" filepath="$PROJECT_DIR$/Base.iml" />
       <module fileurl="file://$PROJECT_DIR$/../Projects.iml" filepath="$PROJECT_DIR$/../Projects.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Testlib/Testlib.iml" filepath="$PROJECT_DIR$/../Testlib/Testlib.iml" />
       <module fileurl="file://$PROJECT_DIR$/../app/app.iml" filepath="$PROJECT_DIR$/../app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/../callshine/callshine.iml" filepath="$PROJECT_DIR$/../callshine/callshine.iml" />
       <module fileurl="file://$PROJECT_DIR$/../testWeChat1/testWeChat1.iml" filepath="$PROJECT_DIR$/../testWeChat1/testWeChat1.iml" />

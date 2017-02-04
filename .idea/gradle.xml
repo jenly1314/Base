@@ -9,6 +9,7 @@
           <set>
             <option value="$PROJECT_DIR$/.." />
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/../Testlib" />
             <option value="$PROJECT_DIR$/../app" />
             <option value="$PROJECT_DIR$/../callshine" />
             <option value="$PROJECT_DIR$/../testWeChat1" />
@@ -19,6 +20,7 @@
           <set>
             <option value="$PROJECT_DIR$/.." />
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/../Testlib" />
             <option value="$PROJECT_DIR$/../app" />
             <option value="$PROJECT_DIR$/../callshine" />
             <option value="$PROJECT_DIR$/../testWeChat1" />

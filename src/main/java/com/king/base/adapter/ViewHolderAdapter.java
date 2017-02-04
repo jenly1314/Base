@@ -18,7 +18,7 @@ package com.king.base.adapter;
 
 import android.content.Context;
 import android.view.View;
-import com.king.base.util.ViewHolder;
+import com.king.base.adapter.holder.ViewHolder;
 import java.util.List;
 
 /**
