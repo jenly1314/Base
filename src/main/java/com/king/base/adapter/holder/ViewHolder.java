@@ -14,7 +14,7 @@
  limitations under the License.
 
  */
-package com.king.base.util;
+package com.king.base.adapter.holder;
 
 import android.annotation.TargetApi;
 import android.content.res.ColorStateList;
