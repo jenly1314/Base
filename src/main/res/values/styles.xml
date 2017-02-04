@@ -31,5 +31,4 @@
     <style name="progressBarHorizontalStyle" parent="Widget.AppCompat.ProgressBar.Horizontal">
     </style>
 
-
 </resources>
