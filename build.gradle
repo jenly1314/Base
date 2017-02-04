@@ -39,7 +39,7 @@ publish {
     userOrg = 'jenly'//bintray.com用户名
     groupId = 'com.king.base'//jcenter上的路径
     artifactId = 'base'//项目名称
-    publishVersion = '1.1'//版本号
+    publishVersion = '1.2'//版本号
     desc = 'Base for Android'//描述
     website = 'https://github.com/jenly1314/Base'//网站
 }
