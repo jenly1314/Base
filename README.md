@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/badge/license-Apche%202.0-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 [![Blog](https://img.shields.io/badge/blog-Jenly-9932CC.svg)](http://blog.csdn.net/jenly121)
 
-Base是针对于Android开发封装好一些常用的基类，主要包括通用的Adapter、Activity、Fragment、Dialog等、和一些常用的Util类，为解耦而生。
+Base是针对于Android开发封装好一些常用的基类，主要包括通用的Adapter、Activity、Fragment、Dialog等、和一些常用的Util类，只为更简单。
 
 ##引入
 
