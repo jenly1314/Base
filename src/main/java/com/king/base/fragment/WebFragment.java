@@ -57,6 +57,7 @@ public class WebFragment extends BaseFragment{
         return R.layout.fragment_web;
     }
 
+
     @Override
     public void initUI() {
         rootView.setFocusable(true);

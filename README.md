@@ -14,24 +14,24 @@ Base是针对于Android开发封装好一些常用的基类，主要包括通用
 <dependency>
   <groupId>com.king.base</groupId>
   <artifactId>base</artifactId>
-  <version>1.3</version>
+  <version>2.0</version>
   <type>pom</type>
 </dependency>
 ```
 ###Gradle:
 ```gradle
-compile 'com.king.base:base:1.3'
+compile 'com.king.base:base:2.0'
 ```
 ###Lvy:
 ```lvy
-<dependency org='com.king.base' name='base' rev='1.3'>
+<dependency org='com.king.base' name='base' rev='2.0'>
   <artifact name='$AID' ext='pom'></artifact>
 </dependency>
 ```
 
 ###引入的库：
 ```gradle
-compile 'com.android.support:recyclerview-v7:24.0.+'
+provided 'com.android.support:recyclerview-v7:24.0.+'
 ```
 
 ```gradle

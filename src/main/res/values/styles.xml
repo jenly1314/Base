@@ -28,7 +28,7 @@
         <item name="android:progressBarStyle">@style/Base.Widget.AppCompat.ProgressBar</item>
     </style>
 
-    <style name="progressBarHorizontalStyle" parent="Widget.AppCompat.ProgressBar.Horizontal">
+    <style name="progressBarHorizontalStyle" parent="Base.Widget.AppCompat.ProgressBar.Horizontal">
     </style>
 
 </resources>

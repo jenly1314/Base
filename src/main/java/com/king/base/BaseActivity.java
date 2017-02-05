@@ -48,9 +48,9 @@ import com.king.base.model.EventMessage;
 import com.king.base.util.StringUtils;
 import com.king.base.util.ToastUtils;
 
-import de.greenrobot.event.EventBus;
-import de.greenrobot.event.Subscribe;
-import de.greenrobot.event.ThreadMode;
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 /**
  * @author Jenly
@@ -351,13 +351,13 @@ public abstract class BaseActivity extends AppCompatActivity implements  BaseInt
         return super.showAssist(args);
     }
 
-    @Subscribe(threadMode = ThreadMode.MainThread)
+    @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventExit(Boolean isExit){
         if(isExit)
             finish();
     }
 
-    @Subscribe(threadMode = ThreadMode.MainThread)
+    @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventMainThread(EventMessage em){
         onEventMessage(em);
     }
