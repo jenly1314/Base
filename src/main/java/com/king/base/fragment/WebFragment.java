@@ -26,7 +26,7 @@ import com.king.base.util.SystemUtils;
 /**
  * @author Jenly <a href="mailto:jenly1314@gmail.com">Jenly</a>
  */
-public class WebFragment extends BaseFragment{
+public  class WebFragment extends BaseFragment{
 
     public static final int OPR_WEBVIEW_BACK = 0x01;
 
@@ -42,15 +42,15 @@ public class WebFragment extends BaseFragment{
 
     private boolean isShowError;
 
-    public static WebFragment newInstance(String url) {
+    public static WebFragment newInstance() {
 
         Bundle args = new Bundle();
-        args.putString(KEY_URL,url);
+
         WebFragment fragment = new WebFragment();
-        fragment.url = url;
         fragment.setArguments(args);
         return fragment;
     }
+
 
     @Override
     public int inflaterRootView() {
@@ -74,23 +74,7 @@ public class WebFragment extends BaseFragment{
     @Override
     public void addListeners() {
 
-        rootView.setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View view, int i, KeyEvent keyEvent) {
 
-                if(keyEvent.getAction() == KeyEvent.ACTION_DOWN && keyEvent.getKeyCode() == KeyEvent.KEYCODE_BACK){
-
-                    if(isGoBack()){
-                        webView.goBack();
-                    }else{
-                        finish();
-                    }
-                    return true;
-                }
-
-                return false;
-            }
-        });
     }
 
     @Override
@@ -98,14 +82,9 @@ public class WebFragment extends BaseFragment{
         WebSettings ws = webView.getSettings();
         //是否允许脚本支持
         ws.setJavaScriptEnabled(true);
-
+        ws.setDomStorageEnabled(true);
 
         ws.setJavaScriptCanOpenWindowsAutomatically(true);
-
-        ws.setSaveFormData(false);
-//        ws.setAppCacheEnabled(false);
-        ws.setCacheMode(WebSettings.LOAD_NO_CACHE);
-
 
         webView.setHorizontalScrollBarEnabled(false);
 
@@ -128,6 +107,9 @@ public class WebFragment extends BaseFragment{
         load(webView,url);
     }
 
+    public WebView getWebView(){
+        return webView;
+    }
 
     public WebViewClient getWebViewClient(){
         return new WebViewClient(){
@@ -136,6 +118,7 @@ public class WebFragment extends BaseFragment{
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 super.onPageStarted(view, url, favicon);
                 LogUtils.d("startUrl:" + url);
+                webView.setVisibility(View.VISIBLE);
                 isError = false;
             }
 
@@ -183,10 +166,9 @@ public class WebFragment extends BaseFragment{
      * @param group
      * @return  true表示已添加ErrorView并显示ErrorView/false表示不处理
      */
-    public boolean addErrorView(ViewGroup group){
-
+    public  boolean addErrorView(ViewGroup group){
         return false;
-    }
+    };
 
     private void showReceiveError(){
         isError = true;
@@ -198,6 +180,7 @@ public class WebFragment extends BaseFragment{
 
         if(isShowError){
             vError.setVisibility(View.VISIBLE);
+            webView.setVisibility(View.GONE);
         }
 
 
@@ -207,6 +190,7 @@ public class WebFragment extends BaseFragment{
         if(isError){
             showReceiveError();
         }else{
+            webView.setVisibility(View.VISIBLE);
             vError.setVisibility(View.GONE);
         }
 
@@ -244,19 +228,7 @@ public class WebFragment extends BaseFragment{
 
     @Override
     public void onEventMessage(EventMessage em) {
-        if(isStop){
-            return;
-        }
 
-        switch (em.what){
-            case OPR_WEBVIEW_BACK:
-                if(isGoBack()){
-                    webView.goBack();
-                }else{
-                    finish();
-                }
-                break;
-        }
     }
 
 }

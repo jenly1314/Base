@@ -7,9 +7,9 @@
 
 Base是针对于Android开发封装好一些常用的基类，主要包括通用的Adapter、Activity、Fragment、Dialog等、和一些常用的Util类，只为更简单。
 
-##引入
+## 引入
 
-###Maven：
+### Maven：
 ```maven
 <dependency>
   <groupId>com.king.base</groupId>
@@ -18,18 +18,18 @@ Base是针对于Android开发封装好一些常用的基类，主要包括通用
   <type>pom</type>
 </dependency>
 ```
-###Gradle:
+### Gradle:
 ```gradle
 compile 'com.king.base:base:2.0'
 ```
-###Lvy:
+### Lvy:
 ```lvy
 <dependency org='com.king.base' name='base' rev='2.0'>
   <artifact name='$AID' ext='pom'></artifact>
 </dependency>
 ```
 
-###引入的库：
+### 引入的库：
 ```gradle
 provided 'com.android.support:recyclerview-v7:24.0.+'
 ```
@@ -42,12 +42,12 @@ compile 'org.greenrobot:eventbus:3.0.0'
 compile 'com.android.support:appcompat-v7:24.0.+'
 ```
 
-##简要说明：
+## 简要说明：
 Base主要实用地方体现在：出统一的代码风格，实用的各种基类，BaseActivity和BaseFragment里面还有许多实用的代码封装，只要用了Base，使用Fragment就感觉跟使用Activtiy基本是一样的。
 
-##代码示例：
+## 代码示例：
 
-###通用的Adapter
+### 通用的Adapter
 ```Java
 /**
   * 
@@ -73,7 +73,7 @@ public class TestAdapter extends ViewHolderAdapter<String> {
 
 ```
 
-###基类BaseActivity
+### 基类BaseActivity
 ```Java
 public class TestActivity extends BaseActivity {
 
@@ -105,7 +105,7 @@ public class TestActivity extends BaseActivity {
     }
 }
 ```
-###GestureActivity
+### GestureActivity
 ```Java
 public class TestGestureActivity extends GestureActivity {
 
@@ -148,7 +148,7 @@ public class TestGestureActivity extends GestureActivity {
     }
 }
 ```
-###SplashActivity
+### SplashActivity
 ```Java
 public class TestSplashActivity extends SplashActivity {
     @Override
@@ -178,7 +178,7 @@ public class TestSplashActivity extends SplashActivity {
 }
 ```
 
-###BaseFragment
+### BaseFragment
 ```Java
 public class TestFragment extends BaseFragment {
     @Override
@@ -207,7 +207,7 @@ public class TestFragment extends BaseFragment {
     }
 }
 ```
-###BaseDialogFragment
+### BaseDialogFragment
 ```Java
 public class TestDialogFragment extends BaseDialogFragment {
     @Override
@@ -237,11 +237,11 @@ public class TestDialogFragment extends BaseDialogFragment {
 }
 ```
 
-###WebFragment
+### WebFragment
 ```Java
     WebFragment实现基本webView功能
 ```
-###其他小功能
+### 其他小功能
 
 使用Log:
 统一控制管理Log
@@ -298,6 +298,18 @@ public class TestDialogFragment extends BaseDialogFragment {
 
 更多实用黑科技，请速速使用Base体会吧。
 
+## 关于我
+   Name: Jenly
+
+   Email: jenly1314@gmail.com / jenly1314@vip.qq.com
+
+   CSDN: http://www.csdn.net/jenly121
+
+   Github: https://github.com/jenly1314
+
+   微信公众号:
+
+   ![公众号](http://olambmg9j.bkt.clouddn.com/jenly666.jpg)
 
 ## License
 
