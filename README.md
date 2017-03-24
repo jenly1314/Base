@@ -14,17 +14,17 @@ Base是针对于Android开发封装好一些常用的基类，主要包括通用
 <dependency>
   <groupId>com.king.base</groupId>
   <artifactId>base</artifactId>
-  <version>2.0</version>
+  <version>2.0.1</version>
   <type>pom</type>
 </dependency>
 ```
 ### Gradle:
 ```gradle
-compile 'com.king.base:base:2.0'
+compile 'com.king.base:base:2.0.1'
 ```
 ### Lvy:
 ```lvy
-<dependency org='com.king.base' name='base' rev='2.0'>
+<dependency org='com.king.base' name='base' rev='2.0.1'>
   <artifact name='$AID' ext='pom'></artifact>
 </dependency>
 ```
