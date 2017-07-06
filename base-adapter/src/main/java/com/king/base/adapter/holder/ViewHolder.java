@@ -22,6 +22,7 @@ import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.support.annotation.DrawableRes;
 import android.support.annotation.IdRes;
 import android.support.annotation.StringRes;
 import android.support.v7.widget.RecyclerView;
@@ -106,7 +107,6 @@ public class ViewHolder extends RecyclerView.ViewHolder{
 
     public View setTag(@IdRes int id,int key,Object tag){
         View v = getView(id);
-        v.setTag(key,tag);
         return v;
     }
 
@@ -166,12 +166,6 @@ public class ViewHolder extends RecyclerView.ViewHolder{
     }
 
     public TextView setCompoundDrawablesWithIntrinsicBounds(@IdRes int id,Drawable left,Drawable top,Drawable right,Drawable bottom){
-        TextView tv = getView(id);
-        tv.setCompoundDrawablesWithIntrinsicBounds(left, top, right, bottom);
-        return tv;
-    }
-
-    public TextView setCompoundDrawablesWithIntrinsicBounds(@IdRes int id,int left,int top,int right,int bottom){
         TextView tv = getView(id);
         tv.setCompoundDrawablesWithIntrinsicBounds(left, top, right, bottom);
         return tv;

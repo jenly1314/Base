@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
 
 android {
     compileSdkVersion 25
@@ -43,7 +44,7 @@ publish {
     groupId = 'com.king.base'//jcenter上的路径
     artifactId = 'adapter'//项目名称
     publishVersion = '1.0.0'//版本号
-    desc = 'MVPFrame for Android'//描述
+    desc = 'BaseAdapter for Android'//描述
     website = 'https://github.com/jenly1314/Base'//网站
 }
 
