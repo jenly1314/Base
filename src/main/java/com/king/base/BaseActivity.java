@@ -46,6 +46,7 @@ import android.widget.Toast;
 
 import com.king.base.model.EventMessage;
 import com.king.base.util.StringUtils;
+import com.king.base.util.SystemUtils;
 import com.king.base.util.ToastUtils;
 
 import org.greenrobot.eventbus.EventBus;
@@ -226,10 +227,8 @@ public abstract class BaseActivity extends AppCompatActivity implements  BaseInt
      *
      * @param v
      */
-    public void hideInputMethod(final EditText v) {
-        InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(v.getWindowToken(),InputMethodManager.HIDE_IMPLICIT_ONLY);
-
+    public void hideInputMethod(EditText v) {
+        SystemUtils.hideInputMethod(context,v);
     }
 
     /**
@@ -237,12 +236,8 @@ public abstract class BaseActivity extends AppCompatActivity implements  BaseInt
      *
      * @param v
      */
-    public void showInputMethod(final EditText v) {
-
-        v.requestFocus();
-        InputMethodManager imm = (InputMethodManager)context
-                .getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.showSoftInput(v,InputMethodManager.SHOW_IMPLICIT);
+    public void showInputMethod(EditText v) {
+        SystemUtils.showInputMethod(context,v);
     }
 
 
