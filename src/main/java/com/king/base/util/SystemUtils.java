@@ -34,6 +34,7 @@ import android.support.v4.content.ContextCompat;
 import android.telephony.SmsManager;
 import android.text.TextUtils;
 import android.view.KeyEvent;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
 import java.io.File;
@@ -315,6 +316,33 @@ public class SystemUtils {
      */
     public static void shouldShowRequestPermissionRationale(Activity activity, @NonNull String permission){
         ActivityCompat.shouldShowRequestPermissionRationale(activity,permission);
+    }
+
+
+    /**
+     * 隐藏软键盘
+     *
+     * @param context
+     * @param v
+     */
+    public static void hideInputMethod(Context context,EditText v) {
+        InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(v.getWindowToken(),0);
+
+    }
+
+    /**
+     * 显示软键盘
+     *
+     * @param context
+     * @param v
+     */
+    public static void showInputMethod(Context context,EditText v) {
+
+        v.requestFocus();
+        InputMethodManager imm = (InputMethodManager)context
+                .getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.showSoftInput(v,InputMethodManager.SHOW_IMPLICIT);
     }
 
 
