@@ -29,7 +29,7 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     provided 'com.android.support:recyclerview-v7:24.0.+'
-    compile 'com.android.support:appcompat-v7:24.0.+'
+    provided 'com.android.support:appcompat-v7:24.0.+'
     compile 'org.greenrobot:eventbus:3.0.0'
 
 }
