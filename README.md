@@ -1,7 +1,6 @@
 # Base
 [![Download](https://img.shields.io/badge/download-App-blue.svg)](https://raw.githubusercontent.com/jenly1314/Base/master/app/app-release.apk)
 [![](https://jitpack.io/v/jenly1314/Base.svg)](https://jitpack.io/#jenly1314/Base)
-[![Build Status](https://travis-ci.org/jenly1314/Base.svg?branch=master)](https://travis-ci.org/jenly1314/Base)
 [![Issue Count](https://codeclimate.com/github/jenly1314/Base/badges/issue_count.svg)](https://codeclimate.com/github/jenly1314/Base)
 [![License](https://img.shields.io/badge/license-Apche%202.0-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 [![Blog](https://img.shields.io/badge/blog-Jenly-9932CC.svg)](http://blog.csdn.net/jenly121)
@@ -12,7 +11,7 @@ Base 3.x 在Base [2.x](https://github.com/jenly1314/Base/tree/2.x) 的基础上�
 
 ## Gif展示(示例App)
 
-![Image](gif.gif)
+![Image](Gif.gif)
 
 ## 引入
 
