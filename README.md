@@ -57,19 +57,16 @@ compile 'com.king.base:adapter:1.0.0'
 
 ### 引入的库：
 ```gradle
-//base and base-adapter
+//base
 provided 'com.android.support:appcompat-v7:25.3.+'
 ```
 
 ```gradle
 //base-adapter
+provided 'com.android.support:appcompat-v7:25.3.+'
 provided 'com.android.support:recyclerview-v7:25.3.+'
 ```
 
-```gradle
-//base
-compile 'org.greenrobot:eventbus:3.0.0'
-```
 
 
 ## 简要说明：
@@ -311,7 +308,7 @@ public class TestDialogFragment extends BaseDialogFragment {
  showProgressDialog(View v);
 ```
 
-示例[App](app)中有主要源码使用示例。更多实用黑科技，请速速使用Base体会吧。
+[App](app)中有主要源码使用示例。更多实用黑科技，请速速使用Base体会吧。
 
 ## 关于我
    Name: Jenly
