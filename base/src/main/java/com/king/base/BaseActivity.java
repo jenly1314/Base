@@ -43,14 +43,9 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.king.base.bean.EventMessage;
 import com.king.base.util.StringUtils;
 import com.king.base.util.SystemUtils;
 import com.king.base.util.ToastUtils;
-
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
 
 /**
  * @author Jenly
@@ -72,7 +67,6 @@ public abstract class BaseActivity extends AppCompatActivity implements  BaseInt
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         curPage = 1;
-        registerEvent(this);
         initUI();
         initData();
         addListeners();
@@ -84,7 +78,6 @@ public abstract class BaseActivity extends AppCompatActivity implements  BaseInt
     protected void onDestroy() {
         super.onDestroy();
         dismissDialog();
-        unregisterEvent(this);
     }
 
 
@@ -314,46 +307,6 @@ public abstract class BaseActivity extends AppCompatActivity implements  BaseInt
         lp.width = (int)(getWidthPixels()*0.9f);
         lp.gravity= Gravity.CENTER;
         window.setAttributes(lp);
-    }
-
-
-    //-----------------------------------
-
-
-    public static void registerEvent(Object obj){
-        EventBus.getDefault().register(obj);
-    }
-
-    public static void unregisterEvent(Object obj){
-        EventBus.getDefault().unregister(obj);
-    }
-
-    public static void sendEvent(Object obj){
-        EventBus.getDefault().post(obj);
-    }
-
-
-
-    //-----------------------------------
-
-    public void exit(){
-        sendEvent(true);
-    }
-
-    @Override
-    public boolean showAssist(Bundle args) {
-        return super.showAssist(args);
-    }
-
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onEventExit(Boolean isExit){
-        if(isExit)
-            finish();
-    }
-
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onEventMainThread(EventMessage em){
-        onEventMessage(em);
     }
 
     protected void asyncThread(Runnable runnable){

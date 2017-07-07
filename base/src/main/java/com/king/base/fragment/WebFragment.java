@@ -18,7 +18,6 @@ import android.widget.ProgressBar;
 
 import com.king.base.BaseFragment;
 import com.king.base.R;
-import com.king.base.bean.EventMessage;
 import com.king.base.util.LogUtils;
 import com.king.base.util.SystemUtils;
 
@@ -222,12 +221,6 @@ public  class WebFragment extends BaseFragment{
 
         progressBar.setVisibility((isVisibility && progress<100) ? View.VISIBLE : View.GONE);
         progressBar.setProgress(progress);
-    }
-
-
-    @Override
-    public void onEventMessage(EventMessage em) {
-
     }
 
 }

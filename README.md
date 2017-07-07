@@ -1,4 +1,5 @@
 # Base
+[![Download](https://img.shields.io/badge/download-App-blue.svg)](https://raw.githubusercontent.com/jenly1314/Base/master/app/app-release.apk)
 [![](https://jitpack.io/v/jenly1314/Base.svg)](https://jitpack.io/#jenly1314/Base)
 [![Build Status](https://travis-ci.org/jenly1314/Base.svg?branch=master)](https://travis-ci.org/jenly1314/Base)
 [![Issue Count](https://codeclimate.com/github/jenly1314/Base/badges/issue_count.svg)](https://codeclimate.com/github/jenly1314/Base)
@@ -7,7 +8,11 @@
 
 Base是针对于Android开发封装好一些常用的基类，主要包括通用的Adapter、Activity、Fragment、Dialog等、和一些常用的Util类，只为更简单。
 
-base 3.x 在base 2.x的基础上进行了重构，最大的变化是将base-adapter提取了出来，单独作为一个library。
+Base 3.x 在Base [2.x](https://github.com/jenly1314/Base/tree/2.x) 的基础上进行了重构，最大的变化是将adapter提取了出来，单独作为一个library(base-adapter)。
+
+## Gif展示(示例App)
+
+![Image](pictures/gif.gif)
 
 ## 引入
 
@@ -45,7 +50,7 @@ compile 'com.king.base:adapter:1.0.0'
 </dependency>
 
 //base-adapter
-<dependency org='com.king.base' name='base' rev='3.0.0'>
+<dependency org='com.king.base' name='adapter' rev='1.0.0'>
   <artifact name='$AID' ext='pom'></artifact>
 </dependency>
 ```
@@ -54,6 +59,10 @@ compile 'com.king.base:adapter:1.0.0'
 ```gradle
 //base and base-adapter
 provided 'com.android.support:appcompat-v7:25.3.+'
+```
+
+```gradle
+//base-adapter
 provided 'com.android.support:recyclerview-v7:25.3.+'
 ```
 
@@ -65,6 +74,7 @@ compile 'org.greenrobot:eventbus:3.0.0'
 
 ## 简要说明：
 Base主要实用地方体现在：出统一的代码风格，实用的各种基类，BaseActivity和BaseFragment里面还有许多实用的代码封装，只要用了Base，使用Fragment就感觉跟使用Activtiy基本是一样的。
+
 
 ## 代码示例：
 
@@ -282,22 +292,6 @@ public class TestDialogFragment extends BaseDialogFragment {
  LogUtils.println();
 ```
 
-直接使用[EventBus](https://github.com/greenrobot/EventBus)：
-    不管是BaseActivity还是BaseFragment的基类中都可以直接使用EventBus的功能。
-    在BaseActivity有如下方法
-```Java
-    public static void sendEvent(Object obj){
-        EventBus.getDefault().post(obj);
-    }
-```
-发送事件用法
-```Java
- sendEvent（new EventMessage（1））; //这个可以直接在onEventMessage方法中取接收发送的事件消息
-```
-```Java
- sendEvent(obj);//或者直接这个需要自己取接收，使用的方法请参照EventBus
-```
-
 使用Toast
 ```Java
  showToast(CharSequence text);
@@ -317,7 +311,7 @@ public class TestDialogFragment extends BaseDialogFragment {
  showProgressDialog(View v);
 ```
 
-更多实用黑科技，请速速使用Base体会吧。
+示例[App](app)中有主要源码使用示例。更多实用黑科技，请速速使用Base体会吧。
 
 ## 关于我
    Name: Jenly

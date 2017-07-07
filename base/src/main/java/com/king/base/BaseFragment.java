@@ -26,6 +26,7 @@ import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -40,13 +41,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.king.base.bean.EventMessage;
 import com.king.base.util.StringUtils;
 import com.king.base.util.ToastUtils;
-
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
 
 /**
  * @author Jenly
@@ -66,12 +62,6 @@ public abstract class BaseFragment extends Fragment implements BaseInterface {
 	protected int curPage;
 
 	protected boolean isStop;
-
-	@Override
-	public void onCreate(@Nullable Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		registerEvent(this);
-	}
 
 	public ViewGroup getContainer(){
 		return container;
@@ -103,7 +93,6 @@ public abstract class BaseFragment extends Fragment implements BaseInterface {
 	public void onDestroy() {
 		super.onDestroy();
 		dismissDialog();
-		unregisterEvent(this);
 	}
 
 
@@ -192,12 +181,21 @@ public abstract class BaseFragment extends Fragment implements BaseInterface {
 
 	//-----------------------------------
 
+
+	public void replaceChildFragment(@IdRes int resId, Fragment fragment) {
+		replaceFragment(getChildFragmentManager(),resId,fragment,false);
+	}
+
 	public void replaceFragment(@IdRes int resId, Fragment fragment){
 		replaceFragment(resId,fragment,false);
 	}
 
 	public void replaceFragment(@IdRes int resId, Fragment fragment, boolean isBackStack) {
-		FragmentTransaction fragmentTransaction =  getFragmentManager().beginTransaction();
+		replaceFragment(getFragmentManager(),resId,fragment,isBackStack);
+	}
+
+	public void replaceFragment(FragmentManager fragmentManager, @IdRes int resId, Fragment fragment, boolean isBackStack) {
+		FragmentTransaction fragmentTransaction =  fragmentManager.beginTransaction();
 		fragmentTransaction.replace(resId, fragment);
 		if(isBackStack){
 			fragmentTransaction.addToBackStack(null);
@@ -360,30 +358,6 @@ public abstract class BaseFragment extends Fragment implements BaseInterface {
 	}
 
 	//-----------------------------------
-
-
-	public static void registerEvent(Object obj){
-		EventBus.getDefault().register(obj);
-	}
-
-	public static void unregisterEvent(Object obj){
-		EventBus.getDefault().unregister(obj);
-	}
-
-	public static void sendEvent(Object obj){
-		EventBus.getDefault().post(obj);
-	}
-
-	//-----------------------------------
-
-	public void exit(){
-		sendEvent(true);
-	}
-
-	@Subscribe(threadMode = ThreadMode.MAIN)
-	public void onEventMainThread(EventMessage em){
-		onEventMessage(em);
-	}
 
 	protected void asyncThread(Runnable runnable){
 		new Thread(runnable).start();

@@ -21,8 +21,6 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
-import com.king.base.bean.EventMessage;
-
 /**
  * @author Jenly <a href="mailto:jenly1314@gmail.com">Jenly</a>
  * @since 2017/2/4
@@ -63,8 +61,4 @@ public abstract class SplashActivity extends BaseActivity {
 
     }
 
-    @Override
-    public void onEventMessage(EventMessage em) {
-
-    }
 }

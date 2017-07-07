@@ -17,8 +17,6 @@
 package com.king.base;
 
 import android.app.Activity;
-import com.king.base.bean.EventMessage;
-
 
 /**
  * @author Jenly
@@ -50,8 +48,6 @@ public interface BaseInterface {
     public abstract void initUI();
     public abstract void initData();
     public abstract void addListeners();
-
-    public abstract void onEventMessage(EventMessage em);
 
 
 }
