@@ -127,10 +127,6 @@ public class TestActivity extends BaseActivity {
         //TODO:添加监听事件
     }
 
-    @Override
-    public void onEventMessage(EventMessage em) {
-        //TODO:接收EventBus发送的事件（EventMessage）
-    }
 }
 ```
 ### GestureActivity
@@ -157,11 +153,6 @@ public class TestGestureActivity extends GestureActivity {
     @Override
     public void addListeners() {
         //TODO:添加监听事件
-    }
-
-    @Override
-    public void onEventMessage(EventMessage em) {
-        //TODO:接收EventBus发送的事件（EventMessage）
     }
 
     @Override
@@ -229,10 +220,6 @@ public class TestFragment extends BaseFragment {
         //TODO:添加监听事件
     }
 
-    @Override
-    public void onEventMessage(EventMessage em) {
-        //TODO:接收EventBus发送的事件（EventMessage）
-    }
 }
 ```
 ### BaseDialogFragment
@@ -258,10 +245,6 @@ public class TestDialogFragment extends BaseDialogFragment {
         //TODO:添加监听事件
     }
 
-    @Override
-    public void onEventMessage(EventMessage em) {
-         //TODO:接收EventBus发送的事件（EventMessage）
-    }
 }
 ```
 
