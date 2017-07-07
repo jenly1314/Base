@@ -12,7 +12,7 @@ Base 3.x 在Base [2.x](https://github.com/jenly1314/Base/tree/2.x) 的基础上�
 
 ## Gif展示(示例App)
 
-![Image](pictures/gif.gif)
+![Image](gif.gif)
 
 ## 引入
 
