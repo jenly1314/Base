@@ -100,7 +100,7 @@ public abstract class HolderRecyclerAdapter<T,H extends RecyclerView.ViewHolder>
     }
 
     public View inflate(@LayoutRes int layoutId,ViewGroup parent,boolean attachToRoot){
-        return layoutInflater.inflate(layoutId,null,attachToRoot);
+        return layoutInflater.inflate(layoutId,parent,attachToRoot);
     }
 
     public List<T> getListData() {

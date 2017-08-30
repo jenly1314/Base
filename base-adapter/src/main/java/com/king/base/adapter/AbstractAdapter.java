@@ -85,7 +85,7 @@ public abstract class AbstractAdapter<T> extends BaseAdapter{
 		return layoutInflater.inflate(layoutId,parent);
 	}
 	public View inflate(@LayoutRes int layoutId,ViewGroup parent,boolean attachToRoot){
-		return layoutInflater.inflate(layoutId,null,attachToRoot);
+		return layoutInflater.inflate(layoutId,parent,attachToRoot);
 	}
 
 }
