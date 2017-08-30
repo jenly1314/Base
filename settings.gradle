@@ -1,1 +1,1 @@
-include ':app', ':base-adapter', ':base'
+include ':app', ':base-adapter', ':base', ':base-util'
