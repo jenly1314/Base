@@ -91,14 +91,6 @@ public abstract class HolderRecyclerAdapter<T,H extends RecyclerView.ViewHolder>
         return listData==null ? 0:listData.size();
     }
 
-    public View inflate(@LayoutRes int layoutId){
-        return inflate(layoutId,null);
-    }
-
-    public View inflate(@LayoutRes int layoutId,ViewGroup parent){
-        return layoutInflater.inflate(layoutId,parent,false);
-    }
-
     public View inflate(@LayoutRes int layoutId,ViewGroup parent,boolean attachToRoot){
         return layoutInflater.inflate(layoutId,parent,attachToRoot);
     }
