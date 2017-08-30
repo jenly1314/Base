@@ -42,9 +42,9 @@ public abstract class HolderAdapter<T,H> extends AbstractAdapter<T>{
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		H holder = null;
-		T t = listData.get(position);
+		T t = getListData().get(position);
 		if(convertView==null){
-			convertView = buildConvertView(layoutInflater,t,position);
+			convertView = buildConvertView(getLayoutInflater(),t,position,parent);
 			holder = buildHolder(convertView,t,position);
 
 			convertView.setTag(holder);
@@ -61,7 +61,7 @@ public abstract class HolderAdapter<T,H> extends AbstractAdapter<T>{
 	 * @param layoutInflater
 	 * @return
 	 */
-	public abstract View buildConvertView(LayoutInflater layoutInflater,T t,int position);
+	public abstract View buildConvertView(LayoutInflater layoutInflater,T t,int position, ViewGroup parent);
 
 	/**
 	 * 建立视图Holder

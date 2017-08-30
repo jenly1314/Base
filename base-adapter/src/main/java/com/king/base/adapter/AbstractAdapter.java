@@ -20,8 +20,10 @@ package com.king.base.adapter;
 import java.util.List;
 
 import android.content.Context;
+import android.support.annotation.LayoutRes;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
 /**
@@ -33,11 +35,11 @@ import android.widget.BaseAdapter;
  */
 public abstract class AbstractAdapter<T> extends BaseAdapter{
 	
-	protected Context context;
+	private Context context;
 	
-	protected List<T> listData;
-	
-	protected LayoutInflater layoutInflater;
+	private List<T> listData;
+
+	private LayoutInflater layoutInflater;
 	
 	public AbstractAdapter(Context context,List<T> listData){
 		this.context = context;
@@ -67,10 +69,23 @@ public abstract class AbstractAdapter<T> extends BaseAdapter{
 	public void setListData(List<T> listData) {
 		this.listData = listData;
 	}
+
+	public Context getContext(){
+		return context;
+	}
+
+	public LayoutInflater getLayoutInflater(){
+		return layoutInflater;
+	}
 	
-	
-	public View inflate(int layoutId){
-		return layoutInflater.inflate(layoutId, null);
+	public View inflate(@LayoutRes int layoutId){
+		return inflate(layoutId,null);
+	}
+	public View inflate(@LayoutRes int layoutId,ViewGroup parent){
+		return layoutInflater.inflate(layoutId,parent);
+	}
+	public View inflate(@LayoutRes int layoutId,ViewGroup parent,boolean attachToRoot){
+		return layoutInflater.inflate(layoutId,null,attachToRoot);
 	}
 
 }

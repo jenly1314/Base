@@ -3,6 +3,7 @@ package com.king.base.app.adapter;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.king.base.adapter.ViewHolderRecyclerAdapter;
 import com.king.base.adapter.holder.ViewHolder;
@@ -21,8 +22,8 @@ public class RecyclerViewAdapter extends ViewHolderRecyclerAdapter<String> {
     }
 
     @Override
-    public View buildConvertView(LayoutInflater layoutInflater, int viewType) {
-        return inflate(R.layout.list_item);
+    public View buildConvertView(LayoutInflater layoutInflater, ViewGroup parent, int viewType) {
+        return inflate(R.layout.list_item,parent,false);
     }
 
     @Override

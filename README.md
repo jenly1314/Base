@@ -29,7 +29,7 @@ Base 3.x 在Base [2.x](https://github.com/jenly1314/Base/tree/2.x) 的基础上�
 <dependency>
   <groupId>com.king.base</groupId>
   <artifactId>adapter</artifactId>
-  <version>1.0.0</version>
+  <version>1.1.0</version>
   <type>pom</type>
 </dependency>
 ```
@@ -39,7 +39,7 @@ Base 3.x 在Base [2.x](https://github.com/jenly1314/Base/tree/2.x) 的基础上�
 compile 'com.king.base:base:3.0.0'
 
 //base-adapter
-compile 'com.king.base:adapter:1.0.0'
+compile 'com.king.base:adapter:1.1.0'
 ```
 ### Lvy:
 ```lvy
@@ -49,7 +49,7 @@ compile 'com.king.base:adapter:1.0.0'
 </dependency>
 
 //base-adapter
-<dependency org='com.king.base' name='adapter' rev='1.0.0'>
+<dependency org='com.king.base' name='adapter' rev='1.1.0'>
   <artifact name='$AID' ext='pom'></artifact>
 </dependency>
 ```
@@ -88,8 +88,8 @@ public class TestAdapter extends ViewHolderAdapter<String> {
     }
 
     @Override
-    public View buildConvertView(LayoutInflater layoutInflater, String s, int position) {
-        return inflate(R.layout.list_item);
+    public View buildConvertView(LayoutInflater layoutInflater,T t,int position, ViewGroup parent) {
+        return inflate(R.layout.list_item,parent,false);
     }
 
     @Override

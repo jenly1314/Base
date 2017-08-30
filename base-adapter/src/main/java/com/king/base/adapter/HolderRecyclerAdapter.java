@@ -17,6 +17,7 @@
 package com.king.base.adapter;
 
 import android.content.Context;
+import android.support.annotation.LayoutRes;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,7 +34,7 @@ import java.util.List;
  */
 public abstract class HolderRecyclerAdapter<T,H extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<H>{
 
-    protected Context context;
+    private Context context;
 
     private List<T> listData;
 
@@ -56,11 +57,18 @@ public abstract class HolderRecyclerAdapter<T,H extends RecyclerView.ViewHolder>
         this.layoutInflater = LayoutInflater.from(context);
     }
 
+    public LayoutInflater getLayoutInflater(){
+        return layoutInflater;
+    }
+
+    public Context getContext(){
+        return context;
+    }
 
     @Override
     public H onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View itemView = buildConvertView(layoutInflater,viewType);
+        View itemView = buildConvertView(layoutInflater,parent,viewType);
         return buildHolder(itemView,viewType);
     }
 
@@ -83,8 +91,16 @@ public abstract class HolderRecyclerAdapter<T,H extends RecyclerView.ViewHolder>
         return listData==null ? 0:listData.size();
     }
 
-    public View inflate(int layoutId){
-        return layoutInflater.inflate(layoutId, null);
+    public View inflate(@LayoutRes int layoutId){
+        return inflate(layoutId,null);
+    }
+
+    public View inflate(@LayoutRes int layoutId,ViewGroup parent){
+        return layoutInflater.inflate(layoutId,parent,false);
+    }
+
+    public View inflate(@LayoutRes int layoutId,ViewGroup parent,boolean attachToRoot){
+        return layoutInflater.inflate(layoutId,null,attachToRoot);
     }
 
     public List<T> getListData() {
@@ -98,10 +114,11 @@ public abstract class HolderRecyclerAdapter<T,H extends RecyclerView.ViewHolder>
     /**
      * 建立convertView
      * @param layoutInflater
+     * @param parent
      * @param viewType
      * @return
      */
-    public abstract View buildConvertView(LayoutInflater layoutInflater,int viewType);
+    public abstract View buildConvertView(LayoutInflater layoutInflater,ViewGroup parent,int viewType);
 
     /**
      * 建立视图Holder
