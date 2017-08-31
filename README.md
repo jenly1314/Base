@@ -6,7 +6,10 @@
 
 Base是针对于Android开发封装好一些常用的基类，主要包括通用的Adapter、Activity、Fragment、Dialog等、和一些常用的Util类，只为更简单。
 
-Base 3.x 在Base [2.x](https://github.com/jenly1314/Base/tree/2.x) 的基础上进行了重构，最大的变化是将adapter提取了出来，单独作为一个library(base-adapter)。
+Base 3.1+ 在Base 3.0 的基础上将base-util提取出来，作为一个单独的library(base-util)。
+Base 3.0 在Base [2.x](https://github.com/jenly1314/Base/tree/2.x) 的基础上进行了重构，最大的变化是将adapter提取了出来，单独作为一个library(base-adapter)。
+
+单独提取library主要是为了模块化，使其更加独立。在使用时需要用哪个库就引入库，这样就能尽可能的减少引入库的体积。
 
 ## Gif展示(示例App)
 
@@ -20,7 +23,7 @@ Base 3.x 在Base [2.x](https://github.com/jenly1314/Base/tree/2.x) 的基础上�
 <dependency>
   <groupId>com.king.base</groupId>
   <artifactId>base</artifactId>
-  <version>3.0.0</version>
+  <version>3.1.0</version>
   <type>pom</type>
 </dependency>
 
@@ -28,6 +31,14 @@ Base 3.x 在Base [2.x](https://github.com/jenly1314/Base/tree/2.x) 的基础上�
 <dependency>
   <groupId>com.king.base</groupId>
   <artifactId>adapter</artifactId>
+  <version>1.1.1</version>
+  <type>pom</type>
+</dependency>
+
+//base-util
+<dependency>
+  <groupId>com.king.base</groupId>
+  <artifactId>util</artifactId>
   <version>1.1.0</version>
   <type>pom</type>
 </dependency>
@@ -35,20 +46,28 @@ Base 3.x 在Base [2.x](https://github.com/jenly1314/Base/tree/2.x) 的基础上�
 ### Gradle:
 ```gradle
 //base
-compile 'com.king.base:base:3.0.0'
+compile 'com.king.base:base:3.1.0'
 
 //base-adapter
-compile 'com.king.base:adapter:1.1.0'
+compile 'com.king.base:adapter:1.1.1'
+
+//base-util
+compile 'com.king.base:util:1.1.0'
 ```
 ### Lvy:
 ```lvy
 //base
-<dependency org='com.king.base' name='base' rev='3.0.0'>
+<dependency org='com.king.base' name='base' rev='3.1.0'>
   <artifact name='$AID' ext='pom'></artifact>
 </dependency>
 
 //base-adapter
-<dependency org='com.king.base' name='adapter' rev='1.1.0'>
+<dependency org='com.king.base' name='adapter' rev='1.1.1'>
+  <artifact name='$AID' ext='pom'></artifact>
+</dependency>
+
+//base-util
+<dependency org='com.king.base' name='util' rev='1.1.0'>
   <artifact name='$AID' ext='pom'></artifact>
 </dependency>
 ```
@@ -57,6 +76,7 @@ compile 'com.king.base:adapter:1.1.0'
 ```gradle
 //base
 provided 'com.android.support:appcompat-v7:25.3.+'
+provided 'com.king.base:util:1.1.0'
 ```
 
 ```gradle
@@ -65,6 +85,10 @@ provided 'com.android.support:appcompat-v7:25.3.+'
 provided 'com.android.support:recyclerview-v7:25.3.+'
 ```
 
+```gradle
+//base-util
+provided 'com.android.support:appcompat-v7:25.3.+'
+```
 
 
 ## 简要说明：

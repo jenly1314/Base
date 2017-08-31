@@ -32,7 +32,11 @@ import java.util.Set;
  */
 public class SharedPreferencesUtils {
 	
-	public static final String PREF_NAME = "com.king.pref_name_jenly";
+	public static final String PREF_NAME = "Jenly";
+
+	private SharedPreferencesUtils(){
+		throw new AssertionError();
+	}
 	
 	public static SharedPreferences getSharedPreferences(Context context){
 		return getSharedPreferences(context, PREF_NAME);

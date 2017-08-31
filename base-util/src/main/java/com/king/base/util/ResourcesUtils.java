@@ -33,7 +33,10 @@ public class ResourcesUtils {
 	private static final String RES_DIMEN = "dimen";
 	private static final String RES_ANIM = "anim";
 	private static final String RES_MENU = "menu";
-	
+
+	private ResourcesUtils(){
+		throw new AssertionError();
+	}
 	
 	/**
 	 * 获取资源文件的id
