@@ -6,10 +6,11 @@
 
 Base是针对于Android开发封装好一些常用的基类，主要包括通用的Adapter、Activity、Fragment、Dialog等、和一些常用的Util类，只为更简单。
 
-Base 3.1+ 在Base 3.0 的基础上将base-util提取出来，作为一个单独的library(base-util)。
-Base 3.0 在Base [2.x](https://github.com/jenly1314/Base/tree/2.x) 的基础上进行了重构，最大的变化是将adapter提取了出来，单独作为一个library(base-adapter)。
+> 单独提取library主要是为了模块化，使其更加独立。在使用时需要用哪个库就引入库，这样就能尽可能的减少引入库的体积。
+* Base 3.1+ 在Base 3.0 的基础上将base-util提取出来，作为一个单独的library(base-util)。
+* Base 3.0 在[Base 2.x](https://github.com/jenly1314/Base/tree/2.x) 的基础上进行了重构，最大的变化是将adapter提取了出来，单独作为一个library(base-adapter)。
 
-单独提取library主要是为了模块化，使其更加独立。在使用时需要用哪个库就引入库，这样就能尽可能的减少引入库的体积。
+
 
 ## Gif展示(示例App)
 
