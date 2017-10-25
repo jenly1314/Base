@@ -104,7 +104,7 @@ public class SystemUtils {
      */
     public static void call(Context context, String phoneNumber) {
 
-        Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.parse(String.format("tel:%s", phoneNumber)));
+        Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse(String.format("tel:%s", phoneNumber)));
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
         context.startActivity(intent);
@@ -338,7 +338,6 @@ public class SystemUtils {
      * @param v
      */
     public static void showInputMethod(Context context,EditText v) {
-
         v.requestFocus();
         InputMethodManager imm = (InputMethodManager)context
                 .getSystemService(Context.INPUT_METHOD_SERVICE);
