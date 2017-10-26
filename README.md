@@ -40,7 +40,7 @@ Base是针对于Android开发封装好一些常用的基类，主要包括通用
 <dependency>
   <groupId>com.king.base</groupId>
   <artifactId>util</artifactId>
-  <version>1.1.0</version>
+  <version>1.1.01</version>
   <type>pom</type>
 </dependency>
 ```
@@ -53,7 +53,7 @@ compile 'com.king.base:base:3.1.0'
 compile 'com.king.base:adapter:1.1.1'
 
 //base-util
-compile 'com.king.base:util:1.1.0'
+compile 'com.king.base:util:1.1.1'
 ```
 ### Lvy:
 ```lvy
@@ -68,7 +68,7 @@ compile 'com.king.base:util:1.1.0'
 </dependency>
 
 //base-util
-<dependency org='com.king.base' name='util' rev='1.1.0'>
+<dependency org='com.king.base' name='util' rev='1.1.1'>
   <artifact name='$AID' ext='pom'></artifact>
 </dependency>
 ```
@@ -87,7 +87,7 @@ allprojects {
 ```gradle
 //base
 provided 'com.android.support:appcompat-v7:25.3.+'
-provided 'com.king.base:util:1.1.0'
+provided 'com.king.base:util:1.1.1'
 ```
 
 ```gradle

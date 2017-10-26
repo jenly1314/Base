@@ -16,6 +16,7 @@
  */
 package com.king.base.util;
 
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
@@ -23,6 +24,8 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 
 import java.io.ByteArrayOutputStream;
+
+import static android.R.attr.bitmap;
 
 /**
  * @author Jenly <a href="mailto:jenly1314@gmail.com">Jenly</a>
@@ -54,11 +57,19 @@ public class ImageUtils {
         return drawable == null ? null : ((BitmapDrawable)drawable).getBitmap();
     }
 
-
+    /**
+     * @deprecated Use {@link #bitmapToDrawable(Resources, Bitmap)}
+     * @param bitmap
+     * @return
+     */
+    @Deprecated
     public static Drawable bitmapToDrawable(Bitmap bitmap) {
         return bitmap == null ? null : new BitmapDrawable(bitmap);
     }
 
+    public static Drawable bitmapToDrawable(Resources res,Bitmap bitmap) {
+        return bitmap == null ? null : new BitmapDrawable(res,bitmap);
+    }
 
     public static byte[] drawableToByte(Drawable d) {
         return bitmapToByte(drawableToBitmap(d));
