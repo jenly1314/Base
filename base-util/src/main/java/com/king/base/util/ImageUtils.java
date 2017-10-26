@@ -25,8 +25,6 @@ import android.graphics.drawable.Drawable;
 
 import java.io.ByteArrayOutputStream;
 
-import static android.R.attr.bitmap;
-
 /**
  * @author Jenly <a href="mailto:jenly1314@gmail.com">Jenly</a>
  */
