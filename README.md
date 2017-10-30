@@ -40,7 +40,7 @@ Base是针对于Android开发封装好一些常用的基类，主要包括通用
 <dependency>
   <groupId>com.king.base</groupId>
   <artifactId>util</artifactId>
-  <version>1.1.01</version>
+  <version>1.1.1</version>
   <type>pom</type>
 </dependency>
 ```
