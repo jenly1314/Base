@@ -117,9 +117,11 @@ public class ViewHolder extends RecyclerView.ViewHolder{
 
     public View setVisibility(@IdRes int id,boolean isVisible){
         View v = getView(id);
-        if(isVisible)
+        if(isVisible){
             v.setVisibility(View.VISIBLE);
-        v.setVisibility(View.GONE);
+        }else{
+            v.setVisibility(View.GONE);
+        }
         return v;
     }
 
@@ -289,6 +291,16 @@ public class ViewHolder extends RecyclerView.ViewHolder{
         RatingBar  ratingBar = getView(id);
         ratingBar.setNumStars(numStars);
         return ratingBar;
+    }
+
+    public View setSelecteded(@IdRes int id,boolean selected){
+        View view = getView(id);
+        view.setSelected(selected);
+        return view;
+    }
+
+    public boolean isSelected(@IdRes int id){
+        return getView(id).isSelected();
     }
 
     //---------------------- 监听事件
