@@ -25,12 +25,14 @@ import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.Build;
 import android.provider.MediaStore;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.content.FileProvider;
 import android.telephony.SmsManager;
 import android.text.TextUtils;
 import android.view.KeyEvent;
@@ -165,7 +167,12 @@ public class SystemUtils {
                                     int requestCode) {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (!TextUtils.isEmpty(path)) {
-            Uri uri = Uri.fromFile(new File(path));
+            Uri uri = null;
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
+                uri = FileProvider.getUriForFile(activity, activity.getPackageName() + ".fileProvider", new File(path));
+            }else{
+                uri = Uri.fromFile(new File(path));
+            }
             intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
         }
         activity.startActivityForResult(intent, requestCode);
@@ -182,7 +189,12 @@ public class SystemUtils {
                                     int requestCode) {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (!TextUtils.isEmpty(path)) {
-            Uri uri = Uri.fromFile(new File(path));
+            Uri uri = null;
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
+                uri = FileProvider.getUriForFile(fragment.getContext(), fragment.getContext().getPackageName() + ".fileProvider", new File(path));
+            }else{
+                uri = Uri.fromFile(new File(path));
+            }
             intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
         }
         fragment.startActivityForResult(intent, requestCode);
@@ -257,9 +269,15 @@ public class SystemUtils {
 
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        Uri uriData = Uri.fromFile(file);
+        Uri uriData = null;
         String type = "application/vnd.android.package-archive";
-
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
+            intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            uriData = FileProvider.getUriForFile(
+                    context, context.getPackageName() + ".fileProvider", file);
+        }else{
+            uriData = Uri.fromFile(file);
+        }
         intent.setDataAndType(uriData, type);
         context.startActivity(intent);
     }

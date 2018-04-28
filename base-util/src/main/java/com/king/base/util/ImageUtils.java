@@ -36,12 +36,16 @@ public class ImageUtils {
     }
 
     public static byte[] bitmapToByte(Bitmap bitmap) {
+        return bitmapToByte(bitmap, Bitmap.CompressFormat.JPEG);
+    }
+
+    public static byte[] bitmapToByte(Bitmap bitmap, Bitmap.CompressFormat format) {
         if (bitmap == null) {
             return null;
         }
 
         ByteArrayOutputStream o = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, o);
+        bitmap.compress(format, 100, o);
         return o.toByteArray();
     }
 
