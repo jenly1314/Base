@@ -51,7 +51,7 @@ import com.king.base.util.ToastUtils;
  */
 public abstract class BaseDialogFragment extends DialogFragment implements BaseInterface {
 
-	protected Context context;
+	private Context context;
 
 	private Dialog dialog;
 
@@ -290,26 +290,47 @@ public abstract class BaseDialogFragment extends DialogFragment implements BaseI
 		showProgressDialog(new ProgressBar(context));
 	}
 
+	protected void showProgressDialog(boolean cancel){
+		showProgressDialog(new ProgressBar(context),cancel);
+	}
+
 	protected void showProgressDialog(@LayoutRes int resId){
-		showProgressDialog(LayoutInflater.from(context).inflate(resId,null));
+		showProgressDialog(resId,false);
+	}
+
+	protected void showProgressDialog(@LayoutRes int resId,boolean cancel){
+		showProgressDialog(LayoutInflater.from(context).inflate(resId,null),cancel);
 	}
 
 	protected void showProgressDialog(View v){
+		showProgressDialog(v,false);
+	}
+
+	protected void showProgressDialog(View v,boolean cancel){
 		dismissProgressDialog();
 		progressDialog = new BaseProgressDialog(context);
 		progressDialog.setContentView(v);
+		progressDialog.setCanceledOnTouchOutside(cancel);
 		progressDialog.show();
 	}
 
 	protected void showDialog(View contentView){
-		showDialog(context,contentView);
+		showDialog(contentView,false);
 	}
 
-	protected void showDialog(Context context,View contentView){
+	protected void showDialog(View contentView,boolean cancel) {
+		showDialog(getContext(),contentView,cancel);
+	}
+
+	protected void showDialog(Context context,View contentView) {
+		showDialog(context,contentView,false);
+	}
+
+	protected void showDialog(Context context,View contentView,boolean cancel){
 		dismissDialog();
 		dialog = new Dialog(context,R.style.dialog);
 		dialog.setContentView(contentView);
-		dialog.setCanceledOnTouchOutside(false);
+		dialog.setCanceledOnTouchOutside(cancel);
 		getDialogWindow(dialog);
 		dialog.show();
 

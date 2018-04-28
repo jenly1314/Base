@@ -36,7 +36,7 @@ public abstract class SplashActivity extends BaseActivity {
     }
 
     protected Animation getAnimation(){
-        return AnimationUtils.loadAnimation(context, R.anim.splash_alpha);
+        return AnimationUtils.loadAnimation(getContext(), R.anim.splash_alpha);
     }
 
     protected void startAnimation(View rootView){

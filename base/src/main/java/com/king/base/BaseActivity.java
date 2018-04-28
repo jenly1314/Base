@@ -53,8 +53,6 @@ import com.king.base.util.ToastUtils;
 public abstract class BaseActivity extends AppCompatActivity implements  BaseInterface{
 
 
-    protected Context context = this;
-
     private Dialog dialog;
 
     private BaseProgressDialog progressDialog;
@@ -70,8 +68,6 @@ public abstract class BaseActivity extends AppCompatActivity implements  BaseInt
         initUI();
         initData();
         addListeners();
-
-
     }
 
     @Override
@@ -106,7 +102,7 @@ public abstract class BaseActivity extends AppCompatActivity implements  BaseInt
     }
 
     protected View inflate(@LayoutRes int id, @Nullable ViewGroup root){
-       return LayoutInflater.from(context).inflate(id,root);
+       return LayoutInflater.from(getContext()).inflate(id,root);
     }
 
     protected <T extends View> T findView(int resId){
@@ -119,8 +115,12 @@ public abstract class BaseActivity extends AppCompatActivity implements  BaseInt
 
     //-----------------------------------
 
+    protected Context getContext(){
+        return this;
+    }
+
     protected Intent getIntent(Class<?> cls){
-        return new Intent(context,cls);
+        return new Intent(getContext(),cls);
     }
 
     protected Intent getIntent(Class<?> cls,int flags){
@@ -166,20 +166,20 @@ public abstract class BaseActivity extends AppCompatActivity implements  BaseInt
 
     protected void showToast(@StringRes  int resId){
         if(resId != NONE)
-            ToastUtils.showToast(context,resId);
+            ToastUtils.showToast(getContext(),resId);
     }
 
     protected void showLongToast(@StringRes  int resId){
 
-        ToastUtils.showToast(context,resId, Toast.LENGTH_LONG);
+        ToastUtils.showToast(getContext(),resId, Toast.LENGTH_LONG);
     }
 
     protected void showToast(CharSequence text){
-        ToastUtils.showToast(context,text);
+        ToastUtils.showToast(getContext(),text);
     }
 
     protected void showLongToast(CharSequence text){
-        ToastUtils.showToast(context,text, Toast.LENGTH_LONG);
+        ToastUtils.showToast(getContext(),text, Toast.LENGTH_LONG);
     }
 
     //-----------------------------------
@@ -211,7 +211,7 @@ public abstract class BaseActivity extends AppCompatActivity implements  BaseInt
     }
 
     public void startShake(View view){
-        view.startAnimation(AnimationUtils.loadAnimation(context,R.anim.shake));
+        view.startAnimation(AnimationUtils.loadAnimation(getContext(),R.anim.shake));
     }
 
     /**
@@ -220,7 +220,7 @@ public abstract class BaseActivity extends AppCompatActivity implements  BaseInt
      * @param v
      */
     public void hideInputMethod(EditText v) {
-        SystemUtils.hideInputMethod(context,v);
+        SystemUtils.hideInputMethod(getContext(),v);
     }
 
     /**
@@ -229,7 +229,7 @@ public abstract class BaseActivity extends AppCompatActivity implements  BaseInt
      * @param v
      */
     public void showInputMethod(EditText v) {
-        SystemUtils.showInputMethod(context,v);
+        SystemUtils.showInputMethod(getContext(),v);
     }
 
 
@@ -263,18 +263,33 @@ public abstract class BaseActivity extends AppCompatActivity implements  BaseInt
         }
     }
 
+
     protected void showProgressDialog(){
-        showProgressDialog(new ProgressBar(context));
+        showProgressDialog(new ProgressBar(getContext()));
+    }
+
+    protected void showProgressDialog(boolean cancel){
+        showProgressDialog(new ProgressBar(getContext()),cancel);
     }
 
     protected void showProgressDialog(@LayoutRes int resId){
-        showProgressDialog(LayoutInflater.from(context).inflate(resId,null));
+        showProgressDialog(resId,false);
+    }
+
+    protected void showProgressDialog(@LayoutRes int resId,boolean cancel){
+        showProgressDialog(LayoutInflater.from(getContext()).inflate(resId,null),cancel);
     }
 
     protected void showProgressDialog(View v){
+        showProgressDialog(v,false);
+    }
+
+
+    protected void showProgressDialog(View v,boolean cancel){
         dismissProgressDialog();
-        progressDialog = BaseProgressDialog.newInstance(context);
+        progressDialog = BaseProgressDialog.newInstance(getContext());
         progressDialog.setContentView(v);
+        progressDialog.setCanceledOnTouchOutside(cancel);
         progressDialog.show();
     }
 
@@ -288,14 +303,22 @@ public abstract class BaseActivity extends AppCompatActivity implements  BaseInt
     }
 
     protected void showDialog(View contentView){
-        showDialog(context,contentView);
+        showDialog(contentView,false);
     }
 
-    protected void showDialog(Context context,View contentView){
+    protected void showDialog(View contentView,boolean cancel) {
+        showDialog(getContext(),contentView,cancel);
+    }
+
+    protected void showDialog(Context context,View contentView) {
+        showDialog(context,contentView,false);
+    }
+
+    protected void showDialog(Context context,View contentView,boolean cancel){
         dismissDialog();
         dialog = new Dialog(context,R.style.dialog);
         dialog.setContentView(contentView);
-        dialog.setCanceledOnTouchOutside(false);
+        dialog.setCanceledOnTouchOutside(cancel);
         getDialogWindow(dialog);
         dialog.show();
 

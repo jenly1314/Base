@@ -36,7 +36,7 @@ public abstract class GestureActivity extends BaseActivity implements GestureDet
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mGestureDetector = new GestureDetector(context,this);
+        mGestureDetector = new GestureDetector(getContext(),this);
 
     }
 
@@ -96,10 +96,7 @@ public abstract class GestureActivity extends BaseActivity implements GestureDet
 
     }
 
-
-
     public abstract void onLeftFling();
-
 
     public abstract boolean onRightFling();
 

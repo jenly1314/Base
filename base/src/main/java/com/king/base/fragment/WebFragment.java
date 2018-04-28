@@ -170,7 +170,7 @@ public  class WebFragment extends BaseFragment{
 
     private void showReceiveError(){
         isError = true;
-        if(SystemUtils.isNetWorkActive(context)){
+        if(SystemUtils.isNetWorkActive(getContext())){
             LogUtils.w("Page loading failed.");
         }else{
             LogUtils.w("Network unavailable.");
@@ -218,9 +218,11 @@ public  class WebFragment extends BaseFragment{
 
 
     private void updateProgressBar(boolean isVisibility,int progress){
+        if(progressBar != null){
+            progressBar.setVisibility((isVisibility && progress<100) ? View.VISIBLE : View.GONE);
+            progressBar.setProgress(progress);
+        }
 
-        progressBar.setVisibility((isVisibility && progress<100) ? View.VISIBLE : View.GONE);
-        progressBar.setProgress(progress);
     }
 
 }
