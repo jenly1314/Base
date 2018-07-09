@@ -126,11 +126,10 @@ public class RecyclerFragment extends BaseFragment {
                 }
             }
         });
-
-        adapter.setOnItemClicklistener(new HolderRecyclerAdapter.OnItemClicklistener() {
+        adapter.setOnItemClickListener(new HolderRecyclerAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
-                    showToast("position:" + position);
+                showToast("position:" + position);
             }
         });
     }

@@ -18,9 +18,11 @@ package com.king.base;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
+import android.support.annotation.StyleRes;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentTransaction;
 import android.content.Context;
@@ -31,6 +33,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,7 +54,6 @@ import com.king.base.util.ToastUtils;
  * @author Jenly
  */
 public abstract class BaseActivity extends AppCompatActivity implements  BaseInterface{
-
 
     private Dialog dialog;
 
@@ -165,7 +167,7 @@ public abstract class BaseActivity extends AppCompatActivity implements  BaseInt
     //-----------------------------------
 
     protected void showToast(@StringRes  int resId){
-        if(resId != NONE)
+        if(resId != Constants.NONE)
             ToastUtils.showToast(getContext(),resId);
     }
 
@@ -185,7 +187,7 @@ public abstract class BaseActivity extends AppCompatActivity implements  BaseInt
     //-----------------------------------
 
     public boolean checkInput(TextView tv){
-        return checkInput(tv,NONE);
+        return checkInput(tv,Constants.NONE);
     }
 
     public boolean checkInput(TextView tv,@StringRes int resId){
@@ -303,32 +305,54 @@ public abstract class BaseActivity extends AppCompatActivity implements  BaseInt
     }
 
     protected void showDialog(View contentView){
-        showDialog(contentView,false);
+        showDialog(contentView,Constants.DEFAULT_WIDTH_RATIO);
     }
 
-    protected void showDialog(View contentView,boolean cancel) {
-        showDialog(getContext(),contentView,cancel);
+    protected void showDialog(View contentView,boolean isCancel){
+        showDialog(getContext(),contentView,R.style.dialog,Constants.DEFAULT_WIDTH_RATIO,isCancel);
     }
 
-    protected void showDialog(Context context,View contentView) {
-        showDialog(context,contentView,false);
+    protected void showDialog(View contentView,float widthRatio){
+        showDialog(getContext(),contentView,widthRatio);
     }
 
-    protected void showDialog(Context context,View contentView,boolean cancel){
+    protected void showDialog(View contentView,float widthRatio,boolean isCancel){
+        showDialog(getContext(),contentView,R.style.dialog,widthRatio,isCancel);
+    }
+
+    protected void showDialog(Context context,View contentView,float widthRatio){
+        showDialog(context,contentView, R.style.dialog,widthRatio);
+    }
+
+    protected void showDialog(Context context, View contentView, @StyleRes int resId, float widthRatio){
+        showDialog(context,contentView,resId,widthRatio,false);
+    }
+
+    protected void showDialog(Context context, View contentView, @StyleRes int resId, float widthRatio,final boolean isCancel){
         dismissDialog();
-        dialog = new Dialog(context,R.style.dialog);
+        dialog = new Dialog(context,resId);
         dialog.setContentView(contentView);
-        dialog.setCanceledOnTouchOutside(cancel);
-        getDialogWindow(dialog);
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.setOnKeyListener(new DialogInterface.OnKeyListener() {
+            @Override
+            public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
+                if(keyCode == KeyEvent.KEYCODE_BACK && isCancel){
+                    dismissDialog();
+                }
+                return true;
+
+            }
+        });
+        setDialogWindow(dialog,widthRatio);
         dialog.show();
 
     }
 
-    protected void getDialogWindow(Dialog dialog){
+    private void setDialogWindow(Dialog dialog,float widthRatio){
         Window window = dialog.getWindow();
         WindowManager.LayoutParams lp = window.getAttributes();
-        lp.width = (int)(getWidthPixels()*0.9f);
-        lp.gravity= Gravity.CENTER;
+        int width = Math.min(getWidthPixels(),getHeightPixels());
+        lp.width = (int)(width * widthRatio);
         window.setAttributes(lp);
     }
 

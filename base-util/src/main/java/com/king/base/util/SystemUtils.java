@@ -268,11 +268,11 @@ public class SystemUtils {
     public static void installApk(Context context,File file){
 
         Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         Uri uriData = null;
         String type = "application/vnd.android.package-archive";
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
-            intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             uriData = FileProvider.getUriForFile(
                     context, context.getPackageName() + ".fileProvider", file);
         }else{
@@ -291,7 +291,7 @@ public class SystemUtils {
     public static void uninstallApk(Context context,String packageName){
 
         Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         Uri uriData = Uri.parse("package:" + packageName);
         intent.setData(uriData);
         context.startActivity(intent);

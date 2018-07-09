@@ -1,3 +1,19 @@
+/*
+     Copyright © 2015, 2016 Jenly Yu <a href="mailto:jenly1314@gmail.com">Jenly</a>
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+
+ */
 package com.king.base.fragment;
 
 import android.graphics.Bitmap;
@@ -17,6 +33,7 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
 import com.king.base.BaseFragment;
+import com.king.base.Constants;
 import com.king.base.R;
 import com.king.base.util.LogUtils;
 import com.king.base.util.SystemUtils;
@@ -86,9 +103,7 @@ public  class WebFragment extends BaseFragment{
 
         webView.setHorizontalScrollBarEnabled(false);
 
-//        webView.addJavascriptInterface(new WebJavascriptInterface(),"android");
-
-        String str = getIntent().getStringExtra(KEY_URL);
+        String str = getIntent().getStringExtra(Constants.KEY_URL);
         if(!TextUtils.isEmpty(str)){
             this.url = str;
         }

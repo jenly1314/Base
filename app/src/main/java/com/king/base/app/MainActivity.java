@@ -24,7 +24,7 @@ public class MainActivity extends BaseActivity {
 
     private void startFrameActivity(int keyFragment){
         Intent intent = new Intent(this,FrameActivity.class);
-        intent.putExtra(KEY_FRAGMENT,keyFragment);
+        intent.putExtra(com.king.base.Constants.KEY_FRAGMENT,keyFragment);
         startActivity(intent);
     }
 

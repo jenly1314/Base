@@ -18,6 +18,7 @@ package com.king.base;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -26,11 +27,13 @@ import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
+import android.support.annotation.StyleRes;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.DisplayMetrics;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -182,12 +185,12 @@ public abstract class BaseDialogFragment extends DialogFragment implements BaseI
 
 
 	protected void showToast(@StringRes  int resId){
-		if(resId != NONE)
+		if(resId != Constants.NONE)
 			ToastUtils.showToast(context,resId);
 	}
 
 	protected void showLongToast(@StringRes  int resId){
-		if(resId != NONE)
+		if(resId != Constants.NONE)
 			ToastUtils.showToast(context,resId, Toast.LENGTH_LONG);
 	}
 
@@ -202,7 +205,7 @@ public abstract class BaseDialogFragment extends DialogFragment implements BaseI
 	//-----------------------------------
 
 	public boolean checkInput(TextView tv){
-		return checkInput(tv,NONE);
+		return checkInput(tv,Constants.NONE);
 	}
 
 	public boolean checkInput(TextView tv,@StringRes int resId){
@@ -315,31 +318,54 @@ public abstract class BaseDialogFragment extends DialogFragment implements BaseI
 	}
 
 	protected void showDialog(View contentView){
-		showDialog(contentView,false);
+		showDialog(contentView,Constants.DEFAULT_WIDTH_RATIO);
 	}
 
-	protected void showDialog(View contentView,boolean cancel) {
-		showDialog(getContext(),contentView,cancel);
+	protected void showDialog(View contentView,boolean isCancel){
+		showDialog(getContext(),contentView,R.style.dialog,Constants.DEFAULT_WIDTH_RATIO,isCancel);
 	}
 
-	protected void showDialog(Context context,View contentView) {
-		showDialog(context,contentView,false);
+	protected void showDialog(View contentView,float widthRatio){
+		showDialog(getContext(),contentView,widthRatio);
 	}
 
-	protected void showDialog(Context context,View contentView,boolean cancel){
+	protected void showDialog(View contentView,float widthRatio,boolean isCancel){
+		showDialog(getContext(),contentView,R.style.dialog,widthRatio,isCancel);
+	}
+
+	protected void showDialog(Context context,View contentView,float widthRatio){
+		showDialog(context,contentView, R.style.dialog,widthRatio);
+	}
+
+	protected void showDialog(Context context, View contentView, @StyleRes int resId, float widthRatio){
+		showDialog(context,contentView,resId,widthRatio,false);
+	}
+
+	protected void showDialog(Context context, View contentView, @StyleRes int resId, float widthRatio,final boolean isCancel){
 		dismissDialog();
-		dialog = new Dialog(context,R.style.dialog);
+		dialog = new Dialog(context,resId);
 		dialog.setContentView(contentView);
-		dialog.setCanceledOnTouchOutside(cancel);
-		getDialogWindow(dialog);
+		dialog.setCanceledOnTouchOutside(false);
+		dialog.setOnKeyListener(new DialogInterface.OnKeyListener() {
+			@Override
+			public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
+				if(keyCode == KeyEvent.KEYCODE_BACK && isCancel){
+					dismissDialog();
+				}
+				return true;
+
+			}
+		});
+		setDialogWindow(dialog,widthRatio);
 		dialog.show();
 
 	}
 
-	protected void getDialogWindow(Dialog dialog){
+	private void setDialogWindow(Dialog dialog,float widthRatio){
 		Window window = dialog.getWindow();
 		WindowManager.LayoutParams lp = window.getAttributes();
-		lp.width = (int)(getWidthPixels()*0.8f);
+		int width = Math.min(getWidthPixels(),getHeightPixels());
+		lp.width = (int)(width * widthRatio);
 		window.setAttributes(lp);
 	}
 

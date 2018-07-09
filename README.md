@@ -24,7 +24,7 @@ Base是针对于Android开发封装好一些常用的基类，主要包括通用
 <dependency>
   <groupId>com.king.base</groupId>
   <artifactId>base</artifactId>
-  <version>3.1.0</version>
+  <version>3.1.1</version>
   <type>pom</type>
 </dependency>
 
@@ -32,7 +32,7 @@ Base是针对于Android开发封装好一些常用的基类，主要包括通用
 <dependency>
   <groupId>com.king.base</groupId>
   <artifactId>adapter</artifactId>
-  <version>1.1.1</version>
+  <version>1.1.2</version>
   <type>pom</type>
 </dependency>
 
@@ -40,35 +40,36 @@ Base是针对于Android开发封装好一些常用的基类，主要包括通用
 <dependency>
   <groupId>com.king.base</groupId>
   <artifactId>util</artifactId>
-  <version>1.1.1</version>
+  <version>1.1.2</version>
   <type>pom</type>
 </dependency>
 ```
 ### Gradle:
 ```gradle
+
 //base
-compile 'com.king.base:base:3.1.0'
+compile 'com.king.base:base:3.1.1'
 
 //base-adapter
-compile 'com.king.base:adapter:1.1.1'
+compile 'com.king.base:adapter:1.1.2'
 
 //base-util
-compile 'com.king.base:util:1.1.1'
+compile 'com.king.base:util:1.1.2'
 ```
 ### Lvy:
 ```lvy
 //base
-<dependency org='com.king.base' name='base' rev='3.1.0'>
+<dependency org='com.king.base' name='base' rev='3.1.1'>
   <artifact name='$AID' ext='pom'></artifact>
 </dependency>
 
 //base-adapter
-<dependency org='com.king.base' name='adapter' rev='1.1.1'>
+<dependency org='com.king.base' name='adapter' rev='1.1.2'>
   <artifact name='$AID' ext='pom'></artifact>
 </dependency>
 
 //base-util
-<dependency org='com.king.base' name='util' rev='1.1.1'>
+<dependency org='com.king.base' name='util' rev='1.1.2'>
   <artifact name='$AID' ext='pom'></artifact>
 </dependency>
 ```
@@ -87,7 +88,7 @@ allprojects {
 ```gradle
 //base
 provided 'com.android.support:appcompat-v7:25.3.+'
-provided 'com.king.base:util:1.1.1'
+provided 'com.king.base:util:1.1.2'
 ```
 
 ```gradle

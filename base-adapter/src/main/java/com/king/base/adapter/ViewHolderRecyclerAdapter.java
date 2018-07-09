@@ -27,7 +27,7 @@ import java.util.List;
  * @author Jenly <a href="mailto:jenly1314@gmail.com">Jenly</a>
  *
  */
-public abstract class ViewHolderRecyclerAdapter<T, V> extends HolderRecyclerAdapter<T,ViewHolder> {
+public abstract class ViewHolderRecyclerAdapter<T> extends HolderRecyclerAdapter<T,ViewHolder> {
 
     public ViewHolderRecyclerAdapter(Context context, List<T> listData) {
         super(context, listData);
