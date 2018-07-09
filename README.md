@@ -10,7 +10,7 @@ Base是针对于Android开发封装好一些常用的基类，主要包括通用
 > 单独提取library主要是为了模块化，使其更加独立。在使用时需要用哪个库就引入库，这样就能尽可能的减少引入库的体积。
 
 * base 主要是封装了常用的Activity、Fragment、DialogFragment、Dialog等作为基类，方便使用。
-* base-adapter 主要是封装了各种Adapter、简化步骤，适用于各种列表相关控件。妈妈再也不用担心写自定义适配器了。
+* base-adapter 主要是封装了各种Adapter、简化自定义Adapter步骤，让写自定义适配器从此更简单。
 * base-util 主要是封装了一些常用的工具类。
 
 
