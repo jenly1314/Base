@@ -43,11 +43,11 @@ public abstract class HolderRecyclerAdapter<T,H extends RecyclerView.ViewHolder>
     private OnItemClickListener mOnItemClickListener;
 
     public interface OnItemClickListener{
-        public void onItemClick(View v, int position);
+        void onItemClick(View v, int position);
     }
 
-    public void setOnItemClickListener(OnItemClickListener mOnItemClickListener){
-        this.mOnItemClickListener = mOnItemClickListener;
+    public void setOnItemClickListener(OnItemClickListener clickListener){
+        this.mOnItemClickListener = clickListener;
     }
 
     public OnItemClickListener getOnItemClickListener(){
