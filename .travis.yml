@@ -1,6 +1,7 @@
 language: android
 jdk: oraclejdk8
 before_install:
+- chmod +x gradlew
 - yes | sdkmanager "platforms;android-25"
 
 env:
