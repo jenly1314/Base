@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.novoda.bintray-release'
+apply from: 'bintray.gradle'
 
 android {
     compileSdkVersion 25
@@ -36,16 +37,6 @@ dependencies {
     provided 'com.android.support:appcompat-v7:25.3.+'
     provided 'com.android.support:recyclerview-v7:25.3.+'
 
-}
-
-//添加
-publish {
-    userOrg = 'jenly'//bintray.com用户名
-    groupId = 'com.king.base'//jcenter上的路径
-    artifactId = 'adapter'//项目名称
-    publishVersion = '1.1.2'//版本号
-    desc = 'BaseAdapter for Android'//描述
-    website = 'https://github.com/jenly1314/Base'//网站
 }
 
 

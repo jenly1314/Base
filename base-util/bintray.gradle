@@ -1,0 +1,10 @@
+
+//添加
+publish {
+    userOrg = 'jenly'//bintray.com用户名
+    groupId = 'com.king.base'//jcenter上的路径
+    artifactId = 'util'//项目名称
+    publishVersion = '1.1.2'//版本号
+    desc = 'BaseUtil for Android'//描述
+    website = 'https://github.com/jenly1314/Base'//网站
+}
