@@ -1,7 +1,7 @@
 language: android
 jdk: oraclejdk8
 before_install:
-- yes | sdkmanager "platforms;android-25"
+- yes | sdkmanager "extras;m2repository;com;android;support;constraint;constraint-layout;1.0.2"
 
 env:
   global:
