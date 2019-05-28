@@ -1,5 +1,6 @@
 package com.king.base.app.fragment;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -8,8 +9,10 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.king.base.BaseFragment;
+import com.king.base.adapter.HolderRecyclerAdapter;
 import com.king.base.app.R;
 import com.king.base.app.adapter.ListAdapter;
+import com.king.view.superswiperefreshlayout.SuperSwipeRefreshLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,9 +23,11 @@ import java.util.List;
 
 public class ListFragment extends BaseFragment{
 
+    private SuperSwipeRefreshLayout ssrl;
+
     private ListView listView;
 
-    private ListAdapter listAdapter;
+    private ListAdapter adapter;
 
     private List<String> listData;
 
@@ -38,29 +43,90 @@ public class ListFragment extends BaseFragment{
 
     @Override
     public void initUI() {
+        ssrl = findView(R.id.ssrl);
         listView = findView(R.id.listView);
     }
 
     @Override
     public void initData() {
-        listData = new ArrayList<>();
-        for (int i = 0; i <50 ; i++) {
+        initListData();
+        adapter = new ListAdapter(getContext(),listData);
+
+        listView.setAdapter(adapter);
+    }
+
+    private void initListData(){
+        if(listData == null){
+            listData = new ArrayList<>();
+        }else{
+            listData.clear();
+        }
+        for (int i = 0; i < 20; i++) {
             listData.add("ListView Item" + i);
         }
-        listAdapter = new ListAdapter(getContext(),listData);
-
-        listView.setAdapter(listAdapter);
     }
+
+    private void refreshView(){
+        adapter.notifyDataSetChanged();
+        ssrl.setRefreshing(false);
+    }
+
+    private void pullRefresh(){
+        new AsyncTask<Void,Void,Void>(){
+            @Override
+            protected Void doInBackground(Void... params) {
+                SystemClock.sleep(1500);
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void v) {
+                super.onPostExecute(v);
+                initListData();
+                refreshView();
+            }
+        }.execute();
+    }
+
+    private void loadMoreRefresh(){
+
+        new AsyncTask<Void,Void,Void>(){
+            @Override
+            protected Void doInBackground(Void... params) {
+                SystemClock.sleep(1500);
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void v) {
+                super.onPostExecute(v);
+                listData.add("ListView Item" + listData.size());
+                refreshView();
+            }
+        }.execute();
+    }
+
 
     @Override
     public void addListeners() {
+
+        ssrl.setOnRefreshListener(new SuperSwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh(SuperSwipeRefreshLayout.Direction direction) {
+                if(direction == SuperSwipeRefreshLayout.Direction.TOP){
+                    pullRefresh();
+                }else{
+                    loadMoreRefresh();
+
+                }
+            }
+        });
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 showToast("position:" + position);
             }
         });
-
     }
 
     @Override

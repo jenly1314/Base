@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="match_parent"
@@ -12,8 +13,14 @@
         android:textSize="20sp"
         android:text="ListView"
         android:background="@color/colorPrimary"/>
+    <com.king.view.superswiperefreshlayout.SuperSwipeRefreshLayout
+        android:id="@+id/ssrl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:direction="both">
     <ListView
         android:id="@+id/listView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+    </com.king.view.superswiperefreshlayout.SuperSwipeRefreshLayout>
 </LinearLayout>

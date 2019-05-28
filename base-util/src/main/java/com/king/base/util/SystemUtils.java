@@ -20,6 +20,7 @@ import android.app.Activity;
 import android.app.Instrumentation;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
@@ -220,6 +221,23 @@ public class SystemUtils {
     }
 
     /**
+     * 通过APK路径获取包信息
+     * @param context
+     * @param archiveFilePath
+     * @return
+     */
+    public static PackageInfo getPackageInfo(Context context, String archiveFilePath) {
+        try{
+            PackageManager packageManager = context.getPackageManager();
+            PackageInfo packageInfo = packageManager.getPackageArchiveInfo(archiveFilePath, PackageManager.GET_ACTIVITIES);
+            return packageInfo;
+        }catch (Exception e){
+            LogUtils.e(e);
+        }
+        return null;
+    }
+
+    /**
      * 获取当前应用包的版本名称
      *
      * @param context
@@ -266,15 +284,25 @@ public class SystemUtils {
      * @param file
      */
     public static void installApk(Context context,File file){
+        installApk(context,file,context.getPackageName() + ".fileProvider");
+    }
+
+    /**
+     * 安装apk
+     * @param context
+     * @param file
+     * @param authority
+     */
+    public static void installApk(Context context,File file,String authority){
 
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        Uri uriData = null;
+        intent.addCategory(Intent.CATEGORY_DEFAULT);
+        Uri uriData;
         String type = "application/vnd.android.package-archive";
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            uriData = FileProvider.getUriForFile(
-                    context, context.getPackageName() + ".fileProvider", file);
+            uriData = FileProvider.getUriForFile(context, authority, file);
         }else{
             uriData = Uri.fromFile(file);
         }
@@ -362,5 +390,25 @@ public class SystemUtils {
         imm.showSoftInput(v,InputMethodManager.SHOW_IMPLICIT);
     }
 
+    /**
+     * APK是否存在
+     * @param context
+     * @param versionCode
+     * @param file
+     * @return
+     */
+    public boolean apkExists(Context context,int versionCode,File file){
+        if(file!=null && file.exists()){
+            String packageName = context.getPackageName();
+            PackageInfo packageInfo = getPackageInfo(context,file.getAbsolutePath());
+            if(packageInfo!=null && versionCode == packageInfo.versionCode){//比对versionCode
+                ApplicationInfo applicationInfo = packageInfo.applicationInfo;
+                if(applicationInfo!=null && packageName.equals(applicationInfo.packageName)){//比对packageName
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 
 }

@@ -26,7 +26,7 @@ public class ResourcesUtils {
 	
 	private static final String RES_ID = "id";
 	private static final String RES_STRING = "string";
-	private static final String RES_DRABLE = "drable";
+	private static final String RES_DRAWABLE = "drawable";
 	private static final String RES_LAYOUT = "layout";
 	private static final String RES_STYLE = "style";
 	private static final String RES_COLOR = "color";
@@ -59,13 +59,13 @@ public class ResourcesUtils {
 	}
 	
 	/**
-	 * 获取资源文件drable的id
+	 * 获取资源文件drawable的id
 	 * @param context
 	 * @param resName
 	 * @return
 	 */
-	public static int getDrableId(Context context,String resName){
-		return getResId(context,resName,RES_DRABLE);
+	public static int getDrawableId(Context context,String resName){
+		return getResId(context,resName,RES_DRAWABLE);
 	}
 	
 	/**

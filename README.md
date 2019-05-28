@@ -1,11 +1,10 @@
 # Base
-[![Download](https://img.shields.io/badge/download-App-blue.svg)](https://raw.githubusercontent.com/jenly1314/Base/master/app/app-release.apk)
-[![Jitpack](https://jitpack.io/v/jenly1314/Base.svg)](https://jitpack.io/#jenly1314/Base)
+[![Download](https://img.shields.io/badge/download-App-blue.svg)](https://raw.githubusercontent.com/jenly1314/Base/master/app/release/app-release.apk)
+[![](https://jitpack.io/v/jenly1314/Base.svg)](https://jitpack.io/#jenly1314/Base)
 [![CI](https://travis-ci.org/jenly1314/Base.svg?branch=master)](https://travis-ci.org/jenly1314/Base)
-[![API](https://img.shields.io/badge/API-9%2B-blue.svg?style=flat)](https://android-arsenal.com/api?level=9)
+[![API](https://img.shields.io/badge/API-15%2B-blue.svg?style=flat)](https://android-arsenal.com/api?level=15)
 [![License](https://img.shields.io/badge/license-Apche%202.0-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 [![Blog](https://img.shields.io/badge/blog-Jenly-9932CC.svg)](http://blog.csdn.net/jenly121)
-[![QQGroup](https://img.shields.io/badge/QQGroup-20867961-blue.svg)](http://shang.qq.com/wpa/qunwpa?idkey=8fcc6a2f88552ea44b1411582c94fd124f7bb3ec227e2a400dbbfaad3dc2f5ad)
 
 Base是针对于Android开发封装好一些常用的基类，主要包括通用的Adapter、Activity、Fragment、Dialog等、和一些常用的Util类，只为更简单。
 
@@ -31,7 +30,7 @@ Base是针对于Android开发封装好一些常用的基类，主要包括通用
 <dependency>
   <groupId>com.king.base</groupId>
   <artifactId>base</artifactId>
-  <version>3.1.1</version>
+  <version>3.2.0</version>
   <type>pom</type>
 </dependency>
 
@@ -39,7 +38,7 @@ Base是针对于Android开发封装好一些常用的基类，主要包括通用
 <dependency>
   <groupId>com.king.base</groupId>
   <artifactId>adapter</artifactId>
-  <version>1.1.2</version>
+  <version>3.2.0</version>
   <type>pom</type>
 </dependency>
 
@@ -47,7 +46,7 @@ Base是针对于Android开发封装好一些常用的基类，主要包括通用
 <dependency>
   <groupId>com.king.base</groupId>
   <artifactId>util</artifactId>
-  <version>1.1.2</version>
+  <version>3.2.0</version>
   <type>pom</type>
 </dependency>
 ```
@@ -55,28 +54,28 @@ Base是针对于Android开发封装好一些常用的基类，主要包括通用
 ```gradle
 
 //base
-compile 'com.king.base:base:3.1.1'
+implementation 'com.king.base:base:3.2.0'
 
 //base-adapter
-compile 'com.king.base:adapter:1.1.2'
+implementation 'com.king.base:adapter:3.2.0'
 
 //base-util
-compile 'com.king.base:util:1.1.2'
+implementation 'com.king.base:util:3.2.0'
 ```
 ### Lvy:
 ```lvy
 //base
-<dependency org='com.king.base' name='base' rev='3.1.1'>
+<dependency org='com.king.base' name='base' rev='3.2.0'>
   <artifact name='$AID' ext='pom'></artifact>
 </dependency>
 
 //base-adapter
-<dependency org='com.king.base' name='adapter' rev='1.1.2'>
+<dependency org='com.king.base' name='adapter' rev='3.2.0'>
   <artifact name='$AID' ext='pom'></artifact>
 </dependency>
 
 //base-util
-<dependency org='com.king.base' name='util' rev='1.1.2'>
+<dependency org='com.king.base' name='util' rev='3.2.0'>
   <artifact name='$AID' ext='pom'></artifact>
 </dependency>
 ```
@@ -94,19 +93,19 @@ allprojects {
 ### 引入的库：
 ```gradle
 //base
-provided 'com.android.support:appcompat-v7:25.3.+'
-provided 'com.king.base:util:1.1.2'
+compileOnly 'com.android.support:appcompat-v7:28.0.0'
+compileOnly 'com.king.base:util:3.2.0'
 ```
 
 ```gradle
 //base-adapter
-provided 'com.android.support:appcompat-v7:25.3.+'
-provided 'com.android.support:recyclerview-v7:25.3.+'
+compileOnly 'com.android.support:appcompat-v7:28.0.0'
+compileOnly 'com.android.support:recyclerview-v7:28.0.0'
 ```
 
 ```gradle
 //base-util
-provided 'com.android.support:appcompat-v7:25.3.+'
+compileOnly 'com.android.support:appcompat-v7:28.0.0'
 ```
 
 
@@ -334,6 +333,14 @@ public class TestDialogFragment extends BaseDialogFragment {
 
 [App](app)中有主要源码使用示例。更多实用黑科技，请速速使用Base体会吧。
 
+## 版本记录
+
+#### v3.2.0：2019-5-28
+*  统一版本，方便维护
+
+#### v3.1.2: 很久以前…
+*  未记录版本日志
+
 ## 赞赏
 如果您喜欢Base，或感觉Base帮助到了您，可以点右上角“Star”支持一下，您的支持就是我的动力，谢谢 :smiley:<p>
 您也可以扫描下面的二维码，请作者喝杯咖啡 :coffee:
@@ -357,5 +364,3 @@ public class TestDialogFragment extends BaseDialogFragment {
        <img src="https://jenly1314.github.io/image/jenly666.png">
        <img src="https://jenly1314.github.io/image/qqgourp.png">
    </div>
-
-

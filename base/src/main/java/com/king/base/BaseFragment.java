@@ -310,41 +310,31 @@ public abstract class BaseFragment extends Fragment implements BaseInterface {
 	}
 
 	protected void showProgressDialog(){
-		showProgressDialog(new ProgressBar(context));
+		showProgressDialog(false);
 	}
 
-	protected void showProgressDialog(boolean cancel){
-		showProgressDialog(new ProgressBar(context),cancel);
+	protected void showProgressDialog(boolean isCancel){
+		showProgressDialog(R.layout.progress_dialog,isCancel);
 	}
 
 	protected void showProgressDialog(@LayoutRes int resId){
 		showProgressDialog(resId,false);
 	}
 
-	protected void showProgressDialog(@LayoutRes int resId,boolean cancel){
-		showProgressDialog(LayoutInflater.from(context).inflate(resId,null),cancel);
+	protected void showProgressDialog(@LayoutRes int resId,boolean isCancel){
+		showProgressDialog(inflate(resId),isCancel);
 	}
 
 	protected void showProgressDialog(View v){
 		showProgressDialog(v,false);
 	}
 
-	protected void showProgressDialog(View v,boolean cancel){
+	protected void showProgressDialog(View v,boolean isCancel){
 		dismissProgressDialog();
-		progressDialog =  BaseProgressDialog.newInstance(context);
+		progressDialog =  BaseProgressDialog.newInstance(getContext());
 		progressDialog.setContentView(v);
-		progressDialog.setCanceledOnTouchOutside(cancel);
+		progressDialog.setCanceledOnTouchOutside(isCancel);
 		progressDialog.show();
-	}
-
-
-	public void showDialogFragment(DialogFragment dialogFragment){
-		String tag = dialogFragment.getTag() !=null ? dialogFragment.getTag() : dialogFragment.getClass().getSimpleName();
-		showDialogFragment(dialogFragment,tag);
-	}
-
-	public void showDialogFragment(DialogFragment dialogFragment,String tag) {
-		dialogFragment.show(getFragmentManager(),tag);
 	}
 
 	protected void showDialog(View contentView){
@@ -368,7 +358,7 @@ public abstract class BaseFragment extends Fragment implements BaseInterface {
 	}
 
 	protected void showDialog(Context context, View contentView, @StyleRes int resId, float widthRatio){
-		showDialog(context,contentView,resId,widthRatio,false);
+		showDialog(context,contentView,resId,widthRatio,true);
 	}
 
 	protected void showDialog(Context context, View contentView, @StyleRes int resId, float widthRatio,final boolean isCancel){
@@ -391,13 +381,13 @@ public abstract class BaseFragment extends Fragment implements BaseInterface {
 
 	}
 
-	private void setDialogWindow(Dialog dialog,float widthRatio){
+	protected void setDialogWindow(Dialog dialog,float widthRatio){
 		Window window = dialog.getWindow();
 		WindowManager.LayoutParams lp = window.getAttributes();
-		int width = Math.min(getWidthPixels(),getHeightPixels());
-		lp.width = (int)(width * widthRatio);
+		lp.width = (int)(getWidthPixels()*widthRatio);
 		window.setAttributes(lp);
 	}
+
 
 	//-----------------------------------
 

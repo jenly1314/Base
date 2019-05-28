@@ -1,16 +1,15 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.novoda.bintray-release'
 apply from: 'bintray.gradle'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion build_versions.compileSdk
+    buildToolsVersion build_versions.buildTools
 
     defaultConfig {
-        minSdkVersion 9
-        targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion 15
+        targetSdkVersion build_versions.targetSdk
+        versionCode app_version.versionCode
+        versionName app_version.base
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -24,15 +23,18 @@ android {
 
     lintOptions {
         abortOnError false
+        warning 'InvalidPackage'
+        disable 'TypographyFractions','TypographyQuotes'
     }
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    testCompile 'junit:junit:4.12'
-    provided 'com.android.support:appcompat-v7:25.3.1'
-    provided 'com.king.base:util:1.1.0'
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    testImplementation deps.test.junit
+    androidTestImplementation deps.test.runner
+    androidTestImplementation deps.test.espresso
+
+    compileOnly deps.support.appcompat
+    compileOnly 'com.king.base:util:3.2.0'
+
 }

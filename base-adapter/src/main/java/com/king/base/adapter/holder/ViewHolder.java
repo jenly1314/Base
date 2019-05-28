@@ -35,6 +35,9 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
+
+import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.regex.Pattern;
 
 
@@ -50,6 +53,8 @@ public class ViewHolder extends RecyclerView.ViewHolder{
     private SparseArray<View> views;
 
     private View convertView;
+
+    private OnItemClick onItemClick;
 
     public ViewHolder (View convertView){
         super(convertView);
@@ -303,7 +308,9 @@ public class ViewHolder extends RecyclerView.ViewHolder{
         return getView(id).isSelected();
     }
 
+
     //---------------------- 监听事件
+
 
     public void setOnClickListener(@IdRes int id, View.OnClickListener onClickListener){
         getView(id).setOnClickListener(onClickListener);
@@ -319,6 +326,31 @@ public class ViewHolder extends RecyclerView.ViewHolder{
 
     public void setOnKeyListener(@IdRes int id, View.OnKeyListener onKeyListener){
         getView(id).setOnKeyListener(onKeyListener);
+    }
+
+    //---------------------- 监听事件
+
+    public void setItemClick(OnItemClick onItemClick){
+        this.onItemClick = onItemClick;
+    }
+
+    public void addOnClickListener(@IdRes int id){
+        View view = getView(id);
+        if(view!=null){
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(onItemClick!=null){
+                        onItemClick.onItemClick(v,getAdapterPosition(),true);
+                    }
+                }
+            });
+        }
+    }
+
+
+    public interface OnItemClick{
+        void onItemClick(View view,int position,boolean isChild);
     }
 
 }

@@ -42,8 +42,8 @@ public abstract class ContentActivity extends AppCompatActivity {
         return (T)findViewById(id);
     }
 
-    protected void replaceFragment(Fragment fragmnet){
-        replaceFragment(R.id.fragmentContent,fragmnet);
+    protected void replaceFragment(Fragment fragment){
+        replaceFragment(R.id.fragmentContent,fragment);
     }
 
     protected void replaceFragment(@IdRes int id, Fragment fragment) {

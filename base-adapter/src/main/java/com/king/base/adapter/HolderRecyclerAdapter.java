@@ -22,6 +22,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.king.base.adapter.holder.ViewHolder;
+
 import java.util.List;
 
 /**
@@ -32,7 +35,7 @@ import java.util.List;
  * @param <H>
  *     		ViewHolder
  */
-public abstract class HolderRecyclerAdapter<T,H extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<H>{
+public abstract class HolderRecyclerAdapter<T,H extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<H> implements ViewHolder.OnItemClick{
 
     private Context context;
 
@@ -41,6 +44,7 @@ public abstract class HolderRecyclerAdapter<T,H extends RecyclerView.ViewHolder>
     private LayoutInflater layoutInflater;
 
     private OnItemClickListener mOnItemClickListener;
+    private OnItemChildClickListener mOnItemChildClickListener;
 
     public interface OnItemClickListener{
         void onItemClick(View v, int position);
@@ -50,14 +54,30 @@ public abstract class HolderRecyclerAdapter<T,H extends RecyclerView.ViewHolder>
         this.mOnItemClickListener = clickListener;
     }
 
-    public OnItemClickListener getOnItemClickListener(){
-        return mOnItemClickListener;
-    }
-
     protected void onItemClick(View v,int position){
         if(mOnItemClickListener!=null){
             mOnItemClickListener.onItemClick(v,position);
         }
+    }
+
+    public interface OnItemChildClickListener{
+        void onItemChildClick(View v, int position);
+    }
+
+    public void setOnItemChildClickListener(OnItemChildClickListener clickListener){
+        this.mOnItemChildClickListener = clickListener;
+    }
+
+    @Override
+    public void onItemClick(View v,int position,boolean isChild){
+        if(isChild){
+            if(mOnItemChildClickListener!=null){
+                mOnItemChildClickListener.onItemChildClick(v,position);
+            }
+        }else{
+            onItemClick(v,position);
+        }
+
     }
 
     public HolderRecyclerAdapter(Context context, List<T> listData){
@@ -84,8 +104,9 @@ public abstract class HolderRecyclerAdapter<T,H extends RecyclerView.ViewHolder>
 
     @Override
     public void onBindViewHolder(H holder, final int position) {
-        T t = position<listData.size() ? listData.get(position) : null;
-        bindViewDatas(holder,t,position);
+        T item = position<listData.size() ? listData.get(position) : null;
+
+        bindViewDatas(holder,item,position);
         if(this.mOnItemClickListener!=null){
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -93,6 +114,10 @@ public abstract class HolderRecyclerAdapter<T,H extends RecyclerView.ViewHolder>
                     onItemClick(v,position);
                 }
             });
+        }
+
+        if(holder instanceof ViewHolder){
+            ((ViewHolder)holder).setItemClick(this);
         }
     }
 
@@ -133,8 +158,8 @@ public abstract class HolderRecyclerAdapter<T,H extends RecyclerView.ViewHolder>
     /**
      * 绑定数据
      * @param holder
-     * @param t
+     * @param item
      * @param position
      */
-    public abstract void bindViewDatas(H holder,T t,int position);
+    public abstract void bindViewDatas(H holder,T item,int position);
 }

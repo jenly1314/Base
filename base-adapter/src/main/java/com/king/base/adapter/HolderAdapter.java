@@ -42,16 +42,16 @@ public abstract class HolderAdapter<T,H> extends AbstractAdapter<T>{
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		H holder = null;
-		T t = getListData().get(position);
+		T item = getListData().get(position);
 		if(convertView==null){
-			convertView = buildConvertView(getLayoutInflater(),t,position,parent);
-			holder = buildHolder(convertView,t,position);
+			convertView = buildConvertView(getLayoutInflater(),item,position,parent);
+			holder = buildHolder(convertView,item,position);
 
 			convertView.setTag(holder);
 		}else{
 			holder = (H)convertView.getTag();
 		}
-		bindViewDatas(holder,t,position);
+		bindViewDatas(holder,item,position);
 
 		return convertView;
 	}
@@ -61,22 +61,22 @@ public abstract class HolderAdapter<T,H> extends AbstractAdapter<T>{
 	 * @param layoutInflater
 	 * @return
 	 */
-	public abstract View buildConvertView(LayoutInflater layoutInflater,T t,int position, ViewGroup parent);
+	public abstract View buildConvertView(LayoutInflater layoutInflater,T item,int position, ViewGroup parent);
 
 	/**
 	 * 建立视图Holder
 	 * @param convertView
 	 * @return
 	 */
-	public abstract H buildHolder(View convertView,T t,int position);
+	public abstract H buildHolder(View convertView,T item,int position);
 
 	/**
 	 * 绑定数据
 	 * @param holder
-	 * @param t
+	 * @param item
 	 * @param position
 	 */
-	public abstract void bindViewDatas(H holder,T t,int position);
+	public abstract void bindViewDatas(H holder,T item,int position);
 
 
 }

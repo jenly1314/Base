@@ -96,12 +96,11 @@ public  class WebFragment extends BaseFragment{
     public void initData() {
         WebSettings ws = webView.getSettings();
         //是否允许脚本支持
+        //是否允许脚本支持
         ws.setJavaScriptEnabled(true);
         ws.setDomStorageEnabled(true);
 
         ws.setJavaScriptCanOpenWindowsAutomatically(true);
-
-        webView.setHorizontalScrollBarEnabled(false);
 
         String str = getIntent().getStringExtra(Constants.KEY_URL);
         if(!TextUtils.isEmpty(str)){

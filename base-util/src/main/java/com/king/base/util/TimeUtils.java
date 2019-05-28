@@ -37,16 +37,30 @@ public class TimeUtils {
     /** 时间格式：yyyy-MM-dd HH:mm:ss */
     public static final String FORMAT_Y_TO_S_EN = "yyyy-MM-dd HH:mm:ss";
 
+    /** 时间格式：yyyy-MM-dd HH:mm */
+    public static final String FORMAT_Y_TO_M_EN = "yyyy-MM-dd HH:mm";
+
     /** 时间格式：yyyy-MM-dd */
     public static final String FORMAT_Y_TO_D = "yyyy-MM-dd";
 
+    /** 时间格式：yyyy年MM月dd日 HH时mm分ss秒 */
+    public static final String FORMAT_Y_TO_S_CN = "yyyy年MM月dd日 HH时mm分ss秒";
+
+    /** 时间格式：yyyy年MM月dd HH时mm分 */
+    public static final String FORMAT_Y_TO_M_CN = "yyyy年MM月dd HH时mm分";
+
+    /** 时间格式：yyyy年MM月dd日 */
+    public static final String FORMAT_Y_TO_D_CN = "yyyy年MM月dd日";
+
+    /** 时间格式：yyyyMMdd */
     public static final String FORMAT_YMD = "yyyyMMdd";
-
+    /** 时间格式：HHmmss */
     public static final String FORMAT_HMS = "HHmmss";
-
+    /** 时间格式：HH:mm */
     public static final String FORMAT_H_TO_MIN = "HH:mm";
-
+    /** 时间格式：yyyy/MM/dd/ HH:mm:ss */
     public static String FORMAT_Y_M_D = "yyyy/MM/dd/ HH:mm:ss";
+    /** 时间格式：HH:mm:ss */
     public static String FORMAT_H_M_S = "HH:mm:ss";
 
     private TimeUtils(){

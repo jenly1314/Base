@@ -42,7 +42,6 @@ import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -290,30 +289,30 @@ public abstract class BaseDialogFragment extends DialogFragment implements BaseI
 	}
 
 	protected void showProgressDialog(){
-		showProgressDialog(new ProgressBar(context));
+		showProgressDialog(false);
 	}
 
-	protected void showProgressDialog(boolean cancel){
-		showProgressDialog(new ProgressBar(context),cancel);
+	protected void showProgressDialog(boolean isCancel){
+		showProgressDialog(R.layout.progress_dialog,isCancel);
 	}
 
 	protected void showProgressDialog(@LayoutRes int resId){
 		showProgressDialog(resId,false);
 	}
 
-	protected void showProgressDialog(@LayoutRes int resId,boolean cancel){
-		showProgressDialog(LayoutInflater.from(context).inflate(resId,null),cancel);
+	protected void showProgressDialog(@LayoutRes int resId,boolean isCancel){
+		showProgressDialog(inflate(resId),isCancel);
 	}
 
 	protected void showProgressDialog(View v){
 		showProgressDialog(v,false);
 	}
 
-	protected void showProgressDialog(View v,boolean cancel){
+	protected void showProgressDialog(View v,boolean isCancel){
 		dismissProgressDialog();
-		progressDialog = new BaseProgressDialog(context);
+		progressDialog =  BaseProgressDialog.newInstance(getContext());
 		progressDialog.setContentView(v);
-		progressDialog.setCanceledOnTouchOutside(cancel);
+		progressDialog.setCanceledOnTouchOutside(isCancel);
 		progressDialog.show();
 	}
 
@@ -338,7 +337,7 @@ public abstract class BaseDialogFragment extends DialogFragment implements BaseI
 	}
 
 	protected void showDialog(Context context, View contentView, @StyleRes int resId, float widthRatio){
-		showDialog(context,contentView,resId,widthRatio,false);
+		showDialog(context,contentView,resId,widthRatio,true);
 	}
 
 	protected void showDialog(Context context, View contentView, @StyleRes int resId, float widthRatio,final boolean isCancel){
@@ -361,13 +360,13 @@ public abstract class BaseDialogFragment extends DialogFragment implements BaseI
 
 	}
 
-	private void setDialogWindow(Dialog dialog,float widthRatio){
+	protected void setDialogWindow(Dialog dialog,float widthRatio){
 		Window window = dialog.getWindow();
 		WindowManager.LayoutParams lp = window.getAttributes();
-		int width = Math.min(getWidthPixels(),getHeightPixels());
-		lp.width = (int)(width * widthRatio);
+		lp.width = (int)(getWidthPixels()*widthRatio);
 		window.setAttributes(lp);
 	}
+
 
 	protected void asyncThread(Runnable runnable){
 		new Thread(runnable).start();

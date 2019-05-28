@@ -2,7 +2,6 @@ package com.king.base.app.fragment;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.SystemClock;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -53,7 +52,6 @@ public class RecyclerFragment extends BaseFragment {
     @Override
     public void initData() {
 
-        listData = new ArrayList<>();
         initListData();
         adapter = new RecyclerViewAdapter(getContext(),listData);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL,false));
@@ -80,7 +78,7 @@ public class RecyclerFragment extends BaseFragment {
         new AsyncTask<Void,Void,Void>(){
             @Override
             protected Void doInBackground(Void... params) {
-                SystemClock.sleep(2000);
+                SystemClock.sleep(1500);
                 return null;
             }
 
@@ -98,7 +96,7 @@ public class RecyclerFragment extends BaseFragment {
         new AsyncTask<Void,Void,Void>(){
             @Override
             protected Void doInBackground(Void... params) {
-                SystemClock.sleep(2000);
+                SystemClock.sleep(1500);
                 return null;
             }
 
