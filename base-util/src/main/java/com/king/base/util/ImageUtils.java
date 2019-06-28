@@ -98,4 +98,17 @@ public class ImageUtils {
         return Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
     }
 
+    public static Bitmap rotate(Bitmap bitmap,int degree){
+        Matrix matrix = new Matrix();
+        matrix.postRotate(270);
+        matrix.postScale(-1,1);
+        return Bitmap.createBitmap(bitmap,0,0,bitmap.getWidth(),bitmap.getHeight(),matrix,true);
+    }
+
+    public static Bitmap mirror(Bitmap bitmap,int degree){
+        Matrix matrix = new Matrix();
+        matrix.postScale(-1,1);
+        return Bitmap.createBitmap(bitmap,0,0,bitmap.getWidth(),bitmap.getHeight(),matrix,true);
+    }
+
 }

@@ -55,8 +55,6 @@ public abstract class BaseDialogFragment extends DialogFragment implements BaseI
 
 	private Context context;
 
-	private Dialog dialog;
-
 	private BaseProgressDialog progressDialog;
 
 	protected View rootView;
@@ -88,12 +86,12 @@ public abstract class BaseDialogFragment extends DialogFragment implements BaseI
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		super.getDialog().getWindow().getAttributes().windowAnimations = R.style.dialog_animation;
+        setDialogWindow(getDialog(),Constants.DEFAULT_WIDTH_RATIO);
 	}
 
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
-		dismissDialog();
 	}
 
 	@Override
@@ -108,6 +106,11 @@ public abstract class BaseDialogFragment extends DialogFragment implements BaseI
 		isStop = true;
 	}
 
+    @Override
+    public void addListeners() {
+
+    }
+
 	protected View inflate(@LayoutRes int id){
 		return inflate(id,null);
 	}
@@ -116,10 +119,20 @@ public abstract class BaseDialogFragment extends DialogFragment implements BaseI
 		return LayoutInflater.from(context).inflate(id,root);
 	}
 
-	protected <T extends View> T findView(int resId){
-		return (T)rootView.findViewById(resId);
-	}
+    /**
+     * use {@link #findViewById(int)}
+     * @param id
+     * @param <T>
+     * @return
+     */
+    @Deprecated
+    public <T extends View> T findView(@IdRes int id){
+        return findViewById(id);
+    }
 
+    public <T extends View> T findViewById(@IdRes int id){
+        return (T)rootView.findViewById(id);
+    }
 	protected void setOnClickListener(@IdRes int id,View.OnClickListener onClicklistener){
 		findView(id).setOnClickListener(onClicklistener);
 	}
@@ -264,17 +277,11 @@ public abstract class BaseDialogFragment extends DialogFragment implements BaseI
 		return progressDialog;
 	}
 
-	public Dialog getDialog() {
-		return dialog;
-	}
 
 	protected void dismissProgressDialog(){
 		dismissDialog(progressDialog);
 	}
 
-	protected void dismissDialog(){
-		dismissDialog(dialog);
-	}
 
 	protected void dismissDialog(Dialog dialog){
 		if(dialog != null && dialog.isShowing()){
@@ -314,50 +321,6 @@ public abstract class BaseDialogFragment extends DialogFragment implements BaseI
 		progressDialog.setContentView(v);
 		progressDialog.setCanceledOnTouchOutside(isCancel);
 		progressDialog.show();
-	}
-
-	protected void showDialog(View contentView){
-		showDialog(contentView,Constants.DEFAULT_WIDTH_RATIO);
-	}
-
-	protected void showDialog(View contentView,boolean isCancel){
-		showDialog(getContext(),contentView,R.style.dialog,Constants.DEFAULT_WIDTH_RATIO,isCancel);
-	}
-
-	protected void showDialog(View contentView,float widthRatio){
-		showDialog(getContext(),contentView,widthRatio);
-	}
-
-	protected void showDialog(View contentView,float widthRatio,boolean isCancel){
-		showDialog(getContext(),contentView,R.style.dialog,widthRatio,isCancel);
-	}
-
-	protected void showDialog(Context context,View contentView,float widthRatio){
-		showDialog(context,contentView, R.style.dialog,widthRatio);
-	}
-
-	protected void showDialog(Context context, View contentView, @StyleRes int resId, float widthRatio){
-		showDialog(context,contentView,resId,widthRatio,true);
-	}
-
-	protected void showDialog(Context context, View contentView, @StyleRes int resId, float widthRatio,final boolean isCancel){
-		dismissDialog();
-		dialog = new Dialog(context,resId);
-		dialog.setContentView(contentView);
-		dialog.setCanceledOnTouchOutside(false);
-		dialog.setOnKeyListener(new DialogInterface.OnKeyListener() {
-			@Override
-			public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
-				if(keyCode == KeyEvent.KEYCODE_BACK && isCancel){
-					dismissDialog();
-				}
-				return true;
-
-			}
-		});
-		setDialogWindow(dialog,widthRatio);
-		dialog.show();
-
 	}
 
 	protected void setDialogWindow(Dialog dialog,float widthRatio){

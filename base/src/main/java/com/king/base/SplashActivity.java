@@ -56,9 +56,5 @@ public abstract class SplashActivity extends BaseActivity {
         startAnimation(getRootView());
     }
 
-    @Override
-    public void addListeners() {
-
-    }
 
 }

@@ -17,6 +17,7 @@
 package com.king.base.adapter;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
@@ -43,7 +44,7 @@ public abstract class AbstractAdapter<T> extends BaseAdapter{
 	
 	public AbstractAdapter(Context context,List<T> listData){
 		this.context = context;
-		this.listData = listData;
+        this.listData = listData == null ? new ArrayList<T>() : listData;
 		layoutInflater = LayoutInflater.from(context);
 	}
 
@@ -53,7 +54,7 @@ public abstract class AbstractAdapter<T> extends BaseAdapter{
 	}
 
 	@Override
-	public Object getItem(int position) {
+	public T getItem(int position) {
 		return listData==null ? null:listData.get(position);
 	}
 

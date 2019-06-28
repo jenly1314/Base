@@ -38,6 +38,14 @@ public abstract class ContentActivity extends AppCompatActivity {
         switchFragment(getIntent());
     }
 
+
+    /**
+     * use {@link #findViewById(int)}
+     * @param id
+     * @param <T>
+     * @return
+     */
+    @Deprecated
     public <T extends View> T findView(@IdRes int id){
         return (T)findViewById(id);
     }

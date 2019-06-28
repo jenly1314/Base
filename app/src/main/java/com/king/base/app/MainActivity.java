@@ -17,18 +17,13 @@ public class MainActivity extends BaseActivity {
 
     }
 
-    @Override
-    public void addListeners() {
-
-    }
-
     private void startFrameActivity(int keyFragment){
         Intent intent = new Intent(this,FrameActivity.class);
         intent.putExtra(com.king.base.Constants.KEY_FRAGMENT,keyFragment);
         startActivity(intent);
     }
 
-    public void OnClick(View v){
+    public void onClick(View v){
         switch (v.getId()){
             case R.id.btnListView:
                 startFrameActivity(Constants.FRAGMENT_LIST);

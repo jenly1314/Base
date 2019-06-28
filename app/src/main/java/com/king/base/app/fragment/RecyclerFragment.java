@@ -43,19 +43,39 @@ public class RecyclerFragment extends BaseFragment {
 
     @Override
     public void initUI() {
-        ssrl = findView(R.id.ssrl);
-        recyclerView = findView(R.id.recyclerView);
+        ssrl = findViewById(R.id.ssrl);
+        recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.addItemDecoration(new DividerItemDecoration(getContext(),DividerItemDecoration.VERTICAL));
-    }
-
-    @Override
-    public void initData() {
 
         initListData();
         adapter = new RecyclerViewAdapter(getContext(),listData);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL,false));
         recyclerView.setAdapter(adapter);
+
+        ssrl.setOnRefreshListener(new SuperSwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh(SuperSwipeRefreshLayout.Direction direction) {
+                if(direction == SuperSwipeRefreshLayout.Direction.TOP){
+                    pullRefresh();
+                }else{
+                    loadMoreRefresh();
+
+                }
+            }
+        });
+        adapter.setOnItemClickListener(new HolderRecyclerAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View v, int position) {
+                showToast("position:" + position);
+            }
+        });
+    }
+
+    @Override
+    public void initData() {
+
+
     }
 
     private void initListData(){
@@ -78,7 +98,7 @@ public class RecyclerFragment extends BaseFragment {
         new AsyncTask<Void,Void,Void>(){
             @Override
             protected Void doInBackground(Void... params) {
-                SystemClock.sleep(1500);
+                SystemClock.sleep(1000);
                 return null;
             }
 
@@ -96,7 +116,7 @@ public class RecyclerFragment extends BaseFragment {
         new AsyncTask<Void,Void,Void>(){
             @Override
             protected Void doInBackground(Void... params) {
-                SystemClock.sleep(1500);
+                SystemClock.sleep(1000);
                 return null;
             }
 
@@ -113,23 +133,6 @@ public class RecyclerFragment extends BaseFragment {
     @Override
     public void addListeners() {
 
-        ssrl.setOnRefreshListener(new SuperSwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh(SuperSwipeRefreshLayout.Direction direction) {
-                if(direction == SuperSwipeRefreshLayout.Direction.TOP){
-                    pullRefresh();
-                }else{
-                    loadMoreRefresh();
-
-                }
-            }
-        });
-        adapter.setOnItemClickListener(new HolderRecyclerAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(View v, int position) {
-                showToast("position:" + position);
-            }
-        });
     }
 
     @Override

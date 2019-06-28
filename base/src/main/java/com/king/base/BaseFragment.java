@@ -40,7 +40,6 @@ import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -112,6 +111,11 @@ public abstract class BaseFragment extends Fragment implements BaseInterface {
 		dismissProgressDialog();
 	}
 
+    @Override
+    public void addListeners() {
+
+    }
+
 	protected View inflate(@LayoutRes int id){
 		return inflate(id,null);
 	}
@@ -120,10 +124,20 @@ public abstract class BaseFragment extends Fragment implements BaseInterface {
 		return LayoutInflater.from(context).inflate(id,root);
 	}
 
-	protected <T extends View> T findView(int resId){
-		return (T)rootView.findViewById(resId);
-	}
+    /**
+     * use {@link #findViewById(int)}
+     * @param id
+     * @param <T>
+     * @return
+     */
+    @Deprecated
+    public <T extends View> T findView(@IdRes int id){
+        return findViewById(id);
+    }
 
+    public <T extends View> T findViewById(@IdRes int id){
+        return (T)rootView.findViewById(id);
+    }
 	protected void setOnClickListener(@IdRes int id,View.OnClickListener onClicklistener){
 		findView(id).setOnClickListener(onClicklistener);
 	}

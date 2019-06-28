@@ -90,6 +90,11 @@ public abstract class BaseActivity extends AppCompatActivity implements  BaseInt
         dismissProgressDialog();
     }
 
+    @Override
+    public void addListeners() {
+
+    }
+
     public static View getContentView(Activity activity){
         ViewGroup view = (ViewGroup)activity.getWindow().getDecorView();
         FrameLayout content = (FrameLayout)view.findViewById(android.R.id.content);
@@ -105,8 +110,15 @@ public abstract class BaseActivity extends AppCompatActivity implements  BaseInt
        return LayoutInflater.from(getContext()).inflate(id,root);
     }
 
-    protected <T extends View> T findView(int resId){
-        return (T)findViewById(resId);
+    /**
+     * use {@link #findViewById(int)}
+     * @param id
+     * @param <T>
+     * @return
+     */
+    @Deprecated
+    public <T extends View> T findView(@IdRes int id){
+        return (T)findViewById(id);
     }
 
     protected void setOnClickListener(@IdRes int id,View.OnClickListener onClicklistener){

@@ -18,12 +18,7 @@ import java.util.List;
 public class ListAdapter extends ViewHolderAdapter<String> {
 
     public ListAdapter(Context context, List<String> listData) {
-        super(context, listData);
-    }
-
-    @Override
-    public View buildConvertView(LayoutInflater layoutInflater, String s, int position, ViewGroup parent) {
-        return inflate(R.layout.list_item,parent,false);
+        super(context, listData,R.layout.list_item);
     }
 
     @Override

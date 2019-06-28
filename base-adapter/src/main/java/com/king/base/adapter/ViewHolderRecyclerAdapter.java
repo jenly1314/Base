@@ -17,25 +17,27 @@
 package com.king.base.adapter;
 
 import android.content.Context;
-import android.view.View;
+import android.support.annotation.LayoutRes;
+
 import com.king.base.adapter.holder.ViewHolder;
+
 import java.util.List;
 
 /**
  * 通用适配器
- *      在HolderRecyclerAdapter基础之上将H:ViewHolder具体化，通过通用的ViewHolder根据控件的id得到对应控件，来进行相关的数据绑定操作
+ *      在BaseRecyclerAdapter基础之上将H:ViewHolder具体化，通过通用的ViewHolder根据控件的id得到对应控件，来进行相关的数据绑定操作
  * @author Jenly <a href="mailto:jenly1314@gmail.com">Jenly</a>
  *
  */
-public abstract class ViewHolderRecyclerAdapter<T> extends HolderRecyclerAdapter<T,ViewHolder> {
+public abstract class ViewHolderRecyclerAdapter<T> extends BaseRecyclerAdapter<T,ViewHolder>{
 
-    public ViewHolderRecyclerAdapter(Context context, List<T> listData) {
-        super(context, listData);
+
+    public ViewHolderRecyclerAdapter(Context context,@LayoutRes  int layoutId) {
+        super(context, layoutId);
     }
 
-    @Override
-    public ViewHolder buildHolder(View convertView, int viewType) {
-        return new ViewHolder(convertView);
+    public ViewHolderRecyclerAdapter(Context context, List<T> listData,@LayoutRes  int layoutId) {
+        super(context, listData, layoutId);
     }
 
 }

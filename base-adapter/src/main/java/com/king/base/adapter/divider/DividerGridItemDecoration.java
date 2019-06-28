@@ -17,7 +17,6 @@ import android.view.View;
 /**
  * @author Jenly <a href="mailto:jenly1314@gmail.com">Jenly</a>
  */
-
 public class DividerGridItemDecoration extends RecyclerView.ItemDecoration {
 
     private static final int[] ATTRS = new int[] {

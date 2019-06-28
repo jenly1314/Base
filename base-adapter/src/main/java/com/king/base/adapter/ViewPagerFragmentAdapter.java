@@ -23,7 +23,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import java.util.List;
 
 /**
- * 通用ViewPagerFragmentAdapter
+ * ViewPager通用Fragment适配器
  * @author Jenly <a href="mailto:jenly1314@gmail.com">Jenly</a>
  */
 public class ViewPagerFragmentAdapter extends FragmentPagerAdapter{

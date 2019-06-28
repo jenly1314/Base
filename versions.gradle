@@ -49,5 +49,6 @@ ext.deps = deps
 def addRepos(RepositoryHandler handler) {
     handler.google()
     handler.jcenter()
+    handler.maven { url 'https://dl.bintray.com/jenly/maven' }
 }
 ext.addRepos = this.&addRepos

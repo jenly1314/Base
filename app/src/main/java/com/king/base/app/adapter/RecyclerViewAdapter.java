@@ -18,13 +18,9 @@ import java.util.List;
 public class RecyclerViewAdapter extends ViewHolderRecyclerAdapter<String> {
 
     public RecyclerViewAdapter(Context context, List<String> listData) {
-        super(context, listData);
+        super(context, listData,R.layout.list_item);
     }
 
-    @Override
-    public View buildConvertView(LayoutInflater layoutInflater, ViewGroup parent, int viewType) {
-        return inflate(R.layout.list_item,parent,false);
-    }
 
     @Override
     public void bindViewDatas(ViewHolder holder, String s, int position) {

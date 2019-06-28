@@ -15,9 +15,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 /**
- * @author Jenly <a href="mailto:jenly1314@gmail.com">Jenly</a>
+ * @author <a href="mailto:jenly1314@gmail.com">Jenly</a>
  */
-
 public class DividerItemDecoration extends RecyclerView.ItemDecoration {
 
     private static final int[] ATTRS = new int[]{
@@ -34,15 +33,56 @@ public class DividerItemDecoration extends RecyclerView.ItemDecoration {
 
     private int mOrientation;
 
+    /**
+     * 是否减少一条线
+     */
+    private boolean isReduceLine;
+
+    public DividerItemDecoration(Context context) {
+        this(context,VERTICAL);
+    }
+
+    /**
+     *
+     * @param context 上下文
+     * @param orientation 方向
+     */
     public DividerItemDecoration(Context context, int orientation) {
-        this(context,orientation,null);
+        this(context,orientation,false);
     }
 
+    /**
+     *
+     * @param context 上下文
+     * @param orientation 方向
+     * @param isReduceLine 是否减少一条线
+     */
+    public DividerItemDecoration(Context context, int orientation,boolean isReduceLine) {
+        this(context,orientation,null,isReduceLine);
+    }
+
+    /**
+     *
+     * @param context 上下文
+     * @param orientation 方向
+     * @param resId 分隔线资源id
+     */
     public DividerItemDecoration(Context context, int orientation,@DrawableRes int resId) {
-        this(context,orientation, ContextCompat.getDrawable(context,resId));
+        this(context,orientation, resId,false);
     }
 
-    public DividerItemDecoration(Context context, int orientation,Drawable divider) {
+    /**
+     * 构造
+     * @param context 上下文
+     * @param orientation 方向
+     * @param resId  分隔线资源id
+     * @param isReduceLine 是否减少一条线
+     */
+    public DividerItemDecoration(Context context, int orientation,@DrawableRes int resId,boolean isReduceLine) {
+        this(context,orientation, ContextCompat.getDrawable(context,resId),isReduceLine);
+    }
+
+    public DividerItemDecoration(Context context, int orientation,Drawable divider,boolean isReduceLine) {
         if(divider!=null){
             mDivider = divider;
         }else{
@@ -51,7 +91,10 @@ public class DividerItemDecoration extends RecyclerView.ItemDecoration {
             a.recycle();
         }
         setOrientation(orientation);
+        this.isReduceLine = isReduceLine;
     }
+
+
 
     public void setOrientation(int orientation) {
         if (orientation != HORIZONTAL && orientation != VERTICAL) {
@@ -95,7 +138,7 @@ public class DividerItemDecoration extends RecyclerView.ItemDecoration {
             right = parent.getWidth();
         }
 
-        final int childCount = parent.getChildCount();
+        final int childCount = isReduceLine ? parent.getChildCount()-1 : parent.getChildCount();
         for (int i = 0; i < childCount; i++) {
             final View child = parent.getChildAt(i);
             parent.getDecoratedBoundsWithMargins(child, mBounds);
@@ -122,7 +165,7 @@ public class DividerItemDecoration extends RecyclerView.ItemDecoration {
             bottom = parent.getHeight();
         }
 
-        final int childCount = parent.getChildCount();
+        final int childCount = isReduceLine ? parent.getChildCount()-1 : parent.getChildCount();
         for (int i = 0; i < childCount; i++) {
             final View child = parent.getChildAt(i);
             parent.getLayoutManager().getDecoratedBoundsWithMargins(child, mBounds);

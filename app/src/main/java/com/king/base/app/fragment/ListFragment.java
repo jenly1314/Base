@@ -43,16 +43,36 @@ public class ListFragment extends BaseFragment{
 
     @Override
     public void initUI() {
-        ssrl = findView(R.id.ssrl);
-        listView = findView(R.id.listView);
-    }
+        ssrl = findViewById(R.id.ssrl);
+        listView = findViewById(R.id.listView);
 
-    @Override
-    public void initData() {
         initListData();
         adapter = new ListAdapter(getContext(),listData);
 
         listView.setAdapter(adapter);
+
+        ssrl.setOnRefreshListener(new SuperSwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh(SuperSwipeRefreshLayout.Direction direction) {
+                if(direction == SuperSwipeRefreshLayout.Direction.TOP){
+                    pullRefresh();
+                }else{
+                    loadMoreRefresh();
+
+                }
+            }
+        });
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                showToast("position:" + position);
+            }
+        });
+    }
+
+    @Override
+    public void initData() {
+
     }
 
     private void initListData(){
@@ -75,7 +95,7 @@ public class ListFragment extends BaseFragment{
         new AsyncTask<Void,Void,Void>(){
             @Override
             protected Void doInBackground(Void... params) {
-                SystemClock.sleep(1500);
+                SystemClock.sleep(1000);
                 return null;
             }
 
@@ -93,7 +113,7 @@ public class ListFragment extends BaseFragment{
         new AsyncTask<Void,Void,Void>(){
             @Override
             protected Void doInBackground(Void... params) {
-                SystemClock.sleep(1500);
+                SystemClock.sleep(1000);
                 return null;
             }
 
@@ -110,23 +130,7 @@ public class ListFragment extends BaseFragment{
     @Override
     public void addListeners() {
 
-        ssrl.setOnRefreshListener(new SuperSwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh(SuperSwipeRefreshLayout.Direction direction) {
-                if(direction == SuperSwipeRefreshLayout.Direction.TOP){
-                    pullRefresh();
-                }else{
-                    loadMoreRefresh();
 
-                }
-            }
-        });
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                showToast("position:" + position);
-            }
-        });
     }
 
     @Override

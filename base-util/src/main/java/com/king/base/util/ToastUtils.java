@@ -49,7 +49,11 @@ public class ToastUtils {
     public static void showToast(Context context,CharSequence text,int duration){
 
         if(toast == null){
-            toast =  Toast.makeText(context,text,duration);
+            synchronized (ToastUtils.class){
+                if(toast == null){
+                    toast = Toast.makeText(context,text,duration);
+                }
+            }
         }else{
             toast.setText(text);
             toast.setDuration(duration);

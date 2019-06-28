@@ -25,6 +25,7 @@ import android.view.ViewGroup;
 
 import com.king.base.adapter.holder.ViewHolder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -83,7 +84,7 @@ public abstract class HolderRecyclerAdapter<T,H extends RecyclerView.ViewHolder>
     public HolderRecyclerAdapter(Context context, List<T> listData){
         super();
         this.context = context;
-        this.listData = listData;
+        this.listData = listData == null ? new ArrayList<T>() : listData;
         this.layoutInflater = LayoutInflater.from(context);
     }
 
@@ -136,6 +137,7 @@ public abstract class HolderRecyclerAdapter<T,H extends RecyclerView.ViewHolder>
 
     public void setListData(List<T> listData) {
         this.listData = listData;
+
     }
 
     /**

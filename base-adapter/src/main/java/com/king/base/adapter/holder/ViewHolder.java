@@ -17,6 +17,7 @@
 package com.king.base.adapter.holder;
 
 import android.annotation.TargetApi;
+import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
@@ -60,6 +61,10 @@ public class ViewHolder extends RecyclerView.ViewHolder{
         super(convertView);
         this.convertView = convertView;
         views = new SparseArray<>();
+    }
+
+    public Context getContext(){
+        return convertView.getContext();
     }
 
     public View getConvertView(){

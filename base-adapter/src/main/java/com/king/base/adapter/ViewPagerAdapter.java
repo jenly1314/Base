@@ -24,7 +24,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 /**
- * 通用ViewPagerAdapter
+ * ViewPager通用适配器
  * @author Jenly <a href="mailto:jenly1314@gmail.com">Jenly</a>
  * @param <T>
  *           实体对象
