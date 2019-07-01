@@ -22,8 +22,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
 /**
- * @author Jenly <a href="mailto:jenly1314@gmail.com">Jenly</a>
- * @since 2017/2/4
+ * @author <a href="mailto:jenly1314@gmail.com">Jenly</a>
  */
 public abstract class SplashActivity extends BaseActivity {
 

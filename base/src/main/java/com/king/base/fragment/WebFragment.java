@@ -39,7 +39,7 @@ import com.king.base.util.LogUtils;
 import com.king.base.util.SystemUtils;
 
 /**
- * @author Jenly <a href="mailto:jenly1314@gmail.com">Jenly</a>
+ * @author <a href="mailto:jenly1314@gmail.com">Jenly</a>
  */
 public  class WebFragment extends BaseFragment{
 

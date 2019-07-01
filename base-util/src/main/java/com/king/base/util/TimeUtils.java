@@ -98,11 +98,11 @@ public class TimeUtils {
     }
 
     /**
-     * @param time
-     * @param fromFormat
-     * @param toFormat
+     * 格式化日期
+     * @param time 要格式的时间
+     * @param fromFormat 时间当前格式
+     * @param toFormat 时间格式化后的格式
      * @return
-     * change a date string from the fromFormat to toFormat
      */
     public static String formatDate(String time, String fromFormat, String toFormat) {
         if (TextUtils.isEmpty(time)) {
@@ -129,6 +129,12 @@ public class TimeUtils {
         return dataStr;
     }
 
+    /**
+     * 格式化日期
+     * @param time 时间
+     * @param toFormat 格式
+     * @return
+     */
     public static String formatDate(String time, String toFormat) {
         if (time == null || "".equals(time.trim()))
             return "";
@@ -155,6 +161,12 @@ public class TimeUtils {
         }
     }
 
+    /**
+     * 格式化日期
+     * @param time 时间毫秒
+     * @param toFormat 格式
+     * @return
+     */
     public static String formatDate(long time, String toFormat){
         try {
             Date date = new Date(time);
@@ -167,12 +179,13 @@ public class TimeUtils {
     }
 
     /**
+     * 格式化当前日期
+     * @param toFormat 格式
      * @return
-     * get current date string meeting formatStr
      */
-    public static String getCurrentDate(String formatStr) {
+    public static String getCurrentDate(String toFormat) {
         try{
-            SimpleDateFormat format = new SimpleDateFormat(formatStr);
+            SimpleDateFormat format = new SimpleDateFormat(toFormat);
             return format.format(new Date());
         }catch (Exception e){
             LogUtils.w(e);
@@ -181,12 +194,14 @@ public class TimeUtils {
     }
 
     /**
+     * 格式化日期
+     * @param date
+     * @param toFormat
      * @return
-     *  format date according to toFormat
      */
-    public static String formatDate(Date date, String formatStr) {
+    public static String formatDate(Date date, String toFormat) {
         try{
-            SimpleDateFormat format = new SimpleDateFormat(formatStr);
+            SimpleDateFormat format = new SimpleDateFormat(toFormat);
             return format.format(date);
         }catch (Exception e){
             LogUtils.w(e);
@@ -194,7 +209,11 @@ public class TimeUtils {
         return "";
     }
 
-
+    /**
+     * 解析时间为{@link Date}
+     * @param time
+     * @return
+     */
     public static Date parse(String time) {
         if (time == null || "".equals(time.trim()))
             return null;

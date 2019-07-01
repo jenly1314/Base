@@ -38,16 +38,16 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.king.base.util.StringUtils;
+import com.king.base.util.SystemUtils;
 import com.king.base.util.ToastUtils;
 
 /**
- * @author Jenly
+ * @author <a href="mailto:jenly1314@gmail.com">Jenly</a>
  */
 public abstract class BaseFragment extends Fragment implements BaseInterface {
 
@@ -268,30 +268,23 @@ public abstract class BaseFragment extends Fragment implements BaseInterface {
 		view.startAnimation(AnimationUtils.loadAnimation(context,R.anim.shake));
 	}
 
+    /**
+     * 隐藏软键盘
+     *
+     * @param v
+     */
+    public void hideInputMethod(EditText v) {
+        SystemUtils.hideInputMethod(getContext(),v);
+    }
 
-	/**
-	 * 隐藏软键盘
-	 *
-	 * @param v
-	 */
-	public void hideInputMethod(final EditText v) {
-		InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
-		imm.hideSoftInputFromWindow(v.getWindowToken(),0);
-
-	}
-
-	/**
-	 * 显示软键盘
-	 *
-	 * @param v
-	 */
-	public void showInputMethod(final EditText v) {
-
-		v.requestFocus();
-		InputMethodManager imm = (InputMethodManager)context
-				.getSystemService(Context.INPUT_METHOD_SERVICE);
-		imm.showSoftInput(v,0);
-	}
+    /**
+     * 显示软键盘
+     *
+     * @param v
+     */
+    public void showInputMethod(EditText v) {
+        SystemUtils.showInputMethod(getContext(),v);
+    }
 
 	//-----------------------------------
 

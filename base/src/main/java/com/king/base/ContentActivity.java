@@ -25,7 +25,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 /**
- * @author Jenly <a href="mailto:jenly1314@gmail.com">Jenly</a>
+ * @author <a href="mailto:jenly1314@gmail.com">Jenly</a>
  */
 public abstract class ContentActivity extends AppCompatActivity {
 

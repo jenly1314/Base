@@ -18,7 +18,7 @@ package com.king.base;
 
 
 /**
- * @author Jenly
+ * @author <a href="mailto:jenly1314@gmail.com">Jenly</a>
  */
 public interface BaseInterface {
 

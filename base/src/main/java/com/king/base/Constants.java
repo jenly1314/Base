@@ -19,7 +19,7 @@ package com.king.base;
 import android.app.Activity;
 
 /**
- * @author Jenly
+ * @author <a href="mailto:jenly1314@gmail.com">Jenly</a>
  */
 public final class Constants {
 

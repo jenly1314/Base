@@ -24,7 +24,7 @@ import android.view.View;
 import android.widget.ProgressBar;
 
 /**
- * @author Jenly
+ * @author <a href="mailto:jenly1314@gmail.com">Jenly</a>
  */
 public class BaseProgressDialog extends Dialog {
 

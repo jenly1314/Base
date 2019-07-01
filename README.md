@@ -3,7 +3,7 @@
 ![Image](app/src/main/ic_launcher-web.png)
 
 [![Download](https://img.shields.io/badge/download-App-blue.svg)](https://raw.githubusercontent.com/jenly1314/Base/master/app/release/app-release.apk)
-[![](https://jitpack.io/v/jenly1314/Base.svg)](https://jitpack.io/#jenly1314/Base)
+[![JitPack](https://jitpack.io/v/jenly1314/Base.svg)](https://jitpack.io/#jenly1314/Base)
 [![CI](https://travis-ci.org/jenly1314/Base.svg?branch=master)](https://travis-ci.org/jenly1314/Base)
 [![CircleCI](https://circleci.com/gh/jenly1314/Base.svg?style=svg)](https://circleci.com/gh/jenly1314/Base)
 [![API](https://img.shields.io/badge/API-15%2B-blue.svg?style=flat)](https://android-arsenal.com/api?level=15)
@@ -34,7 +34,7 @@ Base是针对于Android开发封装好一些常用的基类，主要包括通用
 <dependency>
   <groupId>com.king.base</groupId>
   <artifactId>base</artifactId>
-  <version>3.2.0</version>
+  <version>3.2.1</version>
   <type>pom</type>
 </dependency>
 
@@ -42,7 +42,7 @@ Base是针对于Android开发封装好一些常用的基类，主要包括通用
 <dependency>
   <groupId>com.king.base</groupId>
   <artifactId>adapter</artifactId>
-  <version>3.2.0</version>
+  <version>3.2.1</version>
   <type>pom</type>
 </dependency>
 
@@ -50,7 +50,7 @@ Base是针对于Android开发封装好一些常用的基类，主要包括通用
 <dependency>
   <groupId>com.king.base</groupId>
   <artifactId>util</artifactId>
-  <version>3.2.0</version>
+  <version>3.2.1</version>
   <type>pom</type>
 </dependency>
 ```
@@ -58,28 +58,28 @@ Base是针对于Android开发封装好一些常用的基类，主要包括通用
 ```gradle
 
 //base
-implementation 'com.king.base:base:3.2.0'
+implementation 'com.king.base:base:3.2.1'
 
 //base-adapter
-implementation 'com.king.base:adapter:3.2.0'
+implementation 'com.king.base:adapter:3.2.1'
 
 //base-util
-implementation 'com.king.base:util:3.2.0'
+implementation 'com.king.base:util:3.2.1'
 ```
 ### Lvy:
 ```lvy
 //base
-<dependency org='com.king.base' name='base' rev='3.2.0'>
+<dependency org='com.king.base' name='base' rev='3.2.1'>
   <artifact name='$AID' ext='pom'></artifact>
 </dependency>
 
 //base-adapter
-<dependency org='com.king.base' name='adapter' rev='3.2.0'>
+<dependency org='com.king.base' name='adapter' rev='3.2.1'>
   <artifact name='$AID' ext='pom'></artifact>
 </dependency>
 
 //base-util
-<dependency org='com.king.base' name='util' rev='3.2.0'>
+<dependency org='com.king.base' name='util' rev='3.2.1'>
   <artifact name='$AID' ext='pom'></artifact>
 </dependency>
 ```
@@ -98,7 +98,7 @@ allprojects {
 ```gradle
 //base
 compileOnly 'com.android.support:appcompat-v7:28.0.0'
-compileOnly 'com.king.base:util:3.2.0'
+compileOnly 'com.king.base:util:3.2.1'
 ```
 
 ```gradle
@@ -166,11 +166,6 @@ public class TestActivity extends BaseActivity {
         tv.setText("text");
     }
 
-    @Override
-    public void addListeners() {
-        //TODO:添加监听事件
-    }
-
 }
 ```
 ### GestureActivity
@@ -192,11 +187,6 @@ public class TestGestureActivity extends GestureActivity {
     public void initData() {
         //TODO:初始化数据（绑定数据）
         tv.setText("text");
-    }
-
-    @Override
-    public void addListeners() {
-        //TODO:添加监听事件
     }
 
     @Override
@@ -258,12 +248,7 @@ public class TestFragment extends BaseFragment {
     public void initData() {
          //TODO:初始化数据（绑定数据）
     }
-
-    @Override
-    public void addListeners() {
-        //TODO:添加监听事件
-    }
-
+    
 }
 ```
 ### BaseDialogFragment
@@ -283,11 +268,7 @@ public class TestDialogFragment extends BaseDialogFragment {
     public void initData() {
         //TODO:初始化数据（绑定数据）
     }
-
-    @Override
-    public void addListeners() {
-        //TODO:添加监听事件
-    }
+    
 
 }
 ```
@@ -338,6 +319,9 @@ public class TestDialogFragment extends BaseDialogFragment {
 [App](app)中有主要源码使用示例。更多实用黑科技，请速速使用Base体会吧。
 
 ## 版本记录
+
+#### v3.2.1：2019-7-1
+*  优化部分细节，为迁移AndroidX版本做准备
 
 #### v3.2.0：2019-5-28
 *  统一版本，方便维护

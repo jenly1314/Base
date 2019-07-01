@@ -22,7 +22,7 @@ import android.view.MotionEvent;
 
 
 /**
- * @author Jenly <a href="mailto:jenly1314@gmail.com">Jenly</a>
+ * @author <a href="mailto:jenly1314@gmail.com">Jenly</a>
  */
 public abstract class GestureActivity extends BaseActivity implements GestureDetector.OnGestureListener {
 

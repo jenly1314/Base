@@ -49,7 +49,7 @@ import com.king.base.util.SystemUtils;
 import com.king.base.util.ToastUtils;
 
 /**
- * @author Jenly
+ * @author <a href="mailto:jenly1314@gmail.com">Jenly</a>
  */
 public abstract class BaseActivity extends AppCompatActivity implements  BaseInterface{
 
@@ -97,7 +97,7 @@ public abstract class BaseActivity extends AppCompatActivity implements  BaseInt
 
     public static View getContentView(Activity activity){
         ViewGroup view = (ViewGroup)activity.getWindow().getDecorView();
-        FrameLayout content = (FrameLayout)view.findViewById(android.R.id.content);
+        FrameLayout content = view.findViewById(android.R.id.content);
         return content.getChildAt(0);
     }
 

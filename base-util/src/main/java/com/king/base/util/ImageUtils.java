@@ -35,10 +35,21 @@ public class ImageUtils {
         throw new AssertionError();
     }
 
+    /**
+     * 图片转字节数组
+     * @param bitmap
+     * @return
+     */
     public static byte[] bitmapToByte(Bitmap bitmap) {
         return bitmapToByte(bitmap, Bitmap.CompressFormat.JPEG);
     }
 
+    /**
+     * 图片转字节数组
+     * @param bitmap
+     * @param format
+     * @return
+     */
     public static byte[] bitmapToByte(Bitmap bitmap, Bitmap.CompressFormat format) {
         if (bitmap == null) {
             return null;
@@ -49,17 +60,26 @@ public class ImageUtils {
         return o.toByteArray();
     }
 
-
-    public static Bitmap byteToBitmap(byte[] b) {
-        return (b == null || b.length == 0) ? null : BitmapFactory.decodeByteArray(b, 0, b.length);
+    /**
+     * 字节数组转图片
+     * @param data
+     * @return
+     */
+    public static Bitmap byteToBitmap(byte[] data) {
+        return (data == null || data.length == 0) ? null : BitmapFactory.decodeByteArray(data, 0, data.length);
     }
 
-
+    /**
+     * {@link Drawable} 转 {@link Bitmap}
+     * @param drawable
+     * @return
+     */
     public static Bitmap drawableToBitmap(Drawable drawable) {
         return drawable == null ? null : ((BitmapDrawable)drawable).getBitmap();
     }
 
     /**
+     * {@link Bitmap} 转 {@link Drawable}
      * @deprecated Use {@link #bitmapToDrawable(Resources, Bitmap)}
      * @param bitmap
      * @return
@@ -69,25 +89,53 @@ public class ImageUtils {
         return bitmap == null ? null : new BitmapDrawable(bitmap);
     }
 
+    /**
+     * {@link Bitmap} 转 {@link Drawable}
+     * @param res
+     * @param bitmap
+     * @return
+     */
     public static Drawable bitmapToDrawable(Resources res,Bitmap bitmap) {
         return bitmap == null ? null : new BitmapDrawable(res,bitmap);
     }
 
+    /**
+     * 图片转字节数组
+     * @param d
+     * @return
+     */
     public static byte[] drawableToByte(Drawable d) {
         return bitmapToByte(drawableToBitmap(d));
     }
 
-
-    public static Drawable byteToDrawable(byte[] b) {
-        return bitmapToDrawable(byteToBitmap(b));
+    /**
+     * 字节数组转图片
+     * @param data
+     * @return
+     */
+    public static Drawable byteToDrawable(byte[] data) {
+        return bitmapToDrawable(byteToBitmap(data));
     }
 
 
+    /**
+     * 缩放图片
+     * @param bitmap
+     * @param newWidth 缩放后图片新的宽度
+     * @param newHeight 缩放后图片新的高度
+     * @return
+     */
     public static Bitmap scaleImageTo(Bitmap bitmap, int newWidth, int newHeight) {
         return scaleImage(bitmap, (float) newWidth / bitmap.getWidth(), (float) newHeight / bitmap.getHeight());
     }
 
-
+    /**
+     * 缩放图片
+     * @param bitmap
+     * @param scaleWidth 缩放宽
+     * @param scaleHeight 缩放高
+     * @return
+     */
     public static Bitmap scaleImage(Bitmap bitmap, float scaleWidth, float scaleHeight) {
         if (bitmap == null) {
             return null;
@@ -98,14 +146,25 @@ public class ImageUtils {
         return Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
     }
 
+    /**
+     * 旋转图片
+     * @param bitmap
+     * @param degree 旋转角度
+     * @return
+     */
     public static Bitmap rotate(Bitmap bitmap,int degree){
         Matrix matrix = new Matrix();
-        matrix.postRotate(270);
+        matrix.postRotate(degree);
         matrix.postScale(-1,1);
         return Bitmap.createBitmap(bitmap,0,0,bitmap.getWidth(),bitmap.getHeight(),matrix,true);
     }
 
-    public static Bitmap mirror(Bitmap bitmap,int degree){
+    /**
+     * 镜像(像照镜子一样，左右互换)
+     * @param bitmap
+     * @return
+     */
+    public static Bitmap mirror(Bitmap bitmap){
         Matrix matrix = new Matrix();
         matrix.postScale(-1,1);
         return Bitmap.createBitmap(bitmap,0,0,bitmap.getWidth(),bitmap.getHeight(),matrix,true);

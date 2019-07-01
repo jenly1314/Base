@@ -18,7 +18,6 @@ package com.king.base;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -27,29 +26,27 @@ import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
-import android.support.annotation.StyleRes;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.DisplayMetrics;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.king.base.util.StringUtils;
+import com.king.base.util.SystemUtils;
 import com.king.base.util.ToastUtils;
 
 /**
- * @author Jenly
+ * @author <a href="mailto:jenly1314@gmail.com">Jenly</a>
  */
 public abstract class BaseDialogFragment extends DialogFragment implements BaseInterface {
 
@@ -247,29 +244,23 @@ public abstract class BaseDialogFragment extends DialogFragment implements BaseI
 	}
 
 
-	/**
-	 * 隐藏软键盘
-	 *
-	 * @param v
-	 */
-	public void hideInputMethod(final EditText v) {
-		InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
-		imm.hideSoftInputFromWindow(v.getWindowToken(),InputMethodManager.HIDE_IMPLICIT_ONLY);
+    /**
+     * 隐藏软键盘
+     *
+     * @param v
+     */
+    public void hideInputMethod(EditText v) {
+        SystemUtils.hideInputMethod(getContext(),v);
+    }
 
-	}
-
-	/**
-	 * 显示软键盘
-	 *
-	 * @param v
-	 */
-	public void showInputMethod(final EditText v) {
-
-		v.requestFocus();
-		InputMethodManager imm = (InputMethodManager)context
-				.getSystemService(Context.INPUT_METHOD_SERVICE);
-		imm.showSoftInput(v,InputMethodManager.SHOW_IMPLICIT);
-	}
+    /**
+     * 显示软键盘
+     *
+     * @param v
+     */
+    public void showInputMethod(EditText v) {
+        SystemUtils.showInputMethod(getContext(),v);
+    }
 
 	//-----------------------------------
 
