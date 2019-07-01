@@ -316,7 +316,7 @@ public class TestDialogFragment extends BaseDialogFragment {
  showProgressDialog(View v);
 ```
 
-[App](app)中有主要源码使用示例。更多实用黑科技，请速速使用Base体会吧。
+[App](app)中的源码使用示例或直接查看[API帮助文档](https://jenly1314.github.io/projects/Base/doc/)。更多实用黑科技，请速速使用Base体会吧。
 
 ## 版本记录
 
