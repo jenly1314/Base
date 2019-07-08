@@ -21,11 +21,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
-import android.support.annotation.LayoutRes;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+
+import androidx.annotation.LayoutRes;
 
 /**
  * 抽象适配器（实现部分父类方法、免去一些通用的代码）
@@ -79,7 +80,7 @@ public abstract class AbstractAdapter<T> extends BaseAdapter{
 		return layoutInflater;
 	}
 	
-	public View inflate(@LayoutRes int layoutId,ViewGroup parent,boolean attachToRoot){
+	public View inflate(@LayoutRes int layoutId, ViewGroup parent, boolean attachToRoot){
 		return layoutInflater.inflate(layoutId,parent,attachToRoot);
 	}
 

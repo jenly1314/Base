@@ -13,14 +13,13 @@
         android:textSize="20sp"
         android:text="RecyclerView"
         android:background="@color/colorPrimary"/>
-    <com.king.view.superswiperefreshlayout.SuperSwipeRefreshLayout
-        android:id="@+id/ssrl"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/srl"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:direction="both">
-        <android.support.v7.widget.RecyclerView
+        android:layout_height="match_parent">
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
-    </com.king.view.superswiperefreshlayout.SuperSwipeRefreshLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </LinearLayout>

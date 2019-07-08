@@ -3,19 +3,18 @@ package com.king.base.app.fragment;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.SystemClock;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.king.base.BaseFragment;
-import com.king.base.adapter.HolderRecyclerAdapter;
 import com.king.base.app.R;
 import com.king.base.app.adapter.ListAdapter;
-import com.king.view.superswiperefreshlayout.SuperSwipeRefreshLayout;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 /**
  * @author Jenly <a href="mailto:jenly1314@gmail.com">Jenly</a>
@@ -23,7 +22,7 @@ import java.util.List;
 
 public class ListFragment extends BaseFragment{
 
-    private SuperSwipeRefreshLayout ssrl;
+    private SwipeRefreshLayout srl;
 
     private ListView listView;
 
@@ -43,7 +42,7 @@ public class ListFragment extends BaseFragment{
 
     @Override
     public void initUI() {
-        ssrl = findViewById(R.id.ssrl);
+        srl = findViewById(R.id.srl);
         listView = findViewById(R.id.listView);
 
         initListData();
@@ -51,15 +50,10 @@ public class ListFragment extends BaseFragment{
 
         listView.setAdapter(adapter);
 
-        ssrl.setOnRefreshListener(new SuperSwipeRefreshLayout.OnRefreshListener() {
+        srl.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
-            public void onRefresh(SuperSwipeRefreshLayout.Direction direction) {
-                if(direction == SuperSwipeRefreshLayout.Direction.TOP){
-                    pullRefresh();
-                }else{
-                    loadMoreRefresh();
-
-                }
+            public void onRefresh() {
+                pullRefresh();
             }
         });
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -88,7 +82,7 @@ public class ListFragment extends BaseFragment{
 
     private void refreshView(){
         adapter.notifyDataSetChanged();
-        ssrl.setRefreshing(false);
+        srl.setRefreshing(false);
     }
 
     private void pullRefresh(){

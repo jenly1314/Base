@@ -11,7 +11,7 @@ android {
         versionCode app_version.versionCode
         versionName app_version.baseAdapter
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
     }
     buildTypes {

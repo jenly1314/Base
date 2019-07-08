@@ -7,7 +7,8 @@ import android.net.Uri;
 import android.os.Build;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
-import android.support.annotation.RequiresApi;
+
+import androidx.annotation.RequiresApi;
 
 /**
  * @author Jenly <a href="mailto:jenly1314@gmail.com">Jenly</a>

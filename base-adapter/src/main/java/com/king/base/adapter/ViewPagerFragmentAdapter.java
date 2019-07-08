@@ -16,17 +16,18 @@
  */
 package com.king.base.adapter;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 
 import java.util.List;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
 
 /**
  * ViewPager通用Fragment适配器
  * @author Jenly <a href="mailto:jenly1314@gmail.com">Jenly</a>
  */
-public class ViewPagerFragmentAdapter extends FragmentPagerAdapter{
+public class ViewPagerFragmentAdapter extends FragmentPagerAdapter {
 
     private List<Fragment> listData;
 

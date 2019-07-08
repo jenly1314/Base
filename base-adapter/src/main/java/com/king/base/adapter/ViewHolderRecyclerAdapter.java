@@ -17,11 +17,12 @@
 package com.king.base.adapter;
 
 import android.content.Context;
-import android.support.annotation.LayoutRes;
 
 import com.king.base.adapter.holder.ViewHolder;
 
 import java.util.List;
+
+import androidx.annotation.LayoutRes;
 
 /**
  * 通用适配器
@@ -32,7 +33,7 @@ import java.util.List;
 public abstract class ViewHolderRecyclerAdapter<T> extends BaseRecyclerAdapter<T,ViewHolder>{
 
 
-    public ViewHolderRecyclerAdapter(Context context,@LayoutRes  int layoutId) {
+    public ViewHolderRecyclerAdapter(Context context,@LayoutRes int layoutId) {
         super(context, layoutId);
     }
 

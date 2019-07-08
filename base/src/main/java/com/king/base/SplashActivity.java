@@ -16,17 +16,19 @@
  */
 package com.king.base;
 
-import android.support.annotation.LayoutRes;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+
+import androidx.annotation.LayoutRes;
 
 /**
  * @author <a href="mailto:jenly1314@gmail.com">Jenly</a>
  */
 public abstract class SplashActivity extends BaseActivity {
 
-    public abstract @LayoutRes int getContentViewId();
+    public abstract @LayoutRes
+    int getContentViewId();
 
     public abstract Animation.AnimationListener getAnimationListener();
 

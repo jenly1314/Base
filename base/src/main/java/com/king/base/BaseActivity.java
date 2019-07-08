@@ -22,15 +22,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.IdRes;
-import android.support.annotation.LayoutRes;
-import android.support.annotation.Nullable;
-import android.support.annotation.StringRes;
-import android.support.annotation.StyleRes;
-import android.support.v4.app.DialogFragment;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -47,6 +38,16 @@ import android.widget.Toast;
 import com.king.base.util.StringUtils;
 import com.king.base.util.SystemUtils;
 import com.king.base.util.ToastUtils;
+
+import androidx.annotation.IdRes;
+import androidx.annotation.LayoutRes;
+import androidx.annotation.Nullable;
+import androidx.annotation.StringRes;
+import androidx.annotation.StyleRes;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 /**
  * @author <a href="mailto:jenly1314@gmail.com">Jenly</a>
@@ -161,7 +162,7 @@ public abstract class BaseActivity extends AppCompatActivity implements  BaseInt
 
     //-----------------------------------
 
-    public void replaceFragment(@IdRes int resId,Fragment fragment){
+    public void replaceFragment(@IdRes int resId, Fragment fragment){
         replaceFragment(resId,fragment,false);
     }
 
@@ -176,7 +177,7 @@ public abstract class BaseActivity extends AppCompatActivity implements  BaseInt
 
     //-----------------------------------
 
-    protected void showToast(@StringRes  int resId){
+    protected void showToast(@StringRes int resId){
         if(resId != Constants.NONE)
             ToastUtils.showToast(getContext(),resId);
     }

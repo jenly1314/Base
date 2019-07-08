@@ -56,7 +56,18 @@ Base是针对于Android开发封装好一些常用的基类，主要包括通用
 ```
 ### Gradle:
 ```gradle
+//---------- AndroidX 版本
+//base
+implementation 'com.king.base:base:3.2.1-androidx'
 
+//base-adapter
+implementation 'com.king.base:adapter:3.2.1-androidx'
+
+//base-util
+implementation 'com.king.base:util:3.2.1-androidx'
+
+
+//---------- Android 版本
 //base
 implementation 'com.king.base:base:3.2.1'
 
@@ -65,6 +76,8 @@ implementation 'com.king.base:adapter:3.2.1'
 
 //base-util
 implementation 'com.king.base:util:3.2.1'
+
+
 ```
 ### Lvy:
 ```lvy
@@ -96,20 +109,33 @@ allprojects {
 
 ### 引入的库：
 ```gradle
+//---------- AndroidX 版本
+//base
+compileOnly 'androidx.appcompat:appcompat:1.0.0+'
+compileOnly 'com.king.base:util:3.2.1-androidx'
+
+//base-adapter
+compileOnly 'androidx.appcompat:appcompat:1.0.0+'
+compileOnly 'androidx.recyclerview:recyclerview:1.0.0+'
+
+//base-util
+compileOnly 'androidx.appcompat:appcompat:1.0.0+'
+
+```
+
+```gradle
+//---------- Android 版本
 //base
 compileOnly 'com.android.support:appcompat-v7:28.0.0'
 compileOnly 'com.king.base:util:3.2.1'
-```
 
-```gradle
 //base-adapter
 compileOnly 'com.android.support:appcompat-v7:28.0.0'
 compileOnly 'com.android.support:recyclerview-v7:28.0.0'
-```
 
-```gradle
 //base-util
 compileOnly 'com.android.support:appcompat-v7:28.0.0'
+
 ```
 
 
@@ -322,6 +348,7 @@ public class TestDialogFragment extends BaseDialogFragment {
 
 #### v3.2.1：2019-7-1
 *  优化部分细节，为迁移AndroidX版本做准备
+*  支持AndroidX对应版本
 
 #### v3.2.0：2019-5-28
 *  统一版本，方便维护

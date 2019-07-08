@@ -3,9 +3,6 @@ package com.king.base.app.fragment;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.SystemClock;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.king.base.BaseFragment;
@@ -13,10 +10,14 @@ import com.king.base.adapter.HolderRecyclerAdapter;
 import com.king.base.adapter.divider.DividerItemDecoration;
 import com.king.base.app.R;
 import com.king.base.app.adapter.RecyclerViewAdapter;
-import com.king.view.superswiperefreshlayout.SuperSwipeRefreshLayout;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 /**
  * @author Jenly <a href="mailto:jenly1314@gmail.com">Jenly</a>
@@ -24,7 +25,7 @@ import java.util.List;
 
 public class RecyclerFragment extends BaseFragment {
 
-    private SuperSwipeRefreshLayout ssrl;
+    private SwipeRefreshLayout srl;
 
     private RecyclerView recyclerView;
 
@@ -43,27 +44,23 @@ public class RecyclerFragment extends BaseFragment {
 
     @Override
     public void initUI() {
-        ssrl = findViewById(R.id.ssrl);
+        srl = findViewById(R.id.srl);
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.addItemDecoration(new DividerItemDecoration(getContext(),DividerItemDecoration.VERTICAL));
 
         initListData();
         adapter = new RecyclerViewAdapter(getContext(),listData);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL,false));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
 
-        ssrl.setOnRefreshListener(new SuperSwipeRefreshLayout.OnRefreshListener() {
+        srl.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
-            public void onRefresh(SuperSwipeRefreshLayout.Direction direction) {
-                if(direction == SuperSwipeRefreshLayout.Direction.TOP){
-                    pullRefresh();
-                }else{
-                    loadMoreRefresh();
-
-                }
+            public void onRefresh() {
+                pullRefresh();
             }
         });
+
         adapter.setOnItemClickListener(new HolderRecyclerAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
@@ -91,7 +88,7 @@ public class RecyclerFragment extends BaseFragment {
 
     private void refreshView(){
         adapter.notifyDataSetChanged();
-        ssrl.setRefreshing(false);
+        srl.setRefreshing(false);
     }
 
     private void pullRefresh(){
