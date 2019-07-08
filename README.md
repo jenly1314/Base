@@ -20,7 +20,7 @@ Base是针对于Android开发封装好一些常用的基类，主要包括通用
 * base-adapter 主要是封装了各种Adapter、简化自定义Adapter步骤，让写自定义适配器从此更简单。
 * base-util 主要是封装了一些常用的工具类。
 
-
+### [AndroidX version](https://github.com/jenly1314/Base/tree/androidx)
 
 ## Gif展示(示例App)
 
@@ -56,7 +56,18 @@ Base是针对于Android开发封装好一些常用的基类，主要包括通用
 ```
 ### Gradle:
 ```gradle
+//---------- AndroidX 版本
+//base
+implementation 'com.king.base:base:3.2.1-androidx'
 
+//base-adapter
+implementation 'com.king.base:adapter:3.2.1-androidx'
+
+//base-util
+implementation 'com.king.base:util:3.2.1-androidx'
+
+
+//---------- Android 版本
 //base
 implementation 'com.king.base:base:3.2.1'
 
@@ -65,6 +76,8 @@ implementation 'com.king.base:adapter:3.2.1'
 
 //base-util
 implementation 'com.king.base:util:3.2.1'
+
+
 ```
 ### Lvy:
 ```lvy
@@ -96,20 +109,33 @@ allprojects {
 
 ### 引入的库：
 ```gradle
+//---------- AndroidX 版本
+//base
+compileOnly 'androidx.appcompat:appcompat:1.0.0+'
+compileOnly 'com.king.base:util:3.2.1-androidx'
+
+//base-adapter
+compileOnly 'androidx.appcompat:appcompat:1.0.0+'
+compileOnly 'androidx.recyclerview:recyclerview:1.0.0+'
+
+//base-util
+compileOnly 'androidx.appcompat:appcompat:1.0.0+'
+
+```
+
+```gradle
+//---------- Android 版本
 //base
 compileOnly 'com.android.support:appcompat-v7:28.0.0'
 compileOnly 'com.king.base:util:3.2.1'
-```
 
-```gradle
 //base-adapter
 compileOnly 'com.android.support:appcompat-v7:28.0.0'
 compileOnly 'com.android.support:recyclerview-v7:28.0.0'
-```
 
-```gradle
 //base-util
 compileOnly 'com.android.support:appcompat-v7:28.0.0'
+
 ```
 
 
@@ -122,7 +148,7 @@ Base主要实用地方体现在：出统一的代码风格，实用的各种基�
 ### 通用的Adapter
 ```Java
 /**
-  * 
+  *
   * 只需继承通用的适配器（ViewHolderAdapter或ViewHolderRecyclerAdapter），简单的几句代码，妈妈再也不同担心我写自定义适配器了。
   */
 public class TestAdapter extends ViewHolderAdapter<String> {
@@ -248,7 +274,7 @@ public class TestFragment extends BaseFragment {
     public void initData() {
          //TODO:初始化数据（绑定数据）
     }
-    
+
 }
 ```
 ### BaseDialogFragment
@@ -268,7 +294,7 @@ public class TestDialogFragment extends BaseDialogFragment {
     public void initData() {
         //TODO:初始化数据（绑定数据）
     }
-    
+
 
 }
 ```
@@ -282,25 +308,25 @@ public class TestDialogFragment extends BaseDialogFragment {
 使用Log:
 统一控制管理Log
 ```Java
- LogUtils.v(); 
- 
+ LogUtils.v();
+
  LogUtils.d();
- 
+
  LogUtils.i();
- 
+
  LogUtils.w();
- 
+
  LogUtils.e();
- 
+
  LogUtils.twf();
- 
+
  LogUtils.println();
 ```
 
 使用Toast
 ```Java
  showToast(CharSequence text);
- 
+
  showToast(@StringRes  int resId);
 ```
 
@@ -310,9 +336,9 @@ public class TestDialogFragment extends BaseDialogFragment {
 ```
 ```Java
  showProgressDialog();
- 
+
  showProgressDialog(@LayoutRes int resId);
- 
+
  showProgressDialog(View v);
 ```
 
@@ -322,6 +348,7 @@ public class TestDialogFragment extends BaseDialogFragment {
 
 #### v3.2.1：2019-7-1
 *  优化部分细节，为迁移AndroidX版本做准备
+*  支持AndroidX对应版本
 
 #### v3.2.0：2019-5-28
 *  统一版本，方便维护
