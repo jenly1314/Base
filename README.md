@@ -5,7 +5,6 @@
 [![Download](https://img.shields.io/badge/download-App-blue.svg)](https://raw.githubusercontent.com/jenly1314/Base/master/app/release/app-release.apk)
 [![JitPack](https://jitpack.io/v/jenly1314/Base.svg)](https://jitpack.io/#jenly1314/Base)
 [![CI](https://travis-ci.org/jenly1314/Base.svg?branch=master)](https://travis-ci.org/jenly1314/Base)
-[![CircleCI](https://circleci.com/gh/jenly1314/Base.svg?style=svg)](https://circleci.com/gh/jenly1314/Base)
 [![API](https://img.shields.io/badge/API-15%2B-blue.svg?style=flat)](https://android-arsenal.com/api?level=15)
 [![License](https://img.shields.io/badge/license-Apche%202.0-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 
@@ -18,8 +17,6 @@ Base是针对于Android开发封装好一些常用的基类，主要包括通用
 * base 主要是封装了常用的Activity、Fragment、DialogFragment、Dialog等作为基类，方便使用。
 * base-adapter 主要是封装了各种Adapter、简化自定义Adapter步骤，让写自定义适配器从此更简单。
 * base-util 主要是封装了一些常用的工具类。
-
-### [AndroidX version](https://github.com/jenly1314/Base/tree/androidx)
 
 ## Gif展示
 
@@ -42,8 +39,20 @@ Base是针对于Android开发封装好一些常用的基类，主要包括通用
     ```
 
 2. 在Module的 **build.gradle** 里面添加引入依赖项
-
+   
+   ```gradle
+    //--------- AndroidX
+    // base
+    implementation 'com.github.jenly1314.Base:base:3.2.1-androidx'
+    // adapter
+    implementation 'com.github.jenly1314.Base:adapter:3.2.1-androidx'
+    // util
+    implementation 'com.github.jenly1314.Base:uitl:3.2.1-androidx'
+    ```
+    或
+   
     ```gradle
+    //--------- Android Support
     // base
     implementation 'com.github.jenly1314.Base:base:3.2.1'
     // adapter
@@ -54,13 +63,13 @@ Base是针对于Android开发封装好一些常用的基类，主要包括通用
 
 ## 使用
 
-## 简要说明
+### 简要说明
+
 Base主要实用地方体现在：出统一的代码风格，实用的各种基类，BaseActivity和BaseFragment里面还有许多实用的代码封装，只要用了Base，使用Fragment就感觉跟使用Activtiy基本是一样的。
 
+### 代码示例
 
-## 代码示例
-
-### 通用的Adapter
+#### 通用的Adapter
 ```Java
 /**
   *
@@ -86,7 +95,7 @@ public class TestAdapter extends ViewHolderAdapter<String> {
 
 ```
 
-### 基类BaseActivity
+#### 基类BaseActivity
 ```Java
 public class TestActivity extends BaseActivity {
 
@@ -109,7 +118,7 @@ public class TestActivity extends BaseActivity {
 
 }
 ```
-### GestureActivity
+#### GestureActivity
 ```Java
 public class TestGestureActivity extends GestureActivity {
 
@@ -142,7 +151,7 @@ public class TestGestureActivity extends GestureActivity {
     }
 }
 ```
-### SplashActivity
+#### SplashActivity
 ```Java
 public class TestSplashActivity extends SplashActivity {
     @Override
@@ -172,7 +181,7 @@ public class TestSplashActivity extends SplashActivity {
 }
 ```
 
-### BaseFragment
+#### BaseFragment
 ```Java
 public class TestFragment extends BaseFragment {
     @Override
@@ -192,7 +201,7 @@ public class TestFragment extends BaseFragment {
 
 }
 ```
-### BaseDialogFragment
+#### BaseDialogFragment
 ```Java
 public class TestDialogFragment extends BaseDialogFragment {
     @Override
@@ -214,11 +223,11 @@ public class TestDialogFragment extends BaseDialogFragment {
 }
 ```
 
-### WebFragment
+#### WebFragment
 ```Java
     WebFragment实现基本webView功能
 ```
-### 其他小功能
+#### 其他小功能
 
 使用Log:
 统一控制管理Log
