@@ -268,18 +268,6 @@ public class TestDialogFragment extends BaseDialogFragment {
 ```
 更多使用详情，请查看[app](app)中的源码使用示例或直接查看[API帮助文档](https://jitpack.io/com/github/jenly1314/Base/latest/javadoc/)
 
-## 版本记录
-
-#### v3.2.1：2019-7-1
-*  优化部分细节，为迁移AndroidX版本做准备
-*  支持AndroidX对应版本
-
-#### v3.2.0：2019-5-28
-*  统一版本，方便维护
-
-#### v3.1.2: 很久以前…
-*  未记录版本日志
-
 ## 相关推荐
 - [MVVMFrame](https://github.com/jenly1314/MVVMFrame) 一个基于Google官方推出的JetPack构建的MVVM快速开发框架。
 - [AppTemplate](https://github.com/jenly1314/AppTemplate) 一款基于 MVVMFrame 构建的App模板。
@@ -293,6 +281,18 @@ public class TestDialogFragment extends BaseDialogFragment {
 - [KVCache](http://github.com/jenly1314/KVCache) 一个便于统一管理的键值缓存库；支持无缝切换缓存实现。
 - [AndroidKTX](http://github.com/AndroidKTX/AndroidKTX) 一个简化 Android 开发的 Kotlin 工具类集合。
 - [AndroidUtil](http://github.com/AndroidUtil/AndroidUtil) 一个整理了Android常用工具类集合，平时在开发的过程中可能会经常用到。
+
+## 版本日志
+
+#### v3.2.1：2019-7-1
+*  优化部分细节，为迁移AndroidX版本做准备
+*  支持AndroidX对应版本
+
+#### v3.2.0：2019-5-28
+*  统一版本，方便维护
+
+#### v3.1.2: 很久以前…
+*  未记录版本日志
 
 ---
 
